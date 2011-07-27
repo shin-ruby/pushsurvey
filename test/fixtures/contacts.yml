@@ -1,0 +1,41 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  area: MyString
+  province: MyString
+  city: MyString
+  company: MyString
+  industry: MyString
+  name: MyString
+  gender: MyString
+  department: MyString
+  position: MyString
+  area_code: MyString
+  phone: MyString
+  ext: MyString
+  fax: MyString
+  email: MyString
+  mobile: MyString
+  address: MyString
+  zipcode: MyString
+  employee_number: MyString
+
+two:
+  area: MyString
+  province: MyString
+  city: MyString
+  company: MyString
+  industry: MyString
+  name: MyString
+  gender: MyString
+  department: MyString
+  position: MyString
+  area_code: MyString
+  phone: MyString
+  ext: MyString
+  fax: MyString
+  email: MyString
+  mobile: MyString
+  address: MyString
+  zipcode: MyString
+  employee_number: MyString

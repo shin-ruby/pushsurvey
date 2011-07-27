@@ -1,0 +1,57 @@
+<h1>Listing contacts</h1>
+
+<table>
+  <tr>
+    <th>Area</th>
+    <th>Province</th>
+    <th>City</th>
+    <th>Company</th>
+    <th>Industry</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Department</th>
+    <th>Position</th>
+    <th>Area code</th>
+    <th>Phone</th>
+    <th>Ext</th>
+    <th>Fax</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Address</th>
+    <th>Zipcode</th>
+    <th>Employee number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contacts.each do |contact| %>
+  <tr>
+    <td><%= contact.area %></td>
+    <td><%= contact.province %></td>
+    <td><%= contact.city %></td>
+    <td><%= contact.company %></td>
+    <td><%= contact.industry %></td>
+    <td><%= contact.name %></td>
+    <td><%= contact.gender %></td>
+    <td><%= contact.department %></td>
+    <td><%= contact.position %></td>
+    <td><%= contact.area_code %></td>
+    <td><%= contact.phone %></td>
+    <td><%= contact.ext %></td>
+    <td><%= contact.fax %></td>
+    <td><%= contact.email %></td>
+    <td><%= contact.mobile %></td>
+    <td><%= contact.address %></td>
+    <td><%= contact.zipcode %></td>
+    <td><%= contact.employee_number %></td>
+    <td><%= link_to 'Show', contact %></td>
+    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Contact', new_contact_path %>
