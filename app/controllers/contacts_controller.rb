@@ -88,7 +88,8 @@ class ContactsController < ApplicationController
     #require 'roo'
     puts "do importing"
     #Excel.new(params[:xx])
-    render :text =>       params[:xx].read
+
+    render :text =>   params[:xx].path +    params[:xx].read
     #redirect_to :action=>"import"
   end
 end
