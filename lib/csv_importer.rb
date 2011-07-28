@@ -1,0 +1,3 @@
+class CsvImporter < Importer
+
+end
