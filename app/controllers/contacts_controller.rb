@@ -88,6 +88,7 @@ class ContactsController < ApplicationController
     require 'roo'
     puts "do importing"
     Excel.new(params[:xx])
+
     redirect_to :action=>"import"
   end
 end
