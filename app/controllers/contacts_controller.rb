@@ -80,4 +80,14 @@ class ContactsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def import
+    puts "importing"
+  end
+  def do_import
+    require 'roo'
+    puts "do importing"
+    Excel.new(params[:xx])
+    redirect_to :action=>"import"
+  end
 end

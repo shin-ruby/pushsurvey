@@ -2,7 +2,9 @@ require 'test_helper'
 
 class ContactTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  def test_with
+    puts "with "
   end
 end
+
+

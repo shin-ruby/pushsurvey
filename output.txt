@@ -1,0 +1,20 @@
+d:/Ruby187/lib/ruby/1.8/yaml/constants.rb: Interrupt
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `require'
+	from d:/Ruby187/lib/ruby/1.8/yaml.rb:14
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `require'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems.rb:645:in `load_yaml'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/config_file.rb:235:in `load_file'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/config_file.rb:178:in `initialize'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems.rb:361:in `new'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems.rb:361:in `configuration'
+	from d:/Ruby187/lib/ruby/gems/1.8/gems/bundler-1.0.15/lib/bundler/rubygems_integration.rb:25:in `configuration'
+	from d:/Ruby187/lib/ruby/gems/1.8/gems/bundler-1.0.15/lib/bundler/rubygems_integration.rb:5:in `initialize'
+	from d:/Ruby187/lib/ruby/gems/1.8/gems/bundler-1.0.15/lib/bundler/rubygems_integration.rb:311:in `new'
+	from d:/Ruby187/lib/ruby/gems/1.8/gems/bundler-1.0.15/lib/bundler/rubygems_integration.rb:311
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `gem_original_require'
+	from d:/Ruby187/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:36:in `require'
+	from d:/Ruby187/lib/ruby/gems/1.8/gems/bundler-1.0.15/lib/bundler/shared_helpers.rb:4
+	from d:/Ruby187/lib/ruby/gems/1.8/gems/bundler-1.0.15/lib/bundler/setup.rb:1:in `require'
+	from d:/Ruby187/lib/ruby/gems/1.8/gems/bundler-1.0.15/lib/bundler/setup.rb:1

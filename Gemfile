@@ -28,6 +28,13 @@ gem 'zip'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
+group :development, :test do
+  #gem 'minitest'
+  #gem 'mini_backtrace'
+  gem 'autotest'
+  gem 'autotest-rails-pure'
+  gem 'autotest-growl'
+  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork-testunit'
 #   gem 'webrat'
-# end
+end

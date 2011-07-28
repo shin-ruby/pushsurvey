@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :area %><br />
-    <%= f.text_field :area %>
+    <%= f.select :area, Contact::AREAS,:prompt => 'Select an area' %>
   </div>
   <div class="field">
     <%= f.label :province %><br />
