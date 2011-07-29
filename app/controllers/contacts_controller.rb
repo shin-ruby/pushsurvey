@@ -85,7 +85,8 @@ class ContactsController < ApplicationController
     puts "importing"
   end
   def do_import
-    #require 'roo'
+    ENV["ROO_TMP"] = "tmp"
+    require 'roo'
     puts "do importing"
     #Excel.new(params[:xx])
 
