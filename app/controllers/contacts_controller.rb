@@ -87,10 +87,22 @@ class ContactsController < ApplicationController
   def do_import
     ENV["ROO_TMP"] = "tmp"
     require 'roo'
+    require 'fileutils'
     puts "do importing"
-    #Excel.new(params[:xx])
+    FileUtils.cp  params[:xx].path, "tmp/aa.xlsx"
 
-    render :text =>   params[:xx].path +    params[:xx].read
+    s = Excelx.new("tmp/aa.xlsx")
+    result = ""
+    s.first_row.upto(s.last_row) do |row|
+      s.first_column.upto(s.last_column) do |column|
+        result << s.cell(row,column).to_s
+        result << " "
+      end
+      result << "<br>\n"
+    end
+
+
+    render :text =>   result
     #redirect_to :action=>"import"
   end
 end
