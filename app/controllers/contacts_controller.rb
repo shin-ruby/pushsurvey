@@ -89,9 +89,10 @@ class ContactsController < ApplicationController
     require 'roo'
     require 'fileutils'
     puts "do importing"
-    FileUtils.cp  params[:xx].path, "tmp/aa.xlsx"
+    filename = params[:xx].path + "." + File.extname(params[:xx].original_filename)
+    FileUtils.cp  params[:xx].path, filename
 
-    s = Excelx.new("tmp/aa.xlsx")
+    s = Excelx.new( filename)
     result = ""
     s.first_row.upto(s.last_row) do |row|
       s.first_column.upto(s.last_column) do |column|
