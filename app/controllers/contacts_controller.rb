@@ -83,16 +83,39 @@ class ContactsController < ApplicationController
 
   def import
     puts "importing"
+    if ENV['SENDGRID_USERNAME'] #in heroku environment
+    via_options = {
+        :address => 'smtp.sendgrid.net',
+        :port => '25',
+        :user_name => ENV['SENDGRID_USERNAME'],
+        :password => ENV['SENDGRID_PASSWORD'],
+        :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+        :domain => ENV['SENDGRID_DOMAIN'] # the HELO domain provided by the client to the server
+    }
+    else
+         via_options = {
+        :address => 'smtp.sendgrid.net',
+        :port => '25',
+        :user_name => 'app635634@heroku.com',
+        :password => "f92de9dc1d4b4b18b5",
+        :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+        :domain => "heroku.com" # the HELO domain provided by the client to the server
+    }
+
+    end
+    Pony.mail(:to => 'femtowin@gmail.com', :from => 'admin@proedm.com', :subject => 'hi', :body => 'Hello there.',
+     :via => :smtp, :via_options => via_options)
+    render :text=>"done"
   end
   def do_import
     ENV["ROO_TMP"] = "tmp"
     require 'roo'
     require 'fileutils'
     puts "do importing"
-    filename = params[:xx].path + "." + File.extname(params[:xx].original_filename)
+    filename = params[:xx].path + File.extname(params[:xx].original_filename)
     FileUtils.cp  params[:xx].path, filename
 
-    s = Excelx.new( filename)
+    s = Excel.new( filename)
     result = ""
     s.first_row.upto(s.last_row) do |row|
       s.first_column.upto(s.last_column) do |column|

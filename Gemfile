@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'roo'
 gem 'zip'
 gem 'nokogiri'
+gem 'pony'
 
 # Use unicorn as the web server
 # gem 'unicorn'
