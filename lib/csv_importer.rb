@@ -2,6 +2,7 @@
 class CsvImporter < Importer
   def initialize(file)
      @reader = FasterCSV.new(File.new(file), :col_sep=>"\t")
+    #@reader = FasterCSV.new(File.new(file))
   end
   def import
     header = @reader.shift
