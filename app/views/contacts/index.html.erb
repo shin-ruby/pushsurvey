@@ -6,10 +6,12 @@
     <th>Province</th>
     <th>City</th>
     <th>Company</th>
-    <th>Industry</th>
+
     <th>Name</th>
     <th>Gender</th>
     <th>Department</th>
+    <th>Level1 Industry</th>
+    <th>Level2 Industry</th>
     <th>Position</th>
     <th>Area code</th>
     <th>Phone</th>
@@ -20,6 +22,7 @@
     <th>Address</th>
     <th>Zipcode</th>
     <th>Employee number</th>
+    <th>Pc number</th>
     <th></th>
     <th></th>
     <th></th>
@@ -31,10 +34,12 @@
     <td><%= contact.province %></td>
     <td><%= contact.city %></td>
     <td><%= contact.company %></td>
-    <td><%= contact.industry %></td>
+
     <td><%= contact.name %></td>
     <td><%= contact.gender %></td>
     <td><%= contact.department %></td>
+    <td><%= contact.level1_industry %></td>
+    <td><%= contact.level2_industry %></td>
     <td><%= contact.position %></td>
     <td><%= contact.area_code %></td>
     <td><%= contact.phone %></td>
@@ -45,6 +50,7 @@
     <td><%= contact.address %></td>
     <td><%= contact.zipcode %></td>
     <td><%= contact.employee_number %></td>
+    <td><%= contact.pc_number %></td>
     <td><%= link_to 'Show', contact %></td>
     <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
     <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -55,3 +61,4 @@
 <br />
 
 <%= link_to 'New Contact', new_contact_path %>
+<%= link_to 'Import Contact', import_contacts_path %>

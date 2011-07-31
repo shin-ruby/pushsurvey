@@ -5,7 +5,6 @@ one:
   province: MyString
   city: MyString
   company: MyString
-  industry: MyString
   name: MyString
   gender: MyString
   department: MyString
@@ -25,7 +24,6 @@ two:
   province: MyString
   city: MyString
   company: MyString
-  industry: MyString
   name: MyString
   gender: MyString
   department: MyString

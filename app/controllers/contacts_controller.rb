@@ -103,30 +103,20 @@ class ContactsController < ApplicationController
     }
 
     end
-    Pony.mail(:to => 'femtowin@gmail.com', :from => 'admin@proedm.com', :subject => 'hi', :body => 'Hello there.',
-     :via => :smtp, :via_options => via_options)
-    render :text=>"done"
+    #Pony.mail(:to => 'femtowin@gmail.com', :from => 'admin@proedm.com', :subject => 'hi', :body => 'Hello there.<a href=http://www.google.com>google</a>',
+    # :via => :smtp, :via_options => via_options)
+
   end
   def do_import
-    ENV["ROO_TMP"] = "tmp"
-    require 'roo'
+
     require 'fileutils'
-    puts "do importing"
+
     filename = params[:xx].path + File.extname(params[:xx].original_filename)
     FileUtils.cp  params[:xx].path, filename
 
-    s = Excel.new( filename)
-    result = ""
-    s.first_row.upto(s.last_row) do |row|
-      s.first_column.upto(s.last_column) do |column|
-        result << s.cell(row,column).to_s
-        result << " "
-      end
-      result << "<br>\n"
-    end
+    Importer.do_import( filename)
 
 
-    render :text =>   result
-    #redirect_to :action=>"import"
+    redirect_to contacts_path
   end
 end

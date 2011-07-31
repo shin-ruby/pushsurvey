@@ -10,6 +10,7 @@ gem 'roo'
 gem 'zip'
 gem 'nokogiri'
 gem 'pony'
+gem 'fastercsv'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -35,8 +36,13 @@ group :development, :test do
   #gem 'mini_backtrace'
   gem 'autotest'
   gem 'autotest-rails-pure'
-  gem 'autotest-growl'
+  #gem 'autotest-growl'
   gem 'spork', '~> 0.9.0.rc'
   gem 'spork-testunit'
 #   gem 'webrat'
+end
+group :development do
+  gem 'rails-dev-boost'
+  gem 'mongrel'
+
 end
