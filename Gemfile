@@ -41,6 +41,8 @@ group :development, :test do
   #gem 'autotest-growl'
   gem 'spork', '~> 0.9.0.rc'
   gem 'spork-testunit'
+
+  gem 'guard-test'
 #   gem 'webrat'
 end
 group :development do
