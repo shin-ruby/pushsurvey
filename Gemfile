@@ -46,5 +46,5 @@ end
 group :development do
   gem 'rails-dev-boost'
   gem 'mongrel'
-
+  gem "nifty-generators"
 end
