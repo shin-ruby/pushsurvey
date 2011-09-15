@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'bundler','1.0.15'
+
 
 gem 'rails', '3.0.9'
 
@@ -15,6 +15,7 @@ gem 'pony'
 gem 'fastercsv'
 
 gem 'devise'
+gem 'jquery-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -45,7 +46,11 @@ group :development, :test do
   gem 'spork-testunit'
 
   gem 'guard-test'
+  gem 'bundler', '1.0.18'
 #   gem 'webrat'
+end
+group :production do
+  gem 'bundler','1.0.18'
 end
 group :development do
   gem 'rails-dev-boost'

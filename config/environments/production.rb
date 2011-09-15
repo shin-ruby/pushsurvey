@@ -6,7 +6,7 @@ Proedm::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
@@ -29,13 +29,46 @@ Proedm::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  #config.action_controller.asset_host = "http://assets.example.com"
+  #config.action_controller.asset_host = "http://localhost:3000/"
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = {:host => 'proedm.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_charset = 'utf-8'
+
+
+
+
+
+
+
+  if ENV['SENDGRID_USERNAME'] #in heroku environment
+    config.action_mailer.smtp_settings = {
+      :address => 'smtp.sendgrid.net',
+      :port => '25',
+      :domain =>ENV['SENDGRID_DOMAIN'],
+      :authentication => :plain,
+      :user_name => ENV['SENDGRID_USERNAME'],
+        :password => ENV['SENDGRID_PASSWORD'],
+  }
+  else
+    config.action_mailer.smtp_settings = {
+        :address => 'smtp.sendgrid.net',
+        :port => '25',
+        :user_name => 'app635634@heroku.com',
+        :password => "f92de9dc1d4b4b18b5",
+        :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+        :domain => "heroku.com" # the HELO domain provided by the client to the server
+    }
+
+  end
 
   # Enable threaded mode
   # config.threadsafe!
