@@ -49,9 +49,9 @@ group :development, :test do
   gem 'bundler', '1.0.18'
 #   gem 'webrat'
 end
-group :production do
-  gem 'bundler','1.0.18'
-end
+#group :production do
+#  gem 'bundler','1.0.18'
+#end
 group :development do
   gem 'rails-dev-boost'
   gem 'mongrel'
