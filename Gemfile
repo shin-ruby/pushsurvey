@@ -14,6 +14,8 @@ gem 'nokogiri'
 gem 'pony'
 gem 'fastercsv'
 
+gem 'devise'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

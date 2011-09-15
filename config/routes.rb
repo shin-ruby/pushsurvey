@@ -1,4 +1,6 @@
 Proedm::Application.routes.draw do
+  get "home/index"
+
   resources :contacts do
     get :import, :on => :collection
     post :import, :to=>'contacts#do_import', :on => :collection
@@ -56,6 +58,7 @@ Proedm::Application.routes.draw do
   # root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
+  root :to => "home#index"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
