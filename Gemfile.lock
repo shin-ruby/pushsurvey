@@ -130,7 +130,6 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-rails-pure
-  bundler (= 1.0.18)
   devise
   fastercsv
   guard-test

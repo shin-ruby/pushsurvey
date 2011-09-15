@@ -46,7 +46,7 @@ group :development, :test do
   gem 'spork-testunit'
 
   gem 'guard-test'
-  gem 'bundler', '1.0.7'
+  #gem 'bundler', '1.0.7'
 #   gem 'webrat'
 end
 #group :production do
