@@ -1,15 +1,69 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Proedm</title>
-  <%= stylesheet_link_tag :all %>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>My push</title>
+  <%= stylesheet_link_tag "shin","demo_page","demo_table" %>
+  <%= stylesheet_link_tag "blueprint/screen","demo_table" %>
+  <%= stylesheet_link_tag "blueprint/print",:media=>"print" %>
+  <%= stylesheet_link_tag "demo_table" %>
+
+  <!--[if lt IE 8]>
+   <%= stylesheet_link_tag "blueprint/ie",:media=>"screen, projection"%>
+  <![endif]-->
+
+  <!-- Import fancy-type plugin for the sample page. -->
+  <%= stylesheet_link_tag "blueprint/plugins/fancy-type/screen",:media=>"screen, projection"%>
+
   <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+  <%= javascript_include_tag "jquery.dataTables.min" %>
+
+  <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+          $('#datagrid').dataTable();
+      });
+  </script>
+<%= csrf_meta_tag %>
 </head>
+
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+<div class="header">
+  <%=image_tag "logo.png", :class=>"logo" %>
+  <ul class="nav">
+    <li class="current"><a href="#"><span style="color:#FFFFFF">My Station</span></a></li>
+    <li><a href="#">Address Book</a></li>
+    <li><a href="#">Design</a></li>
+    <li><a href="#">Collect</a></li>
+    <li><a href="#">My Account</a></li>
+  </ul>
+  <ul class="navleft">
+    <% if user_signed_in? %>
+      <li><a href="#"><%= current_user.email %></a></li>
+      <li><%= link_to "Sign Out", destroy_user_session_path, :method=>:delete%></li>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path %>
+    <% end %>
+    <li><a href="#">Help</a></li>
+  </ul>
+</div>
+
+<div class="clear"/>
+
+<!-- head over -->
+<div class="container">
+  <% if notice %><p class="notice"><%= notice %></p> <% end %>
+  <% if alert %><p class="alert"><%= alert %></p><% end %>
+  <%= yield %>
+
+<div id="footer">
+  <hr/>
+  <div class="content">
+    <h5>Help Desk:<a href="#">Tutorials</a><a href="#">Answers & FAQs</a><a href="#">Contact Support</a></h5>
+    <h5>Copyright ©2009-2011 PushSurvey</h5>
+  </div>
+</div>
+</div>
+
 
 </body>
 </html>
