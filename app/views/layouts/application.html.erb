@@ -41,7 +41,7 @@
       <li><a href="#"><%= current_user.email %></a></li>
       <li><%= link_to "Sign Out", destroy_user_session_path, :method=>:delete%></li>
     <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
+      <li><%= link_to "Sign in", new_user_session_path %></li>
     <% end %>
     <li><a href="#">Help</a></li>
   </ul>
