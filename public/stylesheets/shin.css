@@ -89,6 +89,7 @@ ul.navleft li {
 
 .container {
 	margin: 0; padding: 0; border:0; height:auto;
+    min-height:500px;
 }
 
 .button {
