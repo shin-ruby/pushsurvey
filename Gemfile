@@ -16,6 +16,7 @@ gem 'fastercsv'
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'activeadmin'
 
 # Use unicorn as the web server
 # gem 'unicorn'
