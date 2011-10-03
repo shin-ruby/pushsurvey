@@ -35,6 +35,9 @@
     <li><a href="#">Design</a></li>
     <li><a href="#">Collect</a></li>
     <li><a href="#">My Account</a></li>
+    <% if current_user.admin? %>
+    <li><%= link_to "Admin", admin_root_path %></li>
+    <% end %>
   </ul>
   <ul class="navleft">
     <% if user_signed_in? %>

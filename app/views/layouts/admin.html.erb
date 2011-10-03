@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PushSurvey's Admin</title>
+<%= stylesheet_link_tag "shin","demo_page","demo_table" %>
+  <%= stylesheet_link_tag "blueprint/screen","demo_table" %>
+  <%= stylesheet_link_tag "blueprint/print",:media=>"print" %>
+  <%= stylesheet_link_tag "demo_table" %>
+
+  <!--[if lt IE 8]>
+   <%= stylesheet_link_tag "blueprint/ie",:media=>"screen, projection"%>
+  <![endif]-->
+
+  <!-- Import fancy-type plugin for the sample page. -->
+  <%= stylesheet_link_tag "blueprint/plugins/fancy-type/screen",:media=>"screen, projection"%>
+
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery.dataTables.min" %>
+
+  <script type="text/javascript" charset="utf-8">
+      $(document).ready(function() {
+          $('#datagrid').dataTable();
+      });
+  </script>
+  <%= csrf_meta_tag %>
+</head>
+
+<body>
+<div class="header">
+  <%= link_to image_tag("logo.png", :class=>"logo"), root_url %>
+  <ul class="nav">
+    <li><a href="./myadmin.html"><span style="color:#FFFFFF">Account Manage</span></a></li>
+    <li><a href="./accountmanage.html">Account Push Manage</a></li>
+    <li><a href="./datamanage.html">VIP Data Manage</a></li>
+    <li><a href="#">Log Manage</a></li>
+  </ul>
+  <ul class="navleft">
+    <li><a href="#">shin.php@gmail.com</a></li>
+    <li><a href="../index.html">Sign Out</a></li>
+    <li><a href="#">Help</a></li>
+  </ul>
+</div><br class="clear" />
+      <!-- head over -->
+<div class="container">
+
+    <br />
+	<div id="container">		
+		<h5><a href="./register.html">Account Open</a></h5>
+        <hr class="space" />
+        <h5><a href="./accountlist.html">Account List Manage</a></h5>    
+    </div>
+</div>
+    <div id="footer"><hr />
+    	<div class="content">
+            <h5>Help Desk:<a href="#">Tutorials</a><a href="#">Answers & FAQs</a><a href="#">Contact Support</a></h5>
+            <h5>Copyright ©2009-2011 PushSurvey</h5>
+    	</div>
+    </div>
+</div>
+</body>
+</html>

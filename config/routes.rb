@@ -1,11 +1,18 @@
 Proedm::Application.routes.draw do
-  devise_for :users
+  get "admin/index"
+
+  devise_for :users,:controllers => { :sessions => "sessions" }
 
   get "home/index"
 
   resources :contacts do
     get :import, :on => :collection
     post :import, :to=>'contacts#do_import', :on => :collection
+  end
+
+  namespace :admin do
+    root :to => "admin#index"
+    resources :posts, :comments
   end
 
   # The priority is based upon order of creation:
