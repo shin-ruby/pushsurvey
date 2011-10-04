@@ -25,6 +25,12 @@ ActiveAdmin::Dashboards.build do
 
        end
      end
+
+     section "Recent Design", :priority => 4 do
+       table_for  Design.all do
+          column("name") {|design| link_to design.name,admin_design_path(design) }
+       end
+     end
   
   # == Render Partial Section
   # The block is rendered within the context of the view, so you can
