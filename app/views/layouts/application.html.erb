@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag "shin","demo_page","demo_table" %>
   <%= stylesheet_link_tag "blueprint/screen","demo_table" %>
   <%= stylesheet_link_tag "blueprint/print",:media=>"print" %>
-  <%= stylesheet_link_tag "demo_table" %>
+  <%= stylesheet_link_tag "demo_page", "demo_table" %>
 
   <!--[if lt IE 8]>
    <%= stylesheet_link_tag "blueprint/ie",:media=>"screen, projection"%>
@@ -30,11 +30,8 @@
 <div class="header">
   <%= link_to image_tag("logo.png", :class=>"logo"), root_url %>
   <ul class="nav">
-    <li class="current"><a href="#"><span style="color:#FFFFFF">My Station</span></a></li>
-    <li><a href="#">Address Book</a></li>
-    <li><a href="#">Design</a></li>
-    <li><a href="#">Collect</a></li>
-    <li><a href="#">My Account</a></li>
+    <%= tabs([["My Station",root_path, "home"], ["Address Book", "/address_books"], ["Design", designs_path, "designs"],["Collect","/collect"],["My Account", "/myaccount"]]) %>
+
     <% if current_user && current_user.admin? %>
     <li><%= link_to "Admin", "/admin" %></li>
     <% end %>

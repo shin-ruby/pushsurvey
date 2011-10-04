@@ -1,4 +1,6 @@
 Proedm::Application.routes.draw do
+  resources :designs
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

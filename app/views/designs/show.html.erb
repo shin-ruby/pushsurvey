@@ -1,0 +1,28 @@
+<br/><br/>
+<div class="span-24">
+  <form id="dummy" action="" method="post">
+    <h3><%= @design.name %></h3>
+    <fieldset>
+      <div class="span-24">
+        <h6>Copy URL</h6>
+        <abbr style="color:#666"><%=Rails.configuration.action_mailer.default_url_options[:host]%><%= url_for  @design %></abbr>
+      </div>
+      <hr class="space">
+      <hr/>
+
+      <%= @design.html.html_safe %>
+      <hr class="space">
+      <hr/>
+
+      <script type="text/javascript">
+          function goto() {
+              location.href = "/designs";
+          }
+      </script>
+
+
+      <input type="button" value="Back" onclick="goto();"/>
+    </fieldset>
+  </form>
+</div>
+
