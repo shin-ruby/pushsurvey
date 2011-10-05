@@ -15,7 +15,7 @@ module UserResource #or called UserScope? everyone has user_id includes this mod
 
     base.send(:scope, :with_user, proc{
       if Thread.current[:user_id]
-        base.send(:where, 1)
+        base.send(:where, "1=1")
       else
         base.send(:where,arel[:user_id].eq(Thread.current[:user_id]))
       end
