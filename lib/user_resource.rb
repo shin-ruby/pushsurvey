@@ -10,7 +10,7 @@ module UserResource #or called UserScope? everyone has user_id includes this mod
     puts "#{base.inspect} included"
     base.send(:belongs_to, :user)
 
-    base.send(:scope, :with_user, proc{base.send(:where,:user_id=>Thread.current[:user_id])})
+    base.send(:scope, :with_user, proc{base.send(:where,:user_id=>Thread.current[:user_id])}) #should implement user_id == 3
     base.send(:before_save, :set_user)
     #base.send(:default_scope, proc {base.send(:where,:user_id=>3)})
   end
