@@ -20,7 +20,7 @@ class DesignsController < InheritedResources::Base
 
   def preview
     @design = Design.find(params[:id])
-    if !current_user.can_view(@design)
+    if current_user.can_view(@design)
       render :text => @design.html.html_safe
     else
       redirect_to designs_path, :notice=> "You don't have permissions for previewing this design"
