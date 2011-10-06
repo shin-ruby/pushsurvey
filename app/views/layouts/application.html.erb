@@ -30,7 +30,7 @@
 <div class="header">
   <%= link_to image_tag("logo.png", :class=>"logo"), root_url %>
   <ul class="nav">
-    <%= tabs([["My Station",root_path, "home"], ["Address Book", "/address_books"], ["Design", designs_path, "designs"],["Collect","/collect"],["My Account", "/myaccount"]]) %>
+    <%= tabs([["My Station",root_path, "home"], ["Address Book", address_books_path,"address_books"], ["Design", designs_path, "designs"],["Collect","/collect"],["My Account", "/myaccount"]]) %>
 
     <% if current_user && current_user.admin? %>
     <li><%= link_to "Admin", "/admin" %></li>

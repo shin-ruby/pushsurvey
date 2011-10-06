@@ -1,0 +1,84 @@
+<br />
+<br />
+<hr />
+<div class="span-12 border">
+    <h2>List Summary</h2>
+    <h6>List Name&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= form_for(@address_book) do |f| %>
+   <% if @address_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this address_book from being saved:</h2>
+
+      <ul>
+      <% @address_book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+    <%= f.text_field :name %>
+
+
+    <%= f.submit :value => "Save" %>
+
+<% end %>
+
+    </h6>
+    <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @address_book.updated_at %></em></span></h6>
+    <h6>Total Count&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><span style="color:#F60"><%= @address_book.contacts_count || 0 %>&nbsp;&nbsp;</span>contact</em></span></h6>
+</div>
+<div class="span-12 last">
+<hr class="space" />
+    <h6><%= link_to "+Add Once Contacts",  add_once_address_book_path(@address_book)%></h6>
+    <h6><%= link_to "!Export Contacts", export_address_book_path(@address_book) %></h6>
+</div>
+<hr class="space">
+<hr />
+<div id="container">
+    <div id="demo">
+        <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+            <thead>
+                <tr>
+                    <th>Opt-Out</th>
+                    <th>Delet</th>
+                    <th>Modify</th>
+                    <th>Email Address</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Custom Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @address_book.contacts.each do |contact| %>
+                <tr class="gradeX">
+                    <td><img src="/images/y.gif" /></td>
+                    <td><%= link_to image_tag("delete.png"), address_book, :confirm => 'Are you sure?', :method => :delete %> </td>
+                    <td><a href="./modify.html"><img src="/images/modify.png" /></a></td>
+                    <td class="center">shin.php@gmail.com</td>
+                    <td class="center">Shin</td>
+                    <td class="center">Zhang</td>
+                    <td class="center">IT</td>
+                </tr>
+                <% end %>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Opt-Out</th>
+                    <th>Delet</th>
+                    <th>Modify</th>
+                    <th>Email Address</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Custom Value</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="spacer"></div>
+  </div>
+
+

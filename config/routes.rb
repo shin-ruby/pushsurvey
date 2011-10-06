@@ -3,6 +3,10 @@ Proedm::Application.routes.draw do
     get :preview, :on => :member
     get :save, :on => :member
   end
+  resources :address_books do
+    get :export, :on => :member
+    get :add_once,:on => :member
+  end
 
   ActiveAdmin.routes(self)
 

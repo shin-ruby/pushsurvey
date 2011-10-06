@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005081020) do
+ActiveRecord::Schema.define(:version => 20111006183109) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(:version => 20111005081020) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "address_books", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contacts_count"
+  end
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -68,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20111005081020) do
     t.string   "level1_industry"
     t.string   "level2_industry"
     t.string   "pc_number"
+    t.integer  "address_book_id"
   end
 
   create_table "designs", :force => true do |t|
