@@ -1,5 +1,8 @@
 Proedm::Application.routes.draw do
-  resources :designs
+  resources :designs do
+    get :preview, :on => :member
+    get :save, :on => :member
+  end
 
   ActiveAdmin.routes(self)
 

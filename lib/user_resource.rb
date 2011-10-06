@@ -7,14 +7,14 @@ module UserResource #or called UserScope? everyone has user_id includes this mod
   end
   def self.append_features(base)
     super
-    puts "#{base.inspect} included"
+    #puts "#{base.inspect} included"
     base.send(:belongs_to, :user)
 
     arel = base.arel_table
 
 
     base.send(:scope, :with_user, proc{
-      if Thread.current[:user_id]
+      if Thread.current[:user_id] == 3
         base.send(:where, "1=1")
       else
         base.send(:where,arel[:user_id].eq(Thread.current[:user_id]))

@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   def admin?
     group_id == 3
   end
+
+  def can_view(resource)
+    resource.can_be_viewed(self)
+  end
 end

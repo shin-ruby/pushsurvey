@@ -27,7 +27,9 @@
                         <td><%= design.created_at %></td>
                         <td><%= design.updated_at %></td>
                         <td class="center">
-                          <a href="#">Save</a>
+                          <%= link_to "Save", save_design_path(design)%>
+                          &nbsp;&nbsp;|&nbsp;&nbsp;
+                          <%= link_to "Preview", preview_design_path(design)%>
                           &nbsp;&nbsp;|&nbsp;&nbsp;
                           <%= link_to 'Edit', edit_design_path(design) %>
                           &nbsp;&nbsp;|&nbsp;&nbsp;
