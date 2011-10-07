@@ -5,6 +5,7 @@ class DesignsController < InheritedResources::Base
 
   def save
     @design = Design.find(params[:id])
+
     if current_user.can_view(@design)
       #headers['Content-Type'] = "application/octet-stream" # I've also seen this for CSV files: 'text/csv; charset=iso-8859-1; header=present'
       #headers['Content-Disposition'] = "attachment; filename=\"#{@design.name}.html\""
@@ -20,6 +21,7 @@ class DesignsController < InheritedResources::Base
 
   def preview
     @design = Design.find(params[:id])
+    authorize! :read, @design
     if current_user.can_view(@design)
       render :text => @design.html.html_safe
     else
