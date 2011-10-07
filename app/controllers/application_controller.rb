@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   #end
   before_filter :authenticate_user!
   before_filter :set_user
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to collection_url, :alert => exception.message
+  end
+
   private
     def set_user
       Thread.current[:user_id] = (current_user.id rescue nil)
@@ -21,4 +26,6 @@ class ApplicationController < ActionController::Base
       #return false
     end
   end
+
+
 end
