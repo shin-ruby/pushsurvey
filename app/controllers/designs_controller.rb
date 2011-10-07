@@ -1,4 +1,5 @@
 class DesignsController < InheritedResources::Base
+  load_and_authorize_resource
   def index
     @designs = Design.with_user
   end
