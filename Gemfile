@@ -19,6 +19,8 @@ gem 'jquery-rails'
 gem 'activeadmin'
 gem "cancan"
 
+#gem "wizardly_gt" , :require => 'wizardly'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
