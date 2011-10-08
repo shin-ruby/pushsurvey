@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  date_push: 2011-10-08
+  design_id: 1
+  feedback: 1.5
+  status: MyString
+  folder_id: 1
+  category_id: 1
+  comment: MyText
+  address_book_id: 1
+
+two:
+  name: MyString
+  date_push: 2011-10-08
+  design_id: 1
+  feedback: 1.5
+  status: MyString
+  folder_id: 1
+  category_id: 1
+  comment: MyText
+  address_book_id: 1

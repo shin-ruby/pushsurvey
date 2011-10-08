@@ -1,0 +1,53 @@
+<%= form_for(@push) do |f| %>
+  <% if @push.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@push.errors.count, "error") %> prohibited this push from being saved:</h2>
+
+      <ul>
+      <% @push.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_push %><br />
+    <%= f.date_select :date_push %>
+  </div>
+  <div class="field">
+    <%= f.label :design_id %><br />
+    <%= f.text_field :design_id %>
+  </div>
+  <div class="field">
+    <%= f.label :feedback %><br />
+    <%= f.text_field :feedback %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :folder_id %><br />
+    <%= f.text_field :folder_id %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.text_field :category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :address_book_id %><br />
+    <%= f.text_field :address_book_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

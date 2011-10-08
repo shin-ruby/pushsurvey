@@ -1,5 +1,7 @@
 Proedm::Application.routes.draw do
 
+  resources :pushes
+
   resources :designs do
     get :preview, :on => :member
     get :save, :on => :member
@@ -81,7 +83,7 @@ Proedm::Application.routes.draw do
   # root :to => "welcome#index"
 
   # See how all your routes lay out with "rake routes"
-  root :to => "home#index"
+  root :to => "pushes#index"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

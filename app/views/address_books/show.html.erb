@@ -20,8 +20,7 @@
             <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
                 <thead>
                     <tr>
-                        <th>Opt-Out</th>
-                        <th>Delet</th>
+                        <th>Delete</th>
                         <th>Modify</th>
                         <th>Email Address</th>
                         <th>First Name</th>
@@ -32,7 +31,6 @@
                 <tbody>
                     <% @address_book.contacts.each do |contact| %>
                     <tr class="gradeX">
-                        <td><img src="/images/y.gif" /></td>
                         <td><%= link_to image_tag("delete.png"), address_book, :confirm => 'Are you sure?', :method => :delete %> </td>
                         <td><a href="./modify.html"><img src="/images/modify.png" /></a></td>
                         <td class="center">shin.php@gmail.com</td>
@@ -45,8 +43,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Opt-Out</th>
-                        <th>Delet</th>
+                        
+                        <th>Delete</th>
                         <th>Modify</th>
                         <th>Email Address</th>
                         <th>First Name</th>

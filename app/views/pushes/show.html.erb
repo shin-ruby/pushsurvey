@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @push.name %>
+</p>
+
+<p>
+  <b>Date push:</b>
+  <%= @push.date_push %>
+</p>
+
+<p>
+  <b>Design:</b>
+  <%= @push.design_id %>
+</p>
+
+<p>
+  <b>Feedback:</b>
+  <%= @push.feedback %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @push.status %>
+</p>
+
+<p>
+  <b>Folder:</b>
+  <%= @push.folder_id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @push.category_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @push.comment %>
+</p>
+
+<p>
+  <b>Address book:</b>
+  <%= @push.address_book_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_push_path(@push) %> |
+<%= link_to 'Back', pushes_path %>
