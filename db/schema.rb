@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(:version => 20111008153813) do
     t.date     "date_push"
     t.integer  "design_id"
     t.float    "feedback"
-    t.string   "status"
+    t.string   "status",          :default => "Draft"
     t.integer  "folder_id"
     t.integer  "category_id"
     t.text     "comment"

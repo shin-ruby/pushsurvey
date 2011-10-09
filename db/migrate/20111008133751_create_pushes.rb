@@ -5,7 +5,7 @@ class CreatePushes < ActiveRecord::Migration
       t.date :date_push
       t.integer :design_id
       t.float :feedback
-      t.string :status
+      t.string :status, :default => "Draft"
       t.integer :folder_id
       t.integer :category_id
       t.text :comment

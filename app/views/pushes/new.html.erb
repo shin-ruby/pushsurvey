@@ -1,5 +1,53 @@
-<h1>New push</h1>
+	<br /><br />
+	<div class="span-12">
+        <%= form_for(@push) do |f| %>
+  <% if @push.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@push.errors.count, "error") %> prohibited this push from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @push.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', pushes_path %>
+          <fieldset>
+            <legend><h3>Create Push</h3></legend>
+            <p>
+              <label for="dummy0"><input type="radio" name="new_type" value="new" checked="checked">Create a new push</label><br>
+
+
+            <%= f.text_field :name, :value=>"New push name" %>
+            </p><hr />
+
+            <p>
+              <label for="dummy1"><input type="radio" name="new_type" value="copy">Copy an existing push</label><br>
+              <%= select_tag(:copy_push_id, options_from_collection_for_select(Push.with_user, :id, :name)) %>
+
+
+
+            </p>                      
+            <p>
+              <%= f.text_field :name, :value=>"Reset push name" %>
+            </p>
+            <br />
+            <p>
+              <input type="reset" value="Cancel">
+              <%= f.submit :value=>"Continue" %>
+            </p>
+          </fieldset>
+        </form>	
+      </div>
+        <div class="span-12 last">
+        <fieldset>
+          <legend><h3>Note</h3></legend>
+          <p><caption><em>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of, with an easy-to-use grid, sensible typography, useful plugins, and even a stylesheet for printing.</em></caption></p>
+          <p>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of, with an easy-to-use grid, sensible typography, useful plugins, and even a stylesheet for printing.</p>
+          <p>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of, with an easy-to-use grid, sensible typography, useful plugins, and even a stylesheet for printing.</p>
+          <p>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of.</p>
+        </fieldset>
+ 	</div>
+    <% end  %>
+

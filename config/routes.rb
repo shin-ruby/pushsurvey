@@ -1,6 +1,8 @@
 Proedm::Application.routes.draw do
 
-  resources :pushes
+  resources :pushes do
+    get :save, :on => :member
+  end
 
   resources :designs do
     get :preview, :on => :member
