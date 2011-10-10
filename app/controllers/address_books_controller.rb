@@ -1,6 +1,6 @@
 require 'csv'
 class AddressBooksController < InheritedResources::Base
-  load_and_authorize_resource :except => :export
+  load_and_authorize_resource :except => [:export,:import]
 
   def index
     @address_books = AddressBook.with_user.active
@@ -37,8 +37,14 @@ class AddressBooksController < InheritedResources::Base
         return
       end
     end
-    @address_book.instance_variable_set("@new_record", true)
-    render "new"
+
+    if params[:to_import]
+      render "import"
+    else
+      @address_book.instance_variable_set("@new_record", true)
+      render "new"
+    end
+
   end
 
   def export
@@ -66,8 +72,20 @@ class AddressBooksController < InheritedResources::Base
 
   end
 
-  def add_once
+  def import
+    @address_book =   AddressBook.find(params[:id])
+    @contacts_value = ""
+    if request.get?
 
+    elsif request.put? || request.post?
+      if params[:add_contact]
+        InlineCsvImporter.new(params[:contacts],@address_book).import
+      elsif params[:upload]
+         Importer.do_import(params[:file],@address_book)
+      end
+
+      redirect_to import_address_book_path(@address_book)
+    end
   end
 
   private

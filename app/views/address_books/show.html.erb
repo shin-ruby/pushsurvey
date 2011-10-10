@@ -4,13 +4,13 @@
     <div class="span-12 border">
         <h2>List Summary</h2>
         <h6>List Name&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @address_book.name %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to "Edit Name", edit_address_book_path %></h6>
+        <%= link_to "Edit Name", edit_address_book_path(@address_book) %></h6>
         <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @address_book.updated_at %></em></span></h6>
         <h6>Total Count&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><span style="color:#F60"><%= @address_book.contacts_count || 0 %>&nbsp;&nbsp;</span>contact</em></span></h6>
     </div>
     <div class="span-12 last">
     <hr class="space" />
-        <h6><%= link_to "+Add Once Contacts",  add_once_address_book_path(@address_book)%></h6>
+        <h6><%= link_to "+Import Contacts",  import_address_book_path(@address_book)%></h6>
         <h6><%= link_to "!Export Contacts", export_address_book_path(@address_book) %></h6>
     </div>
     <hr class="space">
@@ -25,18 +25,18 @@
                         <th>Email Address</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Custom Value</th>
+                        <th>Name</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @address_book.contacts.each do |contact| %>
                     <tr class="gradeX">
-                        <td><%= link_to image_tag("delete.png"), address_book, :confirm => 'Are you sure?', :method => :delete %> </td>
-                        <td><a href="./modify.html"><img src="/images/modify.png" /></a></td>
-                        <td class="center">shin.php@gmail.com</td>
-                        <td class="center">Shin</td>
-                        <td class="center">Zhang</td>
-                        <td class="center">IT</td>
+                        <td><%= link_to image_tag("delete.png"), contact, :confirm => 'Are you sure?', :method => :delete %> </td>
+                        <td><%= link_to image_tag("modify.png"), edit_contact_path(contact) %></td>
+                        <td class="center"><%= contact.email %></td>
+                        <td class="center"><%= contact.lastname %></td>
+                        <td class="center"><%= contact.firstname %></td>
+                        <td class="center"><%= contact.name %></td>
                     </tr>
                     <% end %>
 
@@ -49,7 +49,7 @@
                         <th>Email Address</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Custom Value</th>
+                        <th>Name</th>
                     </tr>
                 </tfoot>
             </table>

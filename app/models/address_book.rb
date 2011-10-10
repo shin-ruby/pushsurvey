@@ -11,7 +11,7 @@ class AddressBook < ActiveRecord::Base
 
   def steps
 
-     ["name", "agree_provision", "import"]
+     ["name", "agree_provision"]
   end
 
   def next_step

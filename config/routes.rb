@@ -15,8 +15,11 @@ Proedm::Application.routes.draw do
   end
   resources :address_books do
     get :export, :on => :member
-    get :add_once,:on => :member
+    match :import, :on => :member
+
+
   end
+  resources :contacts
 
   ActiveAdmin.routes(self)
 
@@ -24,14 +27,10 @@ Proedm::Application.routes.draw do
 
   get "admin/index"
 
-  devise_for :users,:controllers => { :sessions => "sessions" }
+  devise_for :users, :controllers => {:sessions => "sessions"}
 
   get "home/index"
 
-  resources :contacts do
-    get :import, :on => :collection
-    post :import, :to=>'contacts#do_import', :on => :collection
-  end
 
   #namespace :admin do
   #  root :to => "admin#index"

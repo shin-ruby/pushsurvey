@@ -1,6 +1,9 @@
 class XlsImporter < Importer
-   def initialize(file)
+  attr_accessor :address_book
+
+   def initialize(file,address_book)
     @s = Excel.new(file)
+     self.address_book = address_book
   end
 
   def import

@@ -32,7 +32,7 @@
 </div>
 <div class="span-12 last">
 <hr class="space" />
-    <h6><%= link_to "+Add Once Contacts",  add_once_address_book_path(@address_book)%></h6>
+    <h6><%= link_to "+Import Contacts",  import_address_book_path(@address_book)%></h6>
     <h6><%= link_to "!Export Contacts", export_address_book_path(@address_book) %></h6>
 </div>
 <hr class="space">
@@ -55,7 +55,7 @@
                 <% @address_book.contacts.each do |contact| %>
                 <tr class="gradeX">
                     <td><img src="/images/y.gif" /></td>
-                    <td><%= link_to image_tag("delete.png"), address_book, :confirm => 'Are you sure?', :method => :delete %> </td>
+                    <td><%= link_to image_tag("delete.png"), @address_book, :confirm => 'Are you sure?', :method => :delete %> </td>
                     <td><a href="./modify.html"><img src="/images/modify.png" /></a></td>
                     <td class="center">shin.php@gmail.com</td>
                     <td class="center">Shin</td>

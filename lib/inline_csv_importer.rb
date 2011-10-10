@@ -1,10 +1,9 @@
 
-class CsvImporter < Importer
+class InlineCsvImporter < Importer
   attr_accessor :address_book
-
-  def initialize(file, address_book)
-     @reader = FasterCSV.new(File.new(file), :col_sep=>",")
-    self.address_book = address_book
+  def initialize(string, address_book)
+     @reader = FasterCSV.new(string, :col_sep=>",")
+     self.address_book = address_book
   end
   def import
     header = @reader.shift
@@ -17,6 +16,7 @@ class CsvImporter < Importer
       row.each_with_index do |col, index|
         contact.send("#{columns[index]}=", col) if columns[index]
       end
+      contact.address_book = @address_book
       contact.save!
     }
 

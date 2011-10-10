@@ -66,7 +66,8 @@ class PushesController < InheritedResources::Base
     @push = Push.find(params[:id])
      authorize! :start, @push
 
-    StartPushMailer.start(@push).deliver
+    @push.start
+
   end
 
   private

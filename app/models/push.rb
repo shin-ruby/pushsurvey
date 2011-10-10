@@ -50,4 +50,12 @@ class Push < ActiveRecord::Base
     feedback ||= 0.0
     (feedback * 100).to_s + "%"
   end
+
+  def start
+    address_book.contacts.each do |contact|
+      StartPushMailer.start(contact, self).deliver
+    end
+    #self.date_push = Time.now
+    #self.save
+  end
 end

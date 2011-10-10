@@ -1,6 +1,8 @@
 class XlsxImporter < Importer
-  def initialize(file)
+  attr_accessor :address_book
+  def initialize(file,address_book)
     @s = Excelx.new(file)
+    self.address_book = address_book
   end
 
   def import
