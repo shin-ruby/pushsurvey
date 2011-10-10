@@ -6,6 +6,7 @@ Proedm::Application.routes.draw do
 
   resources :pushes do
     get :export, :on => :member
+    match :start, :on => :member
   end
 
   resources :designs do

@@ -6,18 +6,42 @@ class Ability
     #
     #   user ||= User.new # guest user (not logged in)
        if user.admin?
-         can :manage, :all
+         can [:read,:create,:update,:destroy], :all
+         can :start, Push do |object|
+             object.date_push.nil?
+         end
        else
          can :read, :all do |object|
-           object.user_id == user.id
+           !object.is_a?(Push) && object.user_id == user.id
          end
-         can :create, :all
+         can :create, :all do |object|
+           !object.is_a?(Push)
+         end
          can :update,:all do |object|
-           object.user_id == user.id
+           !object.is_a?(Push) && object.user_id == user.id
          end
          can :destroy,:all do |object|
-           object.user_id == user.id
+           !object.is_a?(Push) && object.user_id == user.id
          end
+
+         can :read, Push do |object|
+           object.is_a?(Push) && object.user_id == user.id
+         end
+         can :create, Push do |object|
+
+         end
+         can :update,Push do |object|
+           object.is_a?(Push) && object.user_id == user.id
+         end
+         can :destroy,Push do |object|
+           object.is_a?(Push) && object.user_id == user.id
+         end
+
+         can :start,Push do |object|
+           object.user_id == user.id && object.date_push.nil?
+         end
+
+
        end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

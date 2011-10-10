@@ -52,12 +52,21 @@ class PushesController < InheritedResources::Base
         return
       end
     end
+    @push.instance_variable_set("@new_record",true)
     render "new"
   end
 
   #export
   def export
+     @push = Push.find(params[:id])
+     authorize! :read, @push
+  end
 
+  def start
+    @push = Push.find(params[:id])
+     authorize! :start, @push
+
+    StartPushMailer.start(@push).deliver
   end
 
   private

@@ -1,6 +1,6 @@
 	<br /><br />
 	<div class="span-24">
-        <form id="dummy" action="" method="post">
+
 		<h3>Push Name:<%=@push.name %></h3>
         <fieldset> 
             <div class="span-24">
@@ -26,8 +26,8 @@
             </div>
             <hr class="space">
             <hr />
-            <input type="button" value="Save" onclick="goto();" />OR
-            <input type="button" name="b1" value="Start Push" onClick="progress_update()">
+
+            <%= button_to "Start Push", start_push_path(@push) %>
         </fieldset>
-        </form>	
+
       </div>
