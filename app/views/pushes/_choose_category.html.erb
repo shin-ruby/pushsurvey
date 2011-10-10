@@ -2,10 +2,10 @@
           <fieldset>
           	<p>
               <label for="dummy1">Category</label><br />
-              <%= f.select "category_id",options_from_collection_for_select(Category.all, :id, :name) %>
+              <%= f.select "category_id",options_from_collection_for_select(Category.all, :id, :name, @push.category_id) %>
             </p><hr />
             <label for="dummy1">Folder Management</label><br />
-              <%= f.select "folder_id",options_from_collection_for_select(Folder.all, :id, :name) %>
+              <%= f.select "folder_id",options_from_collection_for_select(Folder.all, :id, :name, @push.folder_id) %>
             <br />
             <p>
               <label for="dummy2">Comment</label><br>

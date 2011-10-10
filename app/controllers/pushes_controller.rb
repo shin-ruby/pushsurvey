@@ -9,6 +9,7 @@ class PushesController < InheritedResources::Base
 
   def new
      @push = current_push
+     @push ||= Push.new
     @push.instance_variable_set("@new_record",true)
   end
 

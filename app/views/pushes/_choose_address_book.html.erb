@@ -2,12 +2,12 @@
           <fieldset>
           	<p>
               <label for="dummy1">Select Address Book</label><br />
-              <%=f.select "address_book_id",  options_from_collection_for_select(AddressBook.with_user, :id, :name) %>
+              <%=f.select "address_book_id",  options_from_collection_for_select(AddressBook.with_user, :id, :name, @push.address_book_id) %>
 
             </p>
             <hr />
             <label for="dummy1">Select Design Style</label><br />
-              <%=f.select "design_id",options_from_collection_for_select(Design.with_user, :id, :name) %>
+              <%=f.select "design_id",options_from_collection_for_select(Design.with_user, :id, :name, @push.design_id) %>
             <br /><br />
             <p>
               <input type="reset" value="Cancel">
