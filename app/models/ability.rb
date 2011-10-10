@@ -6,7 +6,9 @@ class Ability
     #
     #   user ||= User.new # guest user (not logged in)
        if user.admin?
-         can [:read,:create,:update,:destroy], :all
+         can [:read,:create,:update,:destroy], :all do |object|
+           object
+         end
          can :start, Push do |object|
              object.date_push.nil?
          end
