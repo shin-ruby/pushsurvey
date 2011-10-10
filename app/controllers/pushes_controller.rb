@@ -1,5 +1,5 @@
 class PushesController < InheritedResources::Base
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:new,:create]
 
   #act_wizardly_for :user
   def index
@@ -67,6 +67,7 @@ class PushesController < InheritedResources::Base
      authorize! :start, @push
 
     @push.start
+    redirect_to pushes_path
 
   end
 

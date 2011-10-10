@@ -1,5 +1,5 @@
 class DesignsController < InheritedResources::Base
-  load_and_authorize_resource
+  load_and_authorize_resource :except=>:preview
   def index
     @designs = Design.with_user
   end
@@ -23,7 +23,7 @@ class DesignsController < InheritedResources::Base
 
   def preview
     @design = Design.find(params[:id])
-    authorize! :read, @design
+    #authorize! :read, @design, everyone can read
     if current_user.can_view(@design)
       render :text => @design.html.html_safe
     else

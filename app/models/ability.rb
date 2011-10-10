@@ -6,12 +6,13 @@ class Ability
     #
     #   user ||= User.new # guest user (not logged in)
        if user.admin?
-         can [:read,:create,:update,:destroy], :all do |object|
-           object
-         end
-         can :start, Push do |object|
-             object.date_push.nil?
-         end
+         #can [:read,:create,:update,:destroy], :all do |object|
+         #  object
+         #end
+         #can :start, Push do |object|
+         #    object.date_push.nil?
+         #end
+         can :manage, :all
        else
          can :read, :all do |object|
            !object.is_a?(Push) && object.user_id == user.id
@@ -29,9 +30,7 @@ class Ability
          can :read, Push do |object|
            object.is_a?(Push) && object.user_id == user.id
          end
-         can :create, Push do |object|
-
-         end
+         can :create, Push
          can :update,Push do |object|
            object.is_a?(Push) && object.user_id == user.id
          end

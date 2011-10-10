@@ -19,4 +19,12 @@ class Contact < ActiveRecord::Base
     result ||= id.downcase if id
   end
 
+  def friendly_name
+    if firstname.present? || lastname.present?
+      "#{firstname} #{lastname}"
+    else
+      name
+    end
+  end
+
 end
