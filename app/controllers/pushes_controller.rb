@@ -3,13 +3,18 @@ class PushesController < InheritedResources::Base
 
   #act_wizardly_for :user
   def index
-    @pushes = Push.with_user
+    @pushes = Push.with_user.active
 
   end
 
   def new
-     @push = current_push
-     @push ||= Push.new
+    @push = current_push
+    @push ||= Push.new
+    if params[:type] == "new"
+       @push.destroy
+       @push = Push.new
+    end
+
     @push.instance_variable_set("@new_record",true)
   end
 
@@ -56,6 +61,7 @@ class PushesController < InheritedResources::Base
   end
 
   private
+    #current unfinished push or nil
     def current_push
      Push.where("step is not null").where(:user_id => current_user.id).all[0]
     end

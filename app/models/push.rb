@@ -1,4 +1,5 @@
 class Push < ActiveRecord::Base
+  scope :active, where(:step=>nil)
   include UserResource
 
   attr_accessor :disable_validation
