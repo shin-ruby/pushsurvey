@@ -29,8 +29,11 @@
                         <td><%= link_to image_tag("design.png"), push.design %></td>
                         <td class="center"><%= push.feedback_presenter %></td>
                         <td class="center"><%= push.status %></td>
-                        <td class="center"><%= push.folder_id %></td>
-                        <td class="center"><%= link_to "Save", save_push_path(push) %>|<%= link_to 'Delete', push, :confirm => 'Are you sure?', :method => :delete %></td>
+                        <td class="center"><%= push.folder.html.html_safe %></td>
+
+                          <td class="center"><% if push.date_push %><%= link_to "Export", export_push_path(push) %>|<%end %>
+
+                        <%= link_to 'Delete', push, :confirm => 'Are you sure?', :method => :delete %></td>
                     </tr>
                     <% end %>
                 </tbody>

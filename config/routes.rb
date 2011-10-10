@@ -1,7 +1,11 @@
 Proedm::Application.routes.draw do
 
+  resources :folders
+
+  resources :categories
+
   resources :pushes do
-    get :save, :on => :member
+    get :export, :on => :member
   end
 
   resources :designs do

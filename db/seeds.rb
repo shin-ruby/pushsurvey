@@ -5,3 +5,22 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+Category.create(:name => "Community")
+Category.create(:name => "Customer Feedback")
+Category.create(:name => "Demographics")
+Category.create(:name => "Education")
+Category.create(:name => "Events")
+Category.create(:name => "Healthcare")
+Category.create(:name => "Human Resources")
+Category.create(:name => "Industry Specific")
+Category.create(:name => "Just for Fun")
+Category.create(:name => "Non-Profit")
+Category.create(:name => "Political")
+Category.create(:name => "Other")
+
+Folder.create(:name => "Red Folder", :html => "<image src=/images/red.png>")
+Folder.create(:name => "Green Folder", :html => "<image src=/images/green.png>")
+Folder.create(:name => "Yellow Folder", :html => "<image src=/images/yellow.png>")
+Folder.create(:name => "Blue Folder", :html => "<image src=/images/blue.png>")
+

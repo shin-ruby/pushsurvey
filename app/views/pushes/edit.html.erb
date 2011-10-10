@@ -1,6 +1,32 @@
-<h1>Editing push</h1>
+	<br /><br />
+	<div class="span-24">
+        <%= form_for @push do |f|%>
+		<h3>Push Name:<%= @push.name %></h3>
+        <fieldset> 
+            <div class="span-24">
+                <h6>Category&nbsp;&nbsp;&nbsp;&nbsp;<%= f.select "category_id",options_from_collection_for_select(Category.all, :id, :name) %></h6>
+                <h6>Folder Management&nbsp;&nbsp;&nbsp;&nbsp;<%= f.select "folder_id",options_from_collection_for_select(Folder.all, :id, :name) %></h6>
+                <h6>Comment</h6>
+                <%= f.text_area "comment" %>
+                <br />
+            	<%= f.submit "Save" %>
+            </div>
+            <hr class="space">
+            <hr />
+            <div class="span-12 border">
+            	<h5>Database List Summary</h5>
+                <h6>List Name&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Cisco SMB Data</em></span></h6>
+                <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>August 5, 2011 10:39 AM</em></span></h6>
+                <h6>Total Count&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><span style="color:#F60">100&nbsp;&nbsp;</span>contact</em></span></h6>
+                <p><strong style="color:#00888A";><a href="./address/addressbooklist.html">Display</a></strong></p>
+            </div>
+            <div class="span-12 last">
+                <h5>Design</h5>
+                <h6>Title&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Cisco 2009 NO.1</em></span></h6>
+                <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>August 5, 2011 10:39 AM</em></span></h6>
+                <p><strong style="color:#00888A";><a href="./design/designshow.html">Show</a></strong></p>
+            </div>
+        </fieldset>
+        <%end %>
+      </div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @push %> |
-<%= link_to 'Back', pushes_path %>

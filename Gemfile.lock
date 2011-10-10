@@ -61,6 +61,7 @@ GEM
     google-spreadsheet-ruby (0.1.5)
       nokogiri (>= 1.4.3.1)
       oauth (>= 0.3.6)
+    grouped_validations (0.3.0)
     guard (0.5.1)
       thor (~> 0.14.6)
     guard-test (0.3.0)
@@ -161,6 +162,7 @@ DEPENDENCIES
   cancan
   devise
   fastercsv
+  grouped_validations
   guard-test
   jquery-rails
   mongrel

@@ -1,50 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @push.name %>
-</p>
-
-<p>
-  <b>Date push:</b>
-  <%= @push.date_push %>
-</p>
-
-<p>
-  <b>Design:</b>
-  <%= @push.design_id %>
-</p>
-
-<p>
-  <b>Feedback:</b>
-  <%= @push.feedback %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @push.status %>
-</p>
-
-<p>
-  <b>Folder:</b>
-  <%= @push.folder_id %>
-</p>
-
-<p>
-  <b>Category:</b>
-  <%= @push.category_id %>
-</p>
-
-<p>
-  <b>Comment:</b>
-  <%= @push.comment %>
-</p>
-
-<p>
-  <b>Address book:</b>
-  <%= @push.address_book_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_push_path(@push) %> |
-<%= link_to 'Back', pushes_path %>
+	<br /><br />
+	<div class="span-24">
+        <form id="dummy" action="" method="post">
+		<h3>Push Name:<%=@push.name %></h3>
+        <fieldset> 
+            <div class="span-24">
+                <h6>Category&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%=@push.category.name %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<% if @push.date_push.nil? %><%=link_to "Edit", edit_push_path(@push)%><%end%></h6>
+                <h6>Folder Management&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Red Folder</em></span>&nbsp;&nbsp;&nbsp;&nbsp;<% if @push.date_push.nil? %><%=link_to "Edit", edit_push_path(@push)%><%end%></h6>
+                <h6>Remarks&nbsp;&nbsp;&nbsp;&nbsp;<% if @push.date_push.nil? %><%=link_to "Edit", edit_push_path(@push)%><%end%></h6>
+                <abbr style="color:#666"><%= @push.comment %></abbr>
+            </div>
+            <hr class="space">
+            <hr />
+            <div class="span-12 border">
+            	<h5>Address Book Summary</h5>
+                <h6>List Name&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Cisco SMB Data</em></span></h6>
+                <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>August 5, 2011 10:39 AM</em></span></h6>
+                <h6>Total Count&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><span style="color:#F60">100&nbsp;&nbsp;</span>contact</em></span></h6>
+                <p><strong style="color:#00888A";><a href="./address/addressbooklist.html">Display</a></strong></p>
+            </div>
+            <div class="span-12 last">
+                <h5>Design</h5>
+                <h6>Title&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Cisco 2009 NO.1</em></span></h6>
+                <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>August 5, 2011 10:39 AM</em></span></h6>
+                <p><strong style="color:#00888A";><a href="./design/designshow.html">Show</a></strong></p>
+            </div>
+            <hr class="space">
+            <hr />
+            <input type="button" value="Save" onclick="goto();" />OR
+            <input type="button" name="b1" value="Start Push" onClick="progress_update()">
+        </fieldset>
+        </form>	
+      </div>

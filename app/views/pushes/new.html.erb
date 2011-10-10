@@ -13,31 +13,7 @@
     </div>
   <% end %>
 
-          <fieldset>
-            <legend><h3>Create Push</h3></legend>
-            <p>
-              <label for="dummy0"><input type="radio" name="new_type" value="new" checked="checked">Create a new push</label><br>
-
-
-            <%= f.text_field :name, :value=>"New push name" %>
-            </p><hr />
-
-            <p>
-              <label for="dummy1"><input type="radio" name="new_type" value="copy">Copy an existing push</label><br>
-              <%= select_tag(:copy_push_id, options_from_collection_for_select(Push.with_user, :id, :name)) %>
-
-
-
-            </p>                      
-            <p>
-              <%= f.text_field :name, :value=>"Reset push name" %>
-            </p>
-            <br />
-            <p>
-              <input type="reset" value="Cancel">
-              <%= f.submit :value=>"Continue" %>
-            </p>
-          </fieldset>
+          <%= render "#{@push.step}", :f => f %>
         </form>	
       </div>
         <div class="span-12 last">
