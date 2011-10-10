@@ -1,0 +1,19 @@
+
+          <fieldset>
+            <h3>Add Contacts to <span style="color:#06C"><%= @address_book.name%></span></h3>
+            <h6>Enter Contacts to be Added</h6>
+            <p>Copy and paste in your list of contacts, one contact per line. If you are importing other fields, separate them by commas, and follow the guidelines below. NOTE: Duplicate emails will automatically be filtered out.</p>
+            <textarea name="dummy2" id="dummy2" rows="5" cols="20"></textarea>
+            <p>Field Order: Email, First Name, Last Name, Custom Data (each recipient starting on a new line) Email - 255 characters or less First Name - 50 characters or less Last Name - 50 characters or less Custom Data - 1000 characters or less Example #1: tjones@myemail.com, tom, jones, 1001 Example #2: tjones@myemail.com,,,1001</p>
+            <p><input type="button" value="Add Contacts"></p>
+            <hr />
+
+            <p>
+              <label for="dummy1">Add File</label><br>
+              <input type="text" /><input type="button" value="Upload" />
+            </p>
+            <hr />
+            <p><a href="./addressbook.html">Back Addressback</a></p>
+
+          </fieldset>
+

@@ -2,7 +2,7 @@ class Push < ActiveRecord::Base
   scope :active, where(:step=>nil)
   include UserResource
 
-  attr_accessor :disable_validation
+
 
 
   belongs_to :category
@@ -11,6 +11,8 @@ class Push < ActiveRecord::Base
   belongs_to :design
   belongs_to :address_book
 
+
+  attr_accessor :disable_validation
 
   validates_presence_of :name, :if => lambda { |o| o.step == "name" && !disable_validation }
 
