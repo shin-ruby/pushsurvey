@@ -1,0 +1,16 @@
+
+<hr class="space">
+<hr />
+            <div class="span-12 border">
+            	<h5>Address Book Summary</h5>
+                <h6>List Name&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.address_book.name %></em></span></h6>
+                <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.address_book.updated_at %></em></span></h6>
+                <h6>Total Count&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><span style="color:#F60"><%= @push.address_book.contacts_count %>&nbsp;&nbsp;</span>contact</em></span></h6>
+                <p><strong style="color:#00888A"><%= link_to "Show", @push.address_book%></strong></p>
+            </div>
+            <div class="span-12 last">
+                <h5>Design</h5>
+                <h6>Title&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.design.name %></em></span></h6>
+                <h6>Modified On&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.design.updated_at %></em></span></h6>
+                <p><strong style="color:#00888A"><%= link_to "Show", @push.design %></strong></p>
+            </div>

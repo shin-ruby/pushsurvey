@@ -15,8 +15,41 @@ Proedm::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  config.action_mailer.raise_delivery_errors = false
+  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  #config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.default_url_options = {:host => 'www.pushsurvey.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_charset = 'utf-8'
+
+
+
+
+
+
+
+  if ENV['SENDGRID_USERNAME'] #in heroku environment
+    config.action_mailer.smtp_settings = {
+      :address => 'smtp.sendgrid.net',
+      :port => '25',
+      :domain =>ENV['SENDGRID_DOMAIN'],
+      :authentication => :plain,
+      :user_name => ENV['SENDGRID_USERNAME'],
+        :password => ENV['SENDGRID_PASSWORD'],
+  }
+  else
+    config.action_mailer.smtp_settings = {
+        :address => 'smtp.sendgrid.net',
+        :port => '25',
+        :user_name => 'app635634@heroku.com',
+        :password => "f92de9dc1d4b4b18b5",
+        :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+        :domain => "heroku.com" # the HELO domain provided by the client to the server
+    }
+
+  end
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

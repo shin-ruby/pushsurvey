@@ -67,7 +67,7 @@ class PushesController < InheritedResources::Base
      authorize! :start, @push
 
     @push.start
-    redirect_to pushes_path
+    redirect_to pushes_path, :notice => "Push successfully sent"
 
   end
 
