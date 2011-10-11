@@ -11,7 +11,12 @@ class ApplicationController < ActionController::Base
   before_filter :set_user
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to collection_url, :alert => exception.message
+    begin
+      redirect_to collection_url, :alert => exception.message
+    rescue
+      #no collection_url? redirect to root_url
+      redirect_to root_url, :alert => exception.message
+    end
   end
 
   private
