@@ -17,6 +17,7 @@ class CsvImporter < Importer
       row.each_with_index do |col, index|
         contact.send("#{columns[index]}=", col) if columns[index]
       end
+      contact.address_book = address_book
       contact.save!
     }
 

@@ -50,6 +50,7 @@ class XlsImporter < Importer
           next if columns[column].downcase == "id"
           contact.send("#{columns[column]}=", @s.cell(row, column))
         end
+        contact.address_book = address_book
         contact.save!
 
       end

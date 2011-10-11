@@ -33,7 +33,7 @@ class AddressBooksController < InheritedResources::Base
       @address_book.save!
 
       if @address_book.step.nil? #last_step
-        redirect_to @address_book
+        redirect_to import_address_book_path(@address_book)
         return
       end
     end
@@ -81,9 +81,11 @@ class AddressBooksController < InheritedResources::Base
       if params[:add_contact]
         InlineCsvImporter.new(params[:contacts],@address_book).import
       elsif params[:upload]
-         Importer.do_import(params[:file],@address_book)
-      end
+        ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
+        Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book).import
 
+      end
+      flash[:notice] = "Succesfully imported contacts"
       redirect_to import_address_book_path(@address_book)
     end
   end
