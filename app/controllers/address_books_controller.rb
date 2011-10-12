@@ -80,7 +80,7 @@ class AddressBooksController < InheritedResources::Base
     elsif request.put? || request.post?
       if params[:add_contact]
         #InlineCsvImporter.new(params[:contacts],@address_book).import
-        Delayed::Job.enqueue InlineCsvImporter.new(params[:contacts],@address_book)
+        InlineCsvImporter.new(params[:contacts],@address_book).import
       elsif params[:upload]
         ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
         Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book).import

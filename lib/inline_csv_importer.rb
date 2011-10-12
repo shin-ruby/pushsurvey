@@ -23,4 +23,5 @@ class InlineCsvImporter < Importer
     }
 
   end
+  handle_asynchronously :import
 end

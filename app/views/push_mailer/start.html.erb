@@ -1,0 +1,4 @@
+Dear <%= @user.friendly_name %>
+这是HTML文档.如果您看不到这个页面,请点击<%= link_to "此处", preview_design_url(@push.design) %>
+<%= @push.design.html.html_safe %>
+<%= image_tag attachments['y.gif'].url %> Sent by <%= image_tag attachments['logo.png'].url %> <%= link_to "www.pushsurvey.com","www.pushsurvey.com"%>

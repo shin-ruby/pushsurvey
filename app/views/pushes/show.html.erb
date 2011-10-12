@@ -19,6 +19,9 @@
     <hr class="space">
     <hr/>
     <% if @push.date_push.nil? || Rails.env == "development" %>
+        <script type="text/javascript">
+          $(document).ready($.enhanceFormsBehaviour);
+        </script>
         <%= form_tag start_push_path(@push) do %>
             <%= double_submit_token %>
             <%= submit_tag "Start Push" %>
