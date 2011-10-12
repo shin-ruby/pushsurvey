@@ -23,6 +23,8 @@ gem "cancan"
 #gem 'grouped_validations'
 gem 'delayed_job'
 
+gem "airbrake"
+
 #gem "wizardly_gt" , :require => 'wizardly'
 
 
