@@ -2,10 +2,12 @@
 class InlineCsvImporter < Importer
   attr_accessor :address_book
   def initialize(string, address_book)
-     @reader = FasterCSV.new(string, :col_sep=>",")
+     #@reader = FasterCSV.new(string, :col_sep=>",")
+    @string = string
      self.address_book = address_book
   end
   def import
+    @reader = FasterCSV.new(@string, :col_sep=>",")
     header = @reader.shift
     columns = {}
     header.each_with_index do |col, index|
