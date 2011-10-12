@@ -79,13 +79,15 @@ class AddressBooksController < InheritedResources::Base
 
     elsif request.put? || request.post?
       if params[:add_contact]
-        InlineCsvImporter.new(params[:contacts],@address_book).import
+        #InlineCsvImporter.new(params[:contacts],@address_book).import
+        Delayed::Job.enqueue InlineCsvImporter.new(params[:contacts],@address_book)
       elsif params[:upload]
         ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
-        Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book).import
+        #Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book).import
+        Delayed::Job.enqueue Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book)
 
       end
-      flash[:notice] = "Succesfully imported contacts"
+      flash[:notice] = "Your request has been successfully submitted"
       redirect_to import_address_book_path(@address_book)
     end
   end

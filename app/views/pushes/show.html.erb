@@ -1,19 +1,29 @@
-	<br /><br />
-	<div class="span-24">
+<br/><br/>
+<div class="span-24">
 
-		<h3>Push Name:<%=@push.name %></h3>
-        <fieldset> 
-            <div class="span-24">
-                <h6>Category&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%=@push.category.name %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<% if @push.date_push.nil? %><%=link_to "Edit", edit_push_path(@push)%><%end%></h6>
-                <h6>Folder Management&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Red Folder</em></span>&nbsp;&nbsp;&nbsp;&nbsp;<% if @push.date_push.nil? %><%=link_to "Edit", edit_push_path(@push)%><%end%></h6>
-                <h6>Remarks&nbsp;&nbsp;&nbsp;&nbsp;<% if @push.date_push.nil? %><%=link_to "Edit", edit_push_path(@push)%><%end%></h6>
-                <abbr style="color:#666"><%= @push.comment %></abbr>
-            </div>
-            <%= render "address_book" %>
-            <hr class="space">
-            <hr />
+  <h3>Push Name:<%= @push.name %></h3>
+  <fieldset>
+    <div class="span-24">
+      <h6>Category&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.category.name %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% end %></h6>
+      <h6>Folder Management&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Red Folder</em></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% end %></h6>
+      <h6>Remarks&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% end %></h6>
+      <abbr style="color:#666"><%= @push.comment %></abbr>
+    </div>
+    <%= render "address_book" %>
+    <hr class="space">
+    <hr/>
+    <% if @push.date_push.nil? || Rails.env == "development" %>
+        <%= form_tag start_push_path(@push) do %>
+            <%= double_submit_token %>
+            <%= submit_tag "Start Push" %>
+        <% end %>
+    <% end %>
+  </fieldset>
 
-            <%= button_to "Start Push", start_push_path(@push) %>
-        </fieldset>
-
-      </div>
+</div>

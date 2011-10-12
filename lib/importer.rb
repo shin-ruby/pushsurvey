@@ -1,4 +1,8 @@
 class Importer
+  #for DJ support
+  def perform
+    import
+  end
   def import
 
   end

@@ -63,11 +63,16 @@ class PushesController < InheritedResources::Base
   end
 
   def start
+    if double_submit?
+      redirect_to collection_path, :notice => "Please do not submit the form twice."
+      return
+    end
     @push = Push.find(params[:id])
      authorize! :start, @push
 
-    @push.start
-    redirect_to pushes_path, :notice => "Push successfully sent"
+    Delayed::Job.enqueue @push
+    redirect_to pushes_path, :notice => "Your request has been successfully submitted"
+    #Object.new.send(:exit)
 
   end
 

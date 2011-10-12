@@ -33,4 +33,8 @@ class DesignsController < InheritedResources::Base
       #render :index
     end
   end
+
+  def update
+    super
+  end
 end

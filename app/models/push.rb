@@ -52,10 +52,15 @@ class Push < ActiveRecord::Base
   end
 
   def start
+    self.date_push = Time.now
     address_book.contacts.each do |contact|
       StartPushMailer.start(contact, self).deliver
     end
     #self.date_push = Time.now
-    #self.save
+    self.save
+  end
+  #for DJ support
+  def perform
+    start
   end
 end
