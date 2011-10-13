@@ -16,6 +16,7 @@ Proedm::Application.routes.draw do
   resources :address_books do
     get :export, :on => :member
     match :import, :on => :member
+    get :show_data, :on => :member
 
 
   end

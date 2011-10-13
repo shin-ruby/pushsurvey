@@ -2,22 +2,29 @@ class XlsImporter < Importer
   attr_accessor :address_book
 
    def initialize(file,address_book)
-    @s = Excel.new(file)
+    @string = File.open(file, "rb").read
+    @file = file
      self.address_book = address_book
   end
 
   def import
     #finding out whether first row is column headers
     header_row = 1
+    filename = "tmp/#{File.basename(@file)}.xls"
+    file = File.open(filename, "wb") do |f|
+      f.write(@string)
+    end
+    @s =  Excel.new(filename)
     @s.first_row.upto(@s.last_row) do |row|
       count_not_nil = 0
       header_row = row
       @s.first_column.upto(@s.last_column) do |column|
         count_not_nil += 1 if @s.cell(row, column)
       end
-      break if count_not_nil > 2
+      #break if count_not_nil > 2
     end
 
+    header_row = 1
     last_row = @s.last_row
 
 
@@ -57,4 +64,5 @@ class XlsImporter < Importer
     end
 
   end
+  handle_asynchronously :import
 end
