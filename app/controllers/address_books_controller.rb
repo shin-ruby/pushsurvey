@@ -131,7 +131,7 @@ class AddressBooksController < InheritedResources::Base
       matching_count = objects.respond_to?(:total_entries) ? objects.total_entries : _matching_count(params, search_fields)
 
       {:sEcho                => params[:secho].to_i,
-       :iTotalRecords        => @address_book.contacts.count,
+       :iTotalRecords        => @address_book.contacts_count,
        :iTotalDisplayRecords => matching_count,
        :aaData               => _yield_and_render_array(controller, objects, block)
       }.to_json.html_safe
@@ -141,7 +141,11 @@ class AddressBooksController < InheritedResources::Base
         @address_book.contacts.where(_where_conditions params[:ssearch], search_fields).
              includes(_discover_joins fields).
              order(_order_fields params, fields).
-             paginate :page => _page(params), :per_page => _per_page(params)
+             page(_page(params)).per(_per_page(params))
+  end
+
+  def _matching_count params, search_fields
+        @address_book.contacts.where(_where_conditions params[:ssearch], search_fields).count
       end
 
       def _discover_joins fields
