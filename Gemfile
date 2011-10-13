@@ -26,6 +26,13 @@ gem 'delayed_job'
 
 gem "airbrake"
 
+gem "data_table",:require => false
+gem "acts_as_audited", "2.0.0"
+
+#gem "will_paginate"
+#gem "kaminari"
+#gem "haml"
+
 #gem "wizardly_gt" , :require => 'wizardly'
 
 

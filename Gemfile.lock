@@ -38,6 +38,8 @@ GEM
       activemodel (= 3.0.9)
       activesupport (= 3.0.9)
     activesupport (3.0.9)
+    acts_as_audited (2.0.0)
+      rails (>= 3.0.3)
     airbrake (3.0.4)
       activesupport
       builder
@@ -50,6 +52,8 @@ GEM
     cancan (1.6.7)
     cgi_multipart_eof_fix (2.5.0)
     daemons (1.1.4)
+    data_table (0.3.9)
+      rails (~> 3.0.0)
     delayed_job (2.1.4)
       activesupport (~> 3.0)
       daemons
@@ -164,10 +168,12 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  acts_as_audited (= 2.0.0)
   airbrake
   autotest
   autotest-rails-pure
   cancan
+  data_table
   delayed_job
   devise
   fastercsv

@@ -1,6 +1,6 @@
 #coding:utf-8
 class Contact < ActiveRecord::Base
-
+  acts_as_audited
   belongs_to :address_book, :counter_cache => true
 
   ALIAS_NAMES = {"区域" => "area","省份"=>"province","城市"=>"city","单位名称" => "company","所属行业" => "level1_industry",

@@ -1,4 +1,5 @@
 class AddressBook < ActiveRecord::Base
+  acts_as_audited
   scope :active, where(:step=>nil)
   include UserResource
 
