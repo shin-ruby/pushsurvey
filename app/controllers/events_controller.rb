@@ -1,4 +1,5 @@
 class EventsController < InheritedResources::Base
+  skip_before_filter :authenticate_user!
   before_filter :authenticate_admin_user, :except => :postback
   def postback
     logger.info "event param:"
