@@ -42,7 +42,7 @@
   </fieldset>
   <% if @push.date_push.present? %>
       <fieldset>
-        <h2 style="color:#999">Feedbakc</h2>
+        <h2 style="color:#999">Feedback</h2>
         <hr/>
         <%= link_to "已送达邮件",export_push_path(@push, :type=>'delivered') %><br/>
         <%= link_to "打开",export_push_path(@push, :type=>'open') %><br/>

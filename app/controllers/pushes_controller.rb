@@ -1,6 +1,6 @@
 require 'csv'
 class PushesController < InheritedResources::Base
-  load_and_authorize_resource :except => [:new, :create]
+  load_and_authorize_resource :except => [:new, :create, :export]
 
   #act_wizardly_for :user
   def index
