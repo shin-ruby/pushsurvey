@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   #  Thread.current[:user_id] = (current_user.id rescue nil)
   #
   #end
-  before_filter :authenticate_user!
-  before_filter :set_user
+  before_filter :authenticate_user!,:set_user
+
 
   rescue_from CanCan::AccessDenied do |exception|
     begin
