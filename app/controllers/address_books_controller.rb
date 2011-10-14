@@ -107,7 +107,7 @@ class AddressBooksController < InheritedResources::Base
     #respond_to do |format|
       #format.json {render :json => result.to_json}
 
-
+      puts "done"
       render(:json =>
                  for_data_table(self, %w[email firstname] +  %w(email firstname lastname name)) do |contact|
             ["<%= link_to image_tag(\"delete.png\"), object, :confirm => 'Are you sure?', :method => :delete %>",
@@ -129,7 +129,7 @@ class AddressBooksController < InheritedResources::Base
 
       objects = _find_objects params, fields, search_fields
       matching_count = objects.respond_to?(:total_entries) ? objects.total_entries : _matching_count(params, search_fields)
-
+     @address_book = AddressBook.find(params[:id])
       {:sEcho                => params[:secho].to_i,
        :iTotalRecords        => @address_book.contacts_count,
        :iTotalDisplayRecords => matching_count,
