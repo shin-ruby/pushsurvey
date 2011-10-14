@@ -44,16 +44,12 @@
       <fieldset>
         <h2 style="color:#999">Feedbakc</h2>
         <hr/>
-        <a href="./openlist.html">已送达邮件</a><br/>
-        <a href="./openlist.html">邮件独立打开</a><br/>
-        <a href="./openlist.html">独立点击</a><br/>
-        <a href="./openlist.html">注册</a><br/>
-        <a href="./openlist.html">内容链接点击</a><br/>
-        <a href="./openlist.html">弹回</a><br/>
-        <a href="./openlist.html">邮件续订</a><br/>
-        <a href="./openlist.html">邮件退订</a><br/>
-        <a href="./openlist.html">无效邮件</a><br/>
-        <a href="./openlist.html">垃圾邮件投诉</a><br/>
+        <%= link_to "已送达邮件",export_push_path(@push, :type=>'delivered') %><br/>
+        <%= link_to "打开",export_push_path(@push, :type=>'open') %><br/>
+        <%= link_to "点击",export_push_path(@push, :type=>'click') %><br/>
+        <%= link_to "弹回",export_push_path(@push, :type=>'bounce') %><br/>
+        <%= link_to "邮件退订",export_push_path(@push, :type=>'unsubscribe') %><br/>
+        <%= link_to "垃圾邮件投诉",export_push_path(@push, :type=>'spamreport') %><br/>
         <hr class="space"/>
         <h2 style="color:#999">Mail Hits</h2>
         <img src="./img/feedback2.png"/>

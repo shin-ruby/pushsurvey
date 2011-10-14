@@ -1,5 +1,5 @@
 class PushesController < InheritedResources::Base
-  load_and_authorize_resource :except => [:new,:create]
+  load_and_authorize_resource :except => [:new, :create]
 
   #act_wizardly_for :user
   def index
@@ -10,13 +10,13 @@ class PushesController < InheritedResources::Base
   def new
     @push = current_push
     if @push && params[:type] == "new"
-       @push.destroy
-       @push = nil
+      @push.destroy
+      @push = nil
     end
 
     @push ||= Push.new
 
-    @push.instance_variable_set("@new_record",true)
+    @push.instance_variable_set("@new_record", true)
   end
 
 
@@ -24,7 +24,7 @@ class PushesController < InheritedResources::Base
 
     if params[:new_type]
       if params[:new_type] == "new"
-       @push = Push.new(params[:push])
+        @push = Push.new(params[:push])
       elsif params[:new_type] == "copy"
         @push = Push.new()
         @push.name = params[:copy_push_name]
@@ -58,14 +58,37 @@ class PushesController < InheritedResources::Base
         return
       end
     end
-    @push.instance_variable_set("@new_record",true)
+    @push.instance_variable_set("@new_record", true)
     render "new"
   end
 
   #export
   def export
-     @push = Push.find(params[:id])
-     authorize! :read, @push
+    @push = Push.find(params[:id])
+    authorize! :read, @push
+
+    if params[:type]
+      @contacts = Event.where(:event => params[:type]).where(:category => "push-#{params[:id]}")
+    else #all push contacts
+      @contacts = Push.contacts
+    end
+
+    result = [["email"]]
+    @contacts.each do |contact|
+      result << [contact.email]
+    end
+
+
+    buf = ''
+    result.each do |row|
+      parsed_cells = CSV.generate_row(row, 4, buf)
+      puts "Created #{ parsed_cells } cells."
+    end
+    p buf
+
+    send_data buf, :type => "text/csv", :filename => "#{params[:type]} list for #{@push.name}.csv", :disposition => "inline"
+
+
   end
 
   def start
@@ -74,7 +97,7 @@ class PushesController < InheritedResources::Base
       return
     end
     @push = Push.find(params[:id])
-     authorize! :start, @push
+    authorize! :start, @push
 
     Delayed::Job.enqueue @push
     redirect_to pushes_path, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
@@ -83,8 +106,8 @@ class PushesController < InheritedResources::Base
   end
 
   private
-    #current unfinished push or nil
-    def current_push
-     Push.where("step is not null").where(:user_id => current_user.id).all[0]
-    end
+  #current unfinished push or nil
+  def current_push
+    Push.where("step is not null").where(:user_id => current_user.id).all[0]
+  end
 end
