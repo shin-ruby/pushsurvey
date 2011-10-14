@@ -9,11 +9,12 @@ class PushesController < InheritedResources::Base
 
   def new
     @push = current_push
-    @push ||= Push.new
-    if params[:type] == "new"
+    if @push && params[:type] == "new"
        @push.destroy
-       @push = Push.new
+       @push = nil
     end
+
+    @push ||= Push.new
 
     @push.instance_variable_set("@new_record",true)
   end
