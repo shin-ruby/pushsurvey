@@ -17,10 +17,12 @@ Proedm::Application.routes.draw do
     get :export, :on => :member
     match :import, :on => :member
     get :show_data, :on => :member
-
-
   end
   resources :contacts
+
+  resources :events do
+    post :postback,:on => :collection
+  end
 
   ActiveAdmin.routes(self)
 
