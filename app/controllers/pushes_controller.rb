@@ -82,7 +82,7 @@ class PushesController < InheritedResources::Base
 
     buf = ''
     result.each do |row|
-      parsed_cells = CSV.generate_row(row, 4, buf)
+      parsed_cells = CSV.generate_row(row, 1, buf)
       puts "Created #{ parsed_cells } cells."
     end
     p buf

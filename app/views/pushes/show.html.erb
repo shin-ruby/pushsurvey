@@ -24,7 +24,7 @@
       </h6>
       <h6>Reply-To Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.reply_to_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %>
       </h6>
-      <h6>Email Signature&nbsp;&nbsp;&nbsp;&nbsp;<a href="./pushshowedita.html">Edit</a></h6>
+      <h6>Email Signature&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %></h6>
       <abbr style="color:#666"><%= @push.signature %></abbr>
     </div>
     <%= render "address_book" %>
