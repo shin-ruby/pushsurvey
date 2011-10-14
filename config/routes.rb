@@ -21,7 +21,7 @@ Proedm::Application.routes.draw do
   resources :contacts
 
   resources :events do
-    post :postback,:on => :collection
+    match 'postback',:on => :collection
   end
 
   ActiveAdmin.routes(self)
