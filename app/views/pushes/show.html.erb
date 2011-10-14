@@ -15,12 +15,24 @@
         <% end %></h6>
       <abbr style="color:#666"><%= @push.comment %></abbr>
     </div>
+    <hr class="space">
+    <hr/>
+    <div class="span-24">
+      <h6>Email Subject&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.subject %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %>
+      </h6>
+      <h6>From Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.from_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %>
+      </h6>
+      <h6>Reply-To Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.reply_to_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %>
+      </h6>
+      <h6>Email Signature&nbsp;&nbsp;&nbsp;&nbsp;<a href="./pushshowedita.html">Edit</a></h6>
+      <abbr style="color:#666"><%= @push.signature %></abbr>
+    </div>
     <%= render "address_book" %>
     <hr class="space">
     <hr/>
     <% if @push.date_push.nil? || Rails.env == "development" %>
         <script type="text/javascript">
-          $(document).ready($.enhanceFormsBehaviour);
+            $(document).ready($.enhanceFormsBehaviour);
         </script>
         <%= form_tag start_push_path(@push) do %>
             <%= double_submit_token %>
@@ -28,5 +40,28 @@
         <% end %>
     <% end %>
   </fieldset>
+  <% if @push.date_push.present? %>
+      <fieldset>
+        <h2 style="color:#999">Feedbakc</h2>
+        <hr/>
+        <a href="./openlist.html">已送达邮件</a><br/>
+        <a href="./openlist.html">邮件独立打开</a><br/>
+        <a href="./openlist.html">独立点击</a><br/>
+        <a href="./openlist.html">注册</a><br/>
+        <a href="./openlist.html">内容链接点击</a><br/>
+        <a href="./openlist.html">弹回</a><br/>
+        <a href="./openlist.html">邮件续订</a><br/>
+        <a href="./openlist.html">邮件退订</a><br/>
+        <a href="./openlist.html">无效邮件</a><br/>
+        <a href="./openlist.html">垃圾邮件投诉</a><br/>
+        <hr class="space"/>
+        <h2 style="color:#999">Mail Hits</h2>
+        <img src="./img/feedback2.png"/>
+
+        <h2 style="color:#999">URL Hits</h2>
+        <img src="./img/feedback1.png"/>
+      </fieldset>
+  <% end %>
+
 
 </div>

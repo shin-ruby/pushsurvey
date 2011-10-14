@@ -34,6 +34,11 @@ class PushesController < InheritedResources::Base
         @push.folder_id = copy_push.folder_id
         @push.address_book_id = copy_push.address_book_id
         @push.design_id = copy_push.design_id
+
+        @push.subject = copy_push.subject
+        @push.signature = copy_push.signature
+        @push.from_email = copy_push.from_email
+        @push.reply_to_email = copy_push.reply_to_email
       else
         raise "unknown create push type"
       end

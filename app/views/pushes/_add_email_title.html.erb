@@ -1,0 +1,18 @@
+<h3>Push Name:<%=@push.name %></h3>
+          <fieldset>
+          	<p>
+              <label for="dummy1">Add Subject</label><br />
+              <%= f.text_field "subject" %><br />
+              <label for="dummy1">Add Email Signature</label><br />
+              <%= f.text_area "signature" %><br />
+              <label for="dummy1">From Email</label><br />
+              <%= f.text_field "from_email" %><br/>
+                <label for="dummy1">Reply-To Email</label><br />
+              <%= f.text_field "reply_to_email" %>
+            </p>
+            <hr />
+            <p>
+              <input type="reset" value="Cancel">
+              <input type="submit" value="Continue">
+            </p>
+          </fieldset>

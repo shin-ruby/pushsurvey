@@ -9,6 +9,13 @@
                 <h6>Comment</h6>
                 <%= f.text_area "comment" %>
                 <br />
+                <br />
+
+                <h6>Email Subject&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :subject %></h6>
+                <h6>From Email&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field "from_email" %></h6>
+                <h6>Reply-To Email&nbsp;&nbsp;&nbsp;&nbsp;<%= f.text_field "reply_to_email" %></h6>
+                <h6>Signature</h6>
+                <%= f.text_area "signature" %><br />
             	<%= f.submit "Save" %>
             </div>
             <%= render "address_book" %>
