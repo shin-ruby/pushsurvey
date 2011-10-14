@@ -3,6 +3,7 @@ class EventsController < InheritedResources::Base
   def postback
     #p params
     event = Event.new(params)
+    event.content = params
     event.save!
   end
 end
