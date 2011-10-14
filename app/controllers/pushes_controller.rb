@@ -72,7 +72,7 @@ class PushesController < InheritedResources::Base
      authorize! :start, @push
 
     Delayed::Job.enqueue @push
-    redirect_to pushes_path, :notice => "Your request has been successfully submitted"
+    redirect_to pushes_path, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
     #Object.new.send(:exit)
 
   end

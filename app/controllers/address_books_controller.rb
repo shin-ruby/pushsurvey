@@ -38,12 +38,10 @@ class AddressBooksController < InheritedResources::Base
       end
     end
 
-    if params[:to_import]
-      render "import"
-    else
+
       @address_book.instance_variable_set("@new_record", true)
       render "new"
-    end
+
 
   end
 
@@ -87,8 +85,8 @@ class AddressBooksController < InheritedResources::Base
         #Delayed::Job.enqueue Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book)
 
       end
-      flash[:notice] = "Your request has been successfully submitted"
-      redirect_to import_address_book_path(@address_book)
+      flash[:notice] = "Your request has been successfully submitted, Please wait until we email you the result."
+      redirect_to @address_book
     end
   end
 

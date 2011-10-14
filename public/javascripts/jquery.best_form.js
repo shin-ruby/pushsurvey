@@ -13,7 +13,7 @@
                 hidden.type = 'hidden';
                 hidden.name = this.name;
                 hidden.value = this.value;
-                alert(this.name + this.value);
+                //alert(this.name + this.value);
                 this.parentNode.insertBefore(hidden, this)
             });
             $(this).submit(function() {
