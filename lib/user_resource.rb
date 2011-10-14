@@ -21,7 +21,7 @@ module UserResource #or called UserScope? everyone has user_id includes this mod
       end
 
     }) #should implement user_id == 3
-    base.send(:before_save, :set_user)
+    base.send(:before_create, :set_user)
     #base.send(:default_scope, proc {base.send(:where,:user_id=>3)})
   end
   def self.debug
