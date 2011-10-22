@@ -25,6 +25,9 @@ gem "cancan"
 gem 'delayed_job'
 
 gem "airbrake"
+gem "ruport"
+gem "ruport-util"
+gem "acts_as_reportable"
 
 gem "data_table",:require => false
 gem "acts_as_audited", "2.0.0"

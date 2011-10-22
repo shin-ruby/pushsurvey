@@ -81,8 +81,9 @@ class AddressBooksController < InheritedResources::Base
         #Delayed::Job.enqueue Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book)
 
       end
-      flash[:notice] = "Your request has been successfully submitted, Please wait until we email you the result."
-      redirect_to @address_book
+      #flash[:notice] = "Your request has been successfully submitted, Please wait until we email you the result."
+      #redirect_to @address_book
+      redirect_to :controller=>"confirmation", :action=>"confirmation",:from=>"address_book"
     end
   end
 

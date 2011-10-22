@@ -71,7 +71,21 @@ class PushesController < InheritedResources::Base
     if params[:type]
       @contacts = Event.where(:event => params[:type]).where(:category => "push-#{params[:id]}")
     else #all push contacts
-      @contacts = Push.contacts
+      #@contacts = @push.contacts
+       t = Table("public/foo.csv")
+       grouping = Grouping(t,:by => "name")
+       time = Time.now
+       data = grouping.to_pdf
+       puts "timing : #{Time.now - time}"
+      #data = Push.with_user.active.report_table.to_csv
+      #p data
+       #send_data data, :type => "application/csv", :filename => "#{params[:type]} list for #{@push.name}.csv", :disposition => "inline"
+       time = Time.now
+
+
+      send_data data, :type => "application/pdf", :filename => "#{params[:type]} list for #{@push.name}.pdf", :disposition => "inline"
+       puts "timing2 : #{Time.now - time}"
+        return
     end
 
     result = [["email"]]
@@ -101,7 +115,7 @@ class PushesController < InheritedResources::Base
     authorize! :start, @push
 
     Delayed::Job.enqueue @push
-    redirect_to pushes_path, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
+    redirect_to :controller=>"confirmation", :action=>"confirmation",:from=>"push" #, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
     #Object.new.send(:exit)
 
   end

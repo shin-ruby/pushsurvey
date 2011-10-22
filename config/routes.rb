@@ -1,5 +1,7 @@
 Proedm::Application.routes.draw do
 
+  get "confirmation/confirmation"
+
   resources :folders
 
   resources :categories
@@ -33,6 +35,10 @@ Proedm::Application.routes.draw do
   devise_for :users, :controllers => {:sessions => "sessions"}
 
   get "home/index"
+
+  match "confirmation/confirmation", :as => "confirmation"
+  match "confirmation/back", :as => "back"
+
 
 
   #namespace :admin do
