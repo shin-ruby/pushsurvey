@@ -18,13 +18,22 @@
     <hr class="space">
     <hr/>
     <div class="span-24">
-      <h6>Email Subject&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.subject %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %>
+      <h6>Email Subject&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.subject %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% end %>
       </h6>
-      <h6>From Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.from_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %>
+      <h6>From Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.from_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% end %>
       </h6>
-      <h6>Reply-To Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.reply_to_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %>
+      <h6>Reply-To Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.reply_to_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% end %>
       </h6>
-      <h6>Email Signature&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to_if @push.date_push.nil?, "Edit", edit_push_path(@push) %></h6>
+      <h6>Email Signature&nbsp;&nbsp;&nbsp;&nbsp;
+        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% end %>
+      </h6>
       <abbr style="color:#666"><%= @push.signature %></abbr>
     </div>
     <%= render "address_book" %>
@@ -43,19 +52,71 @@
   <% if @push.date_push.present? %>
       <fieldset>
         <h2 style="color:#999">Feedback</h2>
-        <hr/>
-        <%= link_to "已送达邮件",export_push_path(@push, :type=>'delivered') %><br/>
-        <%= link_to "打开",export_push_path(@push, :type=>'open') %><br/>
-        <%= link_to "点击",export_push_path(@push, :type=>'click') %><br/>
-        <%= link_to "弹回",export_push_path(@push, :type=>'bounce') %><br/>
-        <%= link_to "邮件退订",export_push_path(@push, :type=>'unsubscribe') %><br/>
-        <%= link_to "垃圾邮件投诉",export_push_path(@push, :type=>'spamreport') %><br/>
-        <hr class="space"/>
-        <h2 style="color:#999">Mail Hits</h2>
-        <img src="./img/feedback2.png"/>
+        <script>
+  $(document).ready(function() {
+    $("#tabs").tabs();
+  });
+  </script>
 
-        <h2 style="color:#999">URL Hits</h2>
-        <img src="./img/feedback1.png"/>
+        <hr/>
+
+        <div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Basic Info</a></li>
+		<li><a href="#tabs-2">Register&Click Info</a></li>
+		<li><a href="#tabs-3">Data Export</a></li>
+	</ul>
+	<div id="tabs-1">
+		<h3>Basic Info</h3>
+             	<p></p>
+                <p>邮件发送总数--5000</p>
+                <p>已送达邮件数--4600</p>
+                <p>未送达邮件数--400</p>
+              <h3>Open Info</h3>
+              	<p></p>
+                <p>已打开邮件数--600</p>
+                <p>已点击邮件数--600</p>
+        <hr class="space" />
+        <h2 style="color:#999">Pie</h2>
+        <img src="./img/feedback.png" />
+        <h2 style="color:#999">List</h2>
+        <img src="./img/feedback02.png" />
+	</div>
+	<div id="tabs-2">
+      <h3>Register Info</h3>
+              <p>注册数--400</p>
+              <h3>Link Click Info</h3>
+              <p></p>
+              <p>Link.1--400</p>
+              <p>Link.2--300</p>
+              <p>Link.3--200</p>
+
+	</div>
+	<div id="tabs-3">
+      <a href="#">已送达邮件</a>--Click Download CSV<br />
+              <a href="#">已打开邮件</a>--Click Download CSV<br />
+              <a href="#">已点击邮件</a>--Click Download CSV<br />
+              <a href="#">弹回的邮件</a>--Click Download CSV<br />
+              <br />
+              <p><a href="#">注册数据</a>--Click Download CSV</p>
+
+	</div>
+</div>
+
+
+        <%= link_to "已送达邮件", export_push_path(@push, :type=>'delivered') %>
+        <br/>
+        <%= link_to "打开", export_push_path(@push, :type=>'open') %>
+        <br/>
+        <%= link_to "点击", export_push_path(@push, :type=>'click') %>
+        <br/>
+        <%= link_to "弹回", export_push_path(@push, :type=>'bounce') %>
+        <br/>
+        <%= link_to "邮件退订", export_push_path(@push, :type=>'unsubscribe') %>
+        <br/>
+        <%= link_to "垃圾邮件投诉", export_push_path(@push, :type=>'spamreport') %>
+        <br/>
+
       </fieldset>
   <% end %>
 

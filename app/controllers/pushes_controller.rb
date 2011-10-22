@@ -114,7 +114,8 @@ class PushesController < InheritedResources::Base
     @push = Push.find(params[:id])
     authorize! :start, @push
 
-    Delayed::Job.enqueue @push
+    @push.delay.start
+    #Delayed::Job.enqueue @push
     redirect_to :controller=>"confirmation", :action=>"confirmation",:from=>"push" #, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
     #Object.new.send(:exit)
 
