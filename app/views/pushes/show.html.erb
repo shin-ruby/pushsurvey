@@ -69,13 +69,13 @@
 	<div id="tabs-1">
 		<h3>Basic Info</h3>
              	<p></p>
-                <p>邮件发送总数--5000</p>
-                <p>已送达邮件数--4600</p>
-                <p>未送达邮件数--400</p>
+                <p>邮件发送总数--<%= @push.address_book.contacts_count %></p>
+                <p>已送达邮件数--<%= @info["delivered"].count rescue 0 %> </p>
+                <p>未送达邮件数--<%= @info["bounce"].count rescue 0 %></p>
               <h3>Open Info</h3>
               	<p></p>
-                <p>已打开邮件数--600</p>
-                <p>已点击邮件数--600</p>
+                <p>已打开邮件数--<%= @info["open"].count rescue 0 %></p>
+                <p>已点击邮件数--<%= @info["click"].count rescue 0 %></p>
         <hr class="space" />
         <h2 style="color:#999">Pie</h2>
         <img src="./img/feedback.png" />

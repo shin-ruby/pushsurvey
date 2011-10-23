@@ -121,6 +121,20 @@ class PushesController < InheritedResources::Base
 
   end
 
+  def show
+    @push = Push.find(params[:id])
+
+    if @push.date_push.present? #loading push statistics data
+      #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
+      #all_count
+      @info = {}
+      ["delivered", "bounce", "open", "click"].each do |event|
+        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=?", "push-#{@push.id}",event)
+      end
+      p @info
+    end
+  end
+
   private
   #current unfinished push or nil
   def current_push
