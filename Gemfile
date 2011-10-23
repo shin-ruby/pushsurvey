@@ -26,6 +26,8 @@ gem 'delayed_job'
 
 gem "airbrake"
 
+#gem 'hoe', '~> 1.5.1' # Heroku's rubygems is too old for hoe 2.9.1 as of 28 Mar 201
+
 gem "data_table",:require => false
 gem "acts_as_audited", "2.0.0"
 

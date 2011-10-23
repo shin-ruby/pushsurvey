@@ -1,6 +1,6 @@
 class Push < ActiveRecord::Base
   acts_as_audited
-  acts_as_reportable
+
   scope :active, where(:step=>nil)
   include UserResource
 
