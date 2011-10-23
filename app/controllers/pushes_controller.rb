@@ -129,7 +129,7 @@ class PushesController < InheritedResources::Base
       #all_count
       @info = {}
       ["delivered", "bounce", "open", "click"].each do |event|
-        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=?", "push-#{@push.id}",event)
+        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}",event, @push.address_book_id)
       end
       p @info
     end
