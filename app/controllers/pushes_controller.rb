@@ -71,21 +71,21 @@ class PushesController < InheritedResources::Base
     if params[:type]
       @contacts = Event.where(:event => params[:type]).where(:category => "push-#{params[:id]}")
     else #all push contacts
-      #@contacts = @push.contacts
-       t = Table("public/foo.csv")
-       grouping = Grouping(t,:by => "name")
-       time = Time.now
-       data = grouping.to_pdf
-       puts "timing : #{Time.now - time}"
+         #@contacts = @push.contacts
+      t = Table("public/foo.csv")
+      grouping = Grouping(t, :by => "name")
+      time = Time.now
+      data = grouping.to_pdf
+      puts "timing : #{Time.now - time}"
       #data = Push.with_user.active.report_table.to_csv
       #p data
-       #send_data data, :type => "application/csv", :filename => "#{params[:type]} list for #{@push.name}.csv", :disposition => "inline"
-       time = Time.now
+      #send_data data, :type => "application/csv", :filename => "#{params[:type]} list for #{@push.name}.csv", :disposition => "inline"
+      time = Time.now
 
 
       send_data data, :type => "application/pdf", :filename => "#{params[:type]} list for #{@push.name}.pdf", :disposition => "inline"
-       puts "timing2 : #{Time.now - time}"
-        return
+      puts "timing2 : #{Time.now - time}"
+      return
     end
 
     result = [["email"]]
@@ -116,8 +116,8 @@ class PushesController < InheritedResources::Base
 
     @push.delay.start
     #Delayed::Job.enqueue @push
-    redirect_to :controller=>"confirmation", :action=>"confirmation",:from=>"push" #, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
-    #Object.new.send(:exit)
+    redirect_to :controller=>"confirmation", :action=>"confirmation", :from=>"push" #, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
+                                                                                    #Object.new.send(:exit)
 
   end
 
@@ -125,14 +125,50 @@ class PushesController < InheritedResources::Base
     @push = Push.find(params[:id])
 
     if @push.date_push.present? #loading push statistics data
-      #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
-      #all_count
+                                #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
+                                #all_count
       @info = {}
       ["delivered", "bounce", "open", "click"].each do |event|
-        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}",event, @push.address_book_id)
+        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", event, @push.address_book_id)
       end
       p @info
     end
+  end
+
+  def show_data
+    @push = Push.find(params[:id])
+    #if @push.date_push.present? #loading push statistics data
+                                #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
+                                #all_count
+      @info = {}
+      ["delivered", "bounce", "open", "click"].each do |event|
+        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", event, @push.address_book_id)
+      end
+      p @info
+   # end
+
+    if params[:type] == "pie"
+
+      g = Gruff::Pie.new
+      g.title = "Visual Pie Graph"
+      g.data 'Delivered',  @info["delivered"].count + 1
+      g.data 'bounce', @info["bounce"].count + 1
+
+
+    elsif params[:type] == "bar"
+      g = Gruff::Line.new
+      #g.font = "c:/windows/fonts/SIMHEI.TTF"
+      g.title = "Hi There"
+
+      g.data("Apples", [1, 2, 3, 4, 4, 3])
+      g.data("Oranges", [4, 8, 7, 9, 8, 9])
+      g.data("Watermelon", [2, 3, 1, 5, 6, 8])
+      g.data("Peaches", [9, 9, 10, 8, 7, 9])
+
+      g.labels = {0 => '2003', 2 => '2004', 4 => '2005'}
+
+    end
+    send_data(g.to_blob("jpg"), :type=>"image/jpeg")
   end
 
   private

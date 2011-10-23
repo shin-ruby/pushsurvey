@@ -27,6 +27,13 @@ gem 'delayed_job'
 gem "airbrake"
 
 #gem 'hoe', '~> 1.5.1' # Heroku's rubygems is too old for hoe 2.9.1 as of 28 Mar 201
+if File.exist?("D:\\Ruby187\\lib\\ruby\\gems\\1.8\\gems\\rmagick-2.13.1")
+  gem "rmagick",  :require => 'RMagick', :path => "D:\\Ruby187\\lib\\ruby\\gems\\1.8\\gems\\rmagick-2.13.1"
+else
+  gem "rmagick",  :require => 'RMagick'
+end
+
+gem "gruff"
 
 gem "data_table",:require => false
 gem "acts_as_audited", "2.0.0"
