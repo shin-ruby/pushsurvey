@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111014190858) do
+ActiveRecord::Schema.define(:version => 20111023011025) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(:version => 20111014190858) do
     t.string   "lastname"
   end
 
+  add_index "contacts", ["address_book_id", "email"], :name => "index_contacts_on_address_book_id_and_email"
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -137,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20111014190858) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "content"
+    t.string   "url"
   end
 
   create_table "folders", :force => true do |t|
