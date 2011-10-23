@@ -34,6 +34,8 @@ else
 end
 
 gem "gruff"
+gem "pdfkit"
+
 
 gem "data_table",:require => false
 gem "acts_as_audited", "2.0.0"

@@ -151,8 +151,8 @@ class PushesController < InheritedResources::Base
 
       g = Gruff::Pie.new
       g.title = "Visual Pie Graph"
-      g.data 'Delivered',  @info["delivered"].count + 1
-      g.data 'bounce', @info["bounce"].count + 1
+      g.data 'Delivered',  @info["delivered"].count
+      g.data 'bounce', @info["bounce"].count
 
 
     elsif params[:type] == "bar"
