@@ -168,6 +168,7 @@ GEM
     windows-pr (1.2.0)
       win32-api (>= 1.4.5)
       windows-api (>= 0.3.0)
+    wkhtmltopdf-binary (0.9.5.3)
     zip (2.0.2)
 
 PLATFORMS
@@ -200,4 +201,5 @@ DEPENDENCIES
   spork (~> 0.9.0.rc)
   spork-testunit
   sqlite3
+  wkhtmltopdf-binary
   zip

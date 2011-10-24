@@ -34,7 +34,9 @@ else
 end
 
 gem "gruff"
+gem "wkhtmltopdf-binary"
 gem "pdfkit"
+
 
 
 gem "data_table",:require => false
