@@ -38,18 +38,22 @@ module Proedm
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-    config.middleware.use "PDFKit::Middleware" #, :print_media_type => true
+    config.middleware.use "PDFKit::Middleware" , :print_media_type => true
     
   end
 end
-if File.exist? "d:\\wkhtmltopdf\\wkhtmltopdf.exe"
+
   PDFKit.configure do |config|
+    if File.exist? "d:\\wkhtmltopdf\\wkhtmltopdf.exe"
      config.wkhtmltopdf = "d:\\wkhtmltopdf\\wkhtmltopdf.exe"
+    else
+     config.wkhtmltopdf = Rails.root.join('bin', 'wkhtmltopdf-amd64').to_s
+    end
     # config.default_options = {
     #   :page_size => 'Legal',
     #   :print_media_type => true
     # }
     # config.root_url = "http://localhost" # Use only if your external hostname is unavailable on the server.
   end
-end
+
 

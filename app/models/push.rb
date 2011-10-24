@@ -57,13 +57,13 @@ class Push < ActiveRecord::Base
   end
 
   def start
-    self.status = "Sending"
-    self.save
+    require 'address_book'
+    require 'push_mailer'
 
     address_book.contacts.each do |contact|
       PushMailer.start(contact, self).deliver
     end
-    self.date_push = Time.now
+
     self.status = "Send"
     self.save
   end

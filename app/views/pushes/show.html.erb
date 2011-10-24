@@ -5,13 +5,13 @@
   <fieldset>
     <div class="span-24">
       <h6>Category&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.category.name %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
         <% end %></h6>
       <h6>Folder Management&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Red Folder</em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
         <% end %></h6>
       <h6>Remarks&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
         <% end %></h6>
       <abbr style="color:#666"><%= @push.comment %></abbr>
     </div>
@@ -19,19 +19,19 @@
     <hr/>
     <div class="span-24">
       <h6>Email Subject&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.subject %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
         <% end %>
       </h6>
       <h6>From Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.from_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
         <% end %>
       </h6>
       <h6>Reply-To Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.reply_to_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
         <% end %>
       </h6>
       <h6>Email Signature&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.date_push.nil? %><%= link_to "Edit", edit_push_path(@push) %>
+        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
         <% end %>
       </h6>
       <abbr style="color:#666"><%= @push.signature %></abbr>
@@ -39,7 +39,7 @@
     <%= render "address_book" %>
     <hr class="space">
     <hr/>
-    <% if @push.date_push.nil? || Rails.env == "development" %>
+    <% if @push.status.nil? || Rails.env == "development" %>
         <script type="text/javascript">
             $(document).ready($.enhanceFormsBehaviour);
         </script>
@@ -49,7 +49,7 @@
         <% end %>
     <% end %>
   </fieldset>
-  <% if @push.date_push.present? %>
+  <% if @push.status.present? %>
       <fieldset>
         <h2 style="color:#999">Feedback</h2>
         <script>

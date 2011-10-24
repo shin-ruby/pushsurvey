@@ -1,6 +1,6 @@
 require 'csv'
 class PushesController < InheritedResources::Base
-  load_and_authorize_resource :except => [:new, :create, :export]
+  load_and_authorize_resource :except => [:new, :create, :export,:show_data]
 
   #act_wizardly_for :user
   def index
@@ -114,6 +114,11 @@ class PushesController < InheritedResources::Base
     @push = Push.find(params[:id])
     authorize! :start, @push
 
+    @push.status = "Sending"
+    @push.date_push = Time.now
+    @push.save
+
+
     @push.delay.start
     #Delayed::Job.enqueue @push
     redirect_to :controller=>"confirmation", :action=>"confirmation", :from=>"push" #, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
@@ -123,6 +128,7 @@ class PushesController < InheritedResources::Base
 
   def show
     @push = Push.find(params[:id])
+    authorize! :read, @push
 
     if @push.date_push.present? #loading push statistics data
                                 #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
@@ -137,6 +143,7 @@ class PushesController < InheritedResources::Base
 
   def show_data
     @push = Push.find(params[:id])
+    authorize! :read, @push
     #if @push.date_push.present? #loading push statistics data
                                 #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
                                 #all_count
