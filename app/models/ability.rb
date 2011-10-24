@@ -39,7 +39,7 @@ class Ability
          end
 
          can :start,Push do |object|
-           object.user_id == user.id && object.date_push.nil?
+           object.user_id == user.id && object.status.nil?
          end
 
 

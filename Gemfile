@@ -34,7 +34,7 @@ else
 end
 
 gem "gruff"
-gem "wkhtmltopdf-binary"
+
 gem "pdfkit"
 
 

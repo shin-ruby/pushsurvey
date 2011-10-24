@@ -2,8 +2,8 @@ class EventsController < InheritedResources::Base
   skip_before_filter :authenticate_user!
   before_filter :authenticate_admin_user, :except => :postback
   def postback
-    logger.info "event param:"
-    logger.info params.inspect
+    #logger.info "event param:"
+    #logger.info params.inspect
     event = Event.new
     event.event = params[:event]
     event.email = params[:email]
