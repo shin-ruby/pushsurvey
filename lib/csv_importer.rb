@@ -14,8 +14,15 @@ class CsvImporter < Importer
     @reader = FasterCSV.new(@string, :col_sep=>",")
     header = @reader.shift
     columns = {}
-    header.each_with_index do |col, index|
-      columns[index] = Contact.find_alias_name(col)
+    if header && header.size == 1 && header[0].strip == "=" #default header
+      columns[0] = "email"
+      columns[0] = "firstname"
+      columns[0] = "lastname"
+      columns[0] = "name"
+    else
+      header.each_with_index do |col, index|
+        columns[index] = Contact.find_alias_name(col)
+      end
     end
     @reader.each { |row|
       contact = Contact.new
