@@ -6,7 +6,7 @@
    See the Readme file in this folder for additional instructions.
 
 -------------------------------------------------------------- */
-
+@media screen, projection {
 /* Indentation instead of line shifts for sibling paragraphs. */
    p + p { text-indent:2em; margin-top:-1.5em; }
    form p + p  { text-indent: 0; } /* Don't want this in forms. */
@@ -68,4 +68,6 @@ p.incr, .incr p {
   line-height:1%;
   font-weight:bold;
   padding:0 2px;
+}
+
 }
