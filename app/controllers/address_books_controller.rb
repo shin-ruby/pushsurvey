@@ -1,4 +1,5 @@
 require 'csv'
+require 'csv_importer'
 class AddressBooksController < InheritedResources::Base
   load_and_authorize_resource :except => [:export, :import]
 
