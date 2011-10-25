@@ -70,7 +70,7 @@ class PushesController < InheritedResources::Base
     authorize! :read, @push
 
     if params[:type]
-      @contacts = Event.where(:event => params[:type]).joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", params[:type], @push.address_book_id)
+      @contacts = Event.where(:event => params[:type]).joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", params[:type], @push.address_book_id).select("events.*, c.*")
     else #all push contacts
          #@contacts = @push.contacts
       t = Table("public/foo.csv")
