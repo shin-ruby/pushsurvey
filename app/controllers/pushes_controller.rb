@@ -152,7 +152,7 @@ class PushesController < InheritedResources::Base
         g = Gruff::Bar.new
         g.title = "Visual Bar Graph"
         g.title_margin = 100
-
+        g.font = Rails.root.join('bin', 'simhei.ttf').to_s
         g.data '邮件发送总数', @push.address_book.contacts_count
         g.data 'Delivered', @info["delivered"].count
         g.data 'bounce', @info["bounce"].count
@@ -196,7 +196,7 @@ class PushesController < InheritedResources::Base
 
     elsif params[:type] == "bar"
       g = Gruff::Line.new
-      #g.font = "c:/windows/fonts/SIMHEI.TTF"
+      g.font = Rails.root.join('bin', 'simhei.ttf').to_s
       g.title = "Hi There"
 
       g.data("Apples", [1, 2, 3, 4, 4, 3])
