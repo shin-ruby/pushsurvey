@@ -16,4 +16,12 @@ class PushMailer < ActionMailer::Base
     mail(options)
 
   end
+
+  def start_result(user)
+    mail(:to => user.email)
+  end
+
+  def import_result(user)
+    mail(:to => user.email)
+  end
 end

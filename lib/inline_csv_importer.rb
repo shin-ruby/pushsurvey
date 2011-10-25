@@ -21,6 +21,7 @@ class InlineCsvImporter < Importer
       contact.address_book = @address_book
       contact.save!
     }
+    super
 
   end
   #handle_asynchronously :import

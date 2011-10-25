@@ -64,6 +64,9 @@ class Push < ActiveRecord::Base
       PushMailer.start(contact, self).deliver
     end
 
+
+    PushMailer.start_result(self.user).deliver
+
     self.status = "Send"
     self.save
   end
