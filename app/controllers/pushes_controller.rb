@@ -70,7 +70,7 @@ class PushesController < InheritedResources::Base
     authorize! :read, @push
 
     if params[:type]
-      @contacts = Event.where(:event => params[:type]).where(:category => "push-#{params[:id]}")
+      @contacts = Event.where(:event => params[:type]).joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", params[:type], @push.address_book_id)
     else #all push contacts
          #@contacts = @push.contacts
       t = Table("public/foo.csv")
@@ -89,15 +89,15 @@ class PushesController < InheritedResources::Base
       return
     end
 
-    result = [["email"]]
+    result = [["email", "firstname", "lastname"]]
     @contacts.each do |contact|
-      result << [contact.email]
+      result << [contact.email, contact.firstname, contact.lastname]
     end
 
 
     buf = ''
     result.each do |row|
-      parsed_cells = CSV.generate_row(row, 1, buf)
+      parsed_cells = CSV.generate_row(row, 3, buf)
       puts "Created #{ parsed_cells } cells."
     end
     p buf
@@ -171,43 +171,6 @@ class PushesController < InheritedResources::Base
         return
       end
     end
-  end
-
-  def show_data
-    @push = Push.find(params[:id])
-    #authorize! :read, @push
-    #if @push.date_push.present? #loading push statistics data
-    #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
-    #all_count
-    @info = {}
-    ["delivered", "bounce", "open", "click"].each do |event|
-      @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", event, @push.address_book_id)
-    end
-    p @info
-    # end
-
-    if params[:type] == "pie"
-
-      g = Gruff::Pie.new
-      g.title = "Visual Pie Graph"
-      g.data 'Delivered', @info["delivered"].count
-      g.data 'bounce', @info["bounce"].count
-
-
-    elsif params[:type] == "bar"
-      g = Gruff::Line.new
-      g.font = Rails.root.join('bin', 'simhei.ttf').to_s
-      g.title = "Hi There"
-
-      g.data("Apples", [1, 2, 3, 4, 4, 3])
-      g.data("Oranges", [4, 8, 7, 9, 8, 9])
-      g.data("Watermelon", [2, 3, 1, 5, 6, 8])
-      g.data("Peaches", [9, 9, 10, 8, 7, 9])
-
-      g.labels = {0 => '2003', 2 => '2004', 4 => '2005'}
-
-    end
-    send_data(g.to_blob("jpg"), :type=>"image/jpeg")
   end
 
   private
