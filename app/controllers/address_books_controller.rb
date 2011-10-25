@@ -74,11 +74,28 @@ class AddressBooksController < InheritedResources::Base
 
     elsif request.put? || request.post?
       if params[:add_contact]
+        if params[:contacts].present? && params[:contacts].strip != "="
         #InlineCsvImporter.new(params[:contacts],@address_book).import
-        CsvImporter.new(@address_book, :string => params[:contacts]).import
+          CsvImporter.new(@address_book, :string => params[:contacts]).import
+        else
+          flash[:notice] = "Please input information for importing contacts"
+         redirect_to :action=>"import"
+          return
+        end
       elsif params[:upload]
-        ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
-        Object.const_get((ext.capitalize + "Importer")).new(@address_book, :file=>params[:file].tempfile.instance_variable_get("@tmpname")).import
+        if params[:file]
+          ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
+          if ext.downcase != "csv"
+            flash[:notice] = "Please upload csv file for importing contacts"
+            redirect_to :action=>"import"
+            return
+          end
+          Object.const_get((ext.capitalize + "Importer")).new(@address_book, :file=>params[:file].tempfile.instance_variable_get("@tmpname")).import
+        else
+           flash[:notice] = "Please input file for uploading contacts"
+           redirect_to :action=>"import"
+           return
+        end
         #Delayed::Job.enqueue Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book)
 
       end
