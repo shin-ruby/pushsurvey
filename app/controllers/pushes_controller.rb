@@ -1,6 +1,7 @@
 require 'csv'
 class PushesController < InheritedResources::Base
-  load_and_authorize_resource :except => [:new, :create, :export,:show_data]
+  load_and_authorize_resource :except => [:new, :create, :export, :show_data]
+  skip_before_filter :authenticate_user!, :only => :show_data
 
   #act_wizardly_for :user
   def index
@@ -127,38 +128,69 @@ class PushesController < InheritedResources::Base
   end
 
   def show
+    p params
     @push = Push.find(params[:id])
     authorize! :read, @push
 
-    if @push.date_push.present? #loading push statistics data
-                                #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
-                                #all_count
-      @info = {}
-      ["delivered", "bounce", "open", "click"].each do |event|
-        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", event, @push.address_book_id)
+    if @push.status.present? #loading push statistics data
+                             #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
+      if params[:type].nil?
+
+        @info = {}
+        ["delivered", "bounce", "open", "click"].each do |event|
+          @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", event, @push.address_book_id)
+        end
+        p @info
+
+        g = Gruff::Pie.new
+        g.title = "Visual Pie Graph"
+        g.data 'Delivered', @info["delivered"].count
+        g.data 'bounce', @info["bounce"].count
+
+        @pie_chart = Base64.encode64(g.to_blob("jpg")).html_safe
+
+        g = Gruff::Bar.new
+        g.title = "Visual Bar Graph"
+        g.title_margin = 100
+
+        g.data '邮件发送总数', @push.address_book.contacts_count
+        g.data 'Delivered', @info["delivered"].count
+        g.data 'bounce', @info["bounce"].count
+        g.data 'open', @info["open"].count
+        g.data 'click', @info["click"].count
+
+        @bar_chart = Base64.encode64(g.to_blob("jpg")).html_safe
+
+
+
+      elsif params[:type] == "register"
+        render "show_register_info", :layout=>false
+        return
+      elsif params[:type] == "export"
+        render "show_export_data", :layout=>false
+        return
       end
-      p @info
     end
   end
 
   def show_data
     @push = Push.find(params[:id])
-    authorize! :read, @push
+    #authorize! :read, @push
     #if @push.date_push.present? #loading push statistics data
-                                #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
-                                #all_count
-      @info = {}
-      ["delivered", "bounce", "open", "click"].each do |event|
-        @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", event, @push.address_book_id)
-      end
-      p @info
-   # end
+    #@info = SendGridApi.request("stat","get",:category=>"push-#{@push.id}", :aggregate => 1)
+    #all_count
+    @info = {}
+    ["delivered", "bounce", "open", "click"].each do |event|
+      @info[event] = Event.joins("join contacts c on c.email = events.email").where("category=? and event=? and c.address_book_id=?", "push-#{@push.id}", event, @push.address_book_id)
+    end
+    p @info
+    # end
 
     if params[:type] == "pie"
 
       g = Gruff::Pie.new
       g.title = "Visual Pie Graph"
-      g.data 'Delivered',  @info["delivered"].count
+      g.data 'Delivered', @info["delivered"].count
       g.data 'bounce', @info["bounce"].count
 
 

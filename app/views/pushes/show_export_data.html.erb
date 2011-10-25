@@ -1,0 +1,11 @@
+<%= link_to "已送达邮件", export_push_path(@push, :type=>'delivered') %>
+        <br/>
+        <%= link_to "打开", export_push_path(@push, :type=>'open') %>
+        <br/>
+        <%= link_to "点击", export_push_path(@push, :type=>'click') %>
+        <br/>
+        <%= link_to "弹回", export_push_path(@push, :type=>'bounce') %>
+        <br/>
+        <br/>
+
+              <p><a href="#">注册数据</a>--Click Download CSV</p>

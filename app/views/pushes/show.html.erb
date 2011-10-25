@@ -54,7 +54,19 @@
         <h2 style="color:#999">Feedback</h2>
         <script>
   $(document).ready(function() {
-    $("#tabs").tabs();
+    $("#tabs").tabs({
+   cache:true,
+   load: function (e, ui) {
+     $(ui.panel).find(".tab-loading").remove();
+   },
+   select: function (e, ui) {
+     var $panel = $(ui.panel);
+
+     if ($panel.is(":empty")) {
+         $panel.append("<div class='tab-loading'>Loading...</div>")
+     }
+    }
+ });
   });
   </script>
 
@@ -63,8 +75,8 @@
         <div id="tabs">
 	<ul>
 		<li><a href="#tabs-1">Basic Info</a></li>
-		<li><a href="#tabs-2">Register&Click Info</a></li>
-		<li><a href="#tabs-3">Data Export</a></li>
+		<li><%= link_to "Register&Click Info", :type=>"register"%></li>
+		<li><%= link_to "Data Export", :type=>"export"%></li>
 	</ul>
 	<div id="tabs-1">
 		<h3>Basic Info</h3>
@@ -78,44 +90,15 @@
                 <p>已点击邮件数--<%= @info["click"].count rescue 0 %></p>
         <hr class="space" />
         <h2 style="color:#999">Pie</h2>
-        <%= image_tag url_for(:action=>"show_data", :type=>"pie") %>
+        <%#= image_tag url_for(:action=>"show_data", :type=>"pie") %>
+      <img src="data:image/jpg;base64,<%=@pie_chart%>" />
         <h2 style="color:#999">List</h2>
-        <%= image_tag url_for(:action=>"show_data", :type=>"bar")%>
-	</div>
-	<div id="tabs-2">
-      <h3>Register Info</h3>
-              <p>注册数--400</p>
-              <h3>Link Click Info</h3>
-              <p></p>
-              <p>Link.1--400</p>
-              <p>Link.2--300</p>
-              <p>Link.3--200</p>
-
-	</div>
-	<div id="tabs-3">
-      <a href="#">已送达邮件</a>--Click Download CSV<br />
-              <a href="#">已打开邮件</a>--Click Download CSV<br />
-              <a href="#">已点击邮件</a>--Click Download CSV<br />
-              <a href="#">弹回的邮件</a>--Click Download CSV<br />
-              <br />
-              <p><a href="#">注册数据</a>--Click Download CSV</p>
-
+      <img src="data:image/jpg;base64,<%=@bar_chart%>" />
 	</div>
 </div>
 
 
-        <%= link_to "已送达邮件", export_push_path(@push, :type=>'delivered') %>
-        <br/>
-        <%= link_to "打开", export_push_path(@push, :type=>'open') %>
-        <br/>
-        <%= link_to "点击", export_push_path(@push, :type=>'click') %>
-        <br/>
-        <%= link_to "弹回", export_push_path(@push, :type=>'bounce') %>
-        <br/>
-        <%= link_to "邮件退订", export_push_path(@push, :type=>'unsubscribe') %>
-        <br/>
-        <%= link_to "垃圾邮件投诉", export_push_path(@push, :type=>'spamreport') %>
-        <br/>
+
 
       </fieldset>
   <% end %>

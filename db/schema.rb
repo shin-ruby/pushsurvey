@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111023011025) do
+ActiveRecord::Schema.define(:version => 20111024032902) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(:version => 20111023011025) do
     t.date     "date_push"
     t.integer  "design_id"
     t.float    "feedback"
-    t.string   "status",          :default => "Draft"
+    t.string   "status"
     t.integer  "folder_id"
     t.integer  "category_id"
     t.text     "comment"

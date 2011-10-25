@@ -36,6 +36,7 @@ end
 gem "gruff"
 
 gem "pdfkit"
+gem "google_charts"
 
 
 
