@@ -2,8 +2,12 @@
 class CsvImporter < Importer
   attr_accessor :address_book
 
-  def initialize(file, address_book)
-     @string = File.read(file)
+  def initialize(address_book, options)
+    if options[:file]
+       @string = File.read(options[:file])
+    elsif
+       @string = options[:string]
+    end
      self.address_book = address_book
   end
   def import
@@ -23,5 +27,4 @@ class CsvImporter < Importer
     }
     super
   end
-  handle_asynchronously :import
 end

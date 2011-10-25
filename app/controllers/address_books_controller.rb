@@ -74,10 +74,10 @@ class AddressBooksController < InheritedResources::Base
     elsif request.put? || request.post?
       if params[:add_contact]
         #InlineCsvImporter.new(params[:contacts],@address_book).import
-        InlineCsvImporter.new(params[:contacts], @address_book).delay.import
+        InlineCsvImporter.new(@address_book, :string => params[:contacts]).delay.import
       elsif params[:upload]
         ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
-        Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book).import
+        Object.const_get((ext.capitalize + "Importer")).new(@address_book, :file=>params[:file].tempfile.instance_variable_get("@tmpname")).import
         #Delayed::Job.enqueue Object.const_get((ext.capitalize + "Importer")).new(params[:file].tempfile.instance_variable_get("@tmpname"), @address_book)
 
       end
