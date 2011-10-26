@@ -90,7 +90,7 @@ class AddressBooksController < InheritedResources::Base
             redirect_to :action=>"import"
             return
           end
-          Object.const_get((ext.capitalize + "Importer")).new(@address_book, :file=>params[:file].tempfile.instance_variable_get("@tmpname")).import
+          Object.const_get((ext.capitalize + "Importer")).new(@address_book, :file=>params[:file].tempfile.instance_variable_get("@tmpname")).delay.import
         else
            flash[:notice] = "Please input file for uploading contacts"
            redirect_to :action=>"import"

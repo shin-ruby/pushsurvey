@@ -1,1 +1,9 @@
 your contacts has been succesffuly imported
+this is the result:
+
+the following lines has format error:
+<%=@importer.format_error.gsub("\n", "<br/>\n").html_safe %>
+
+the following lines is duplicate:
+
+<%=@importer.uniqueness_error.gsub("\n", "<br/>\n").html_safe %>

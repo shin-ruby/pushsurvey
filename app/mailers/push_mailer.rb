@@ -21,7 +21,8 @@ class PushMailer < ActionMailer::Base
     mail(:to => user.email)
   end
 
-  def import_result(user)
+  def import_result(user, importer)
+    @importer = importer
     mail(:to => user.email)
   end
 end

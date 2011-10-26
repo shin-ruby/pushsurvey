@@ -26,8 +26,8 @@ class Push < ActiveRecord::Base
   validates_presence_of :address_book, :if => lambda { |o| o.step == "choose_address_book" && !disable_validation }
   validates_presence_of :design, :if => lambda { |o| o.step == "choose_address_book" && !disable_validation }
 
-  validates_format_of :from_email,:with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :if => lambda { |o| o.step == "add_email_title" && !disable_validation && from_email.present?}
-  validates_format_of :reply_to_email,:with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i, :if => lambda { |o| o.step == "add_email_title" && !disable_validation && reply_to_email.present? }
+  validates_format_of :from_email,:with => EMAIL_REGEX, :if => lambda { |o| o.step == "add_email_title" && !disable_validation && from_email.present?}
+  validates_format_of :reply_to_email,:with => EMAIL_REGEX, :if => lambda { |o| o.step == "add_email_title" && !disable_validation && reply_to_email.present? }
 
   def steps
 

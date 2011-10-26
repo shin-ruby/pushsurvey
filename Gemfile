@@ -21,7 +21,7 @@ gem 'activeadmin'
 gem "cancan"
 
 #gem 'validation_group', :git=>'git://github.com/akira/validationgroup.git'
-#gem 'grouped_validations'
+gem 'grouped_validations'
 gem 'delayed_job'
 
 gem "airbrake"
