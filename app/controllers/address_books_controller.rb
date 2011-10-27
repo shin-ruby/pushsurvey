@@ -138,12 +138,14 @@ class AddressBooksController < InheritedResources::Base
     params = Hash[*controller.params.map { |key, value| [key.to_s.downcase.to_sym, value] }.flatten]
     search_fields ||= fields
     block = (explicit_block or implicit_block)
-
+    contacts_count = @address_book.contacts_count
     objects = _find_objects params, fields, search_fields
+
+
     matching_count = objects.respond_to?(:total_entries) ? objects.total_entries : _matching_count(params, search_fields)
-    @address_book = AddressBook.find(params[:id])
+
     {:sEcho => params[:secho].to_i,
-     :iTotalRecords => @address_book.contacts_count,
+     :iTotalRecords => contacts_count,
      :iTotalDisplayRecords => matching_count,
      :aaData => _yield_and_render_array(controller, objects, block)
     }.to_json.html_safe
@@ -162,7 +164,7 @@ class AddressBooksController < InheritedResources::Base
 
   def _discover_joins fields
     joins = Set.new
-    object = self.new
+    object = Contact.new
 
     fields.each { |it|
       field = it.split('.')

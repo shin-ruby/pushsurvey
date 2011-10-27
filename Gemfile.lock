@@ -79,7 +79,6 @@ GEM
       oauth (>= 0.3.6)
     google_charts (1.2.0)
       actionpack (>= 3.x)
-    grouped_validations (0.3.0)
     gruff (0.3.6)
     guard (0.5.1)
       thor (~> 0.14.6)
@@ -188,7 +187,6 @@ DEPENDENCIES
   devise
   fastercsv
   google_charts
-  grouped_validations
   gruff
   guard-test
   jquery-rails
