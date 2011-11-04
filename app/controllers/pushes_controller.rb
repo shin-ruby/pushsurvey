@@ -135,7 +135,7 @@ class PushesController < InheritedResources::Base
       else
         flash[:test_notice] = "test email is invalid format"
       end
-      redirect_to "show"
+      redirect_to :action=>"show"
       return
     end
 
