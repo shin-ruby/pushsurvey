@@ -45,7 +45,12 @@
         </script>
         <%= form_tag start_push_path(@push) do %>
             <%= double_submit_token %>
-            <%= submit_tag "Start Push" %>
+            <% if flash[:test_notice].present? %> <p class="error"><%= flash[:test_notice] %></p> <%end%>
+            <%= submit_tag "Start Push", :name=>"start_push" %>
+            Or
+            <%= submit_tag "Test with Email", :name=>"test_email" %>
+            &nbsp;&nbsp;&nbsp;
+            <%= text_field_tag :email, params[:email]%>
         <% end %>
     <% end %>
   </fieldset>

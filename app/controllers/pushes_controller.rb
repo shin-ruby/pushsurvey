@@ -115,6 +115,7 @@ class PushesController < InheritedResources::Base
     @push = Push.find(params[:id])
     authorize! :start, @push
 
+    if params[:start_push]
     @push.status = "Sending"
     @push.date_push = Time.now
     @push.save
@@ -122,6 +123,22 @@ class PushesController < InheritedResources::Base
 
     @push.delay.start
     #Delayed::Job.enqueue @push
+    elsif params[:test_email]
+
+      contact = Contact.new
+      contact.email = params[:email]
+
+      if contact.email =~ EMAIL_REGEX
+        PushMailer.start(contact, @push).deliver
+        flash[:test_notice] = "successfully send push to test email"
+        params[:test_email] = ""
+      else
+        flash[:test_notice] = "test email is invalid format"
+      end
+      redirect_to "show"
+      return
+    end
+
     redirect_to :controller=>"confirmation", :action=>"confirmation", :from=>"push" #, :notice => "Your request has been successfully submitted, Please wait until we email you the result."
                                                                                     #Object.new.send(:exit)
 
@@ -146,10 +163,20 @@ class PushesController < InheritedResources::Base
         g.title = "Visual Pie Graph"
         g.data 'Delivered', @info["delivered"].count
         g.data 'bounce', @info["bounce"].count
+        g.theme = {
+      :colors => ['#aedaa9', '#12a702'], # 3077a9 blue, aedaa9 light green
+      :marker_color => '#dddddd',
+      :font_color => 'black',
+      :background_colors => "white",
+:transparent_background=>true
+      # :background_image => File.expand_path(File.dirname(__FILE__) + "/../assets/backgrounds/43things.png")
+    }
 
+        #g.transparent_background = true
         @pie_chart = Base64.encode64(g.to_blob("jpg")).html_safe
 
         g = Gruff::Bar.new
+        #g.transparent_background = true
         g.title = "Visual Bar Graph"
         g.title_margin = 100
         g.font = Rails.root.join('bin', 'simhei.ttf').to_s
@@ -158,6 +185,15 @@ class PushesController < InheritedResources::Base
         g.data 'bounce', @info["bounce"].count
         g.data 'open', @info["open"].count
         g.data 'click', @info["click"].count
+
+        g.theme = {
+      :colors => ['#aedaa9', '#12a702'], # 3077a9 blue, aedaa9 light green
+      :marker_color => '#dddddd',
+      :font_color => 'black',
+      :background_colors => "white",
+:transparent_background=>true
+      # :background_image => File.expand_path(File.dirname(__FILE__) + "/../assets/backgrounds/43things.png")
+    }
 
         @bar_chart = Base64.encode64(g.to_blob("jpg")).html_safe
 

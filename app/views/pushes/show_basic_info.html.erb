@@ -1,0 +1,25 @@
+
+		<h3>Basic Info</h3>
+             	<p></p>
+                <p>邮件发送总数--<%= @push.address_book.contacts_count %></p>
+                <p>已送达邮件数--<%= @info["delivered"].count rescue 0 %> </p>
+                <p>未送达邮件数--<%= @info["bounce"].count rescue 0 %></p>
+              <h3>Open Info</h3>
+              	<p></p>
+                <p>已打开邮件数--<%= @info["open"].count rescue 0 %></p>
+                <p>已点击邮件数--<%= @info["click"].count rescue 0 %></p>
+        <hr class="space" />
+        <h2 style="color:#999">Pie</h2>
+        <%#= image_tag url_for(:action=>"show_data", :type=>"pie") %>
+
+
+        <% pie_chart( [ [:delivered, 15], [:bounce, 15] ], { :height => 300, :is3D => true }, { :id => "pie_chart" } ) do |c| -%>
+  <% c.title "delivered/bounce distribution" %>
+
+  <% c.label "ingredient", :first %>
+  <% c.value "amount", :last %>
+<% end -%>
+
+      <img src="data:image/jpg;base64,<%=@pie_chart%>" />
+        <h2 style="color:#999">List</h2>
+      <img src="data:image/jpg;base64,<%=@bar_chart%>" />
