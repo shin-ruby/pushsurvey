@@ -15,6 +15,10 @@
           top: 0;
       }
 
+      .login img {
+          padding-left: 14px;
+      }
+
       .login {
           z-index: 2;
           width: 500px;
@@ -25,19 +29,21 @@
           -moz-border-radius: 10px;
           border-radius: 10px;
           position: absolute;
-          margin-top: 30%;
-          margin-left: 34%;
+          top: 50%;
+          left: 50%;
+          margin-top: -120px; /* negative half of the height */
+          margin-left: -250px;
       }
 
       .login-text {
           padding-left: 20px;
       }
   </style>
-  <%= stylesheet_link_tag "blueprint/screen","demo_table" %>
-    <%= stylesheet_link_tag "blueprint/print",:media=>"print" %>
+  <%= stylesheet_link_tag "blueprint/screen", "demo_table" %>
+  <%= stylesheet_link_tag "blueprint/print", :media=>"print" %>
 
-    <!--[if lt IE 8]>
-     <%= stylesheet_link_tag "blueprint/ie",:media=>"screen, projection"%>
+  <!--[if lt IE 8]>
+     <%= stylesheet_link_tag "blueprint/ie", :media=>"screen, projection" %>
     <![endif]-->
 
 </head>
@@ -67,8 +73,9 @@
           <p><%= f.submit "Sign in" %></p>
       <% end %>
       <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-<% end -%>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+          <br/>
+      <% end -%>&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
   </div>
 </div>
