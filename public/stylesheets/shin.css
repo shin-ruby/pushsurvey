@@ -1,6 +1,34 @@
 @charset "utf-8";
-/* CSS Document */
-html { margin: 0; padding: 0; border:0; }
+/* jQuery Note Document */
+.span-12 ul,li {margin:0; padding:0; list-style:none}
+#menu li {text-align:center; float:left; padding:0px; margin-right:2px; width:100px; cursor:pointer}
+#menu li.tabFocus {width:100px; z-index:100; position:relative}
+#content {width:400px; height:250px; padding:2px; clear:left; position:relative; top:-1px}
+#content li {display:none}
+#content li.conFocus{display:block}
+/* jQuery Feedback Document */
+#menufeedback li {text-align:center; float:left; padding:0px; margin-right:20px; width:200px; cursor:pointer; font-size:14px; color:#333;}
+#menufeedback li.tabFocus {width:200px; z-index:200; position:relative;}
+#contentfeedback {width:400px; height:1400px; padding:2px; clear:left; position:relative; top:-1px}
+#contentfeedback li {display:none}
+#contentfeedback li.conFocus{display:block}
+
+/* jQuery Del Document */
+#general {margin:30px;}
+#myHiddenDiv {display:none;}
+.popup {background:#FFF; border:1px solid #333; padding:1px;}
+.popup-header {height:24px; padding:7px; background-color:#CCC;}
+.popup-header h2 {margin:0; padding:0; font-size:16px; float:left;}
+.popup-header .close-link {float:right; font-size:11px;}
+.popup-body {padding:10px; height:140px;}
+.popup-body .bottom {padding:30px; font-size:14px;}
+.btn {margin-left:30px; width:65px;}
+form {margin:0; padding:0;}
+form * {font-size:12px;}
+input {margin-bottom:12px;}
+
+/* CSS Body Document */
+html { margin: 0; padding: 0; border:0;}
 
 body {
 	overflow:hidden;
@@ -28,11 +56,12 @@ body {
 }
 
 .header img {
+	padding-left:20px;
 	float:left;
 }
 
 ul.nav  {
-	margin-left:160px;
+	margin-left:150px;
 	margin-top:8px;
 	list-style: none;
 	font-family:Verdana, Geneva, sans-serif;
@@ -83,13 +112,26 @@ ul.navleft li {
 	display:inline;
 }
 
+.bg {
+	width:100%;
+	height:16px;
+	margin: 0 auto;
+	background: -moz-linear-gradient(top, rgba(43,43,43,0.65) 0%, rgba(147,147,147,0) 23%, rgba(247,247,247,0) 45%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(43,43,43,0.65)), color-stop(23%,rgba(147,147,147,0)), color-stop(45%,rgba(247,247,247,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147,0) 23%,rgba(247,247,247,0) 45%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147,0) 23%,rgba(247,247,247,0) 45%); /* Opera11.10+ */
+background: -ms-linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147,0) 23%,rgba(247,247,247,0) 45%); /* IE10+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a62b2b2b', endColorstr='#00f7f7f7',GradientType=0 ); /* IE6-9 */
+background: linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147,0) 23%,rgba(247,247,247,0) 45%); /* W3C */
+}
+
 /* head over */
 
 /* container begin */
 
 .container {
 	margin: 0; padding: 0; border:0; height:auto;
-    min-height:500px;
+	min-height:600px; /*  Note  */
 }
 
 .button {
@@ -135,7 +177,7 @@ ul.navleft li {
 /*button over*/
 
 #footer {
-	margin-top:160px;
+	margin-top:60px;/*  Note  */
 	width:100%;
 	padding-bottom:20px;
 }
@@ -151,6 +193,6 @@ ul.navleft li {
 	text-decoration:none;
 }
 
-.current {
-    color:#FFFFFF;
+.container fieldset legend h4 {
+	color:#5877AC;
 }
