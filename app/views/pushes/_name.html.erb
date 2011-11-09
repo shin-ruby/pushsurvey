@@ -1,25 +1,23 @@
 <fieldset>
-            <legend><h3>Create Push</h3></legend>
-            <p>
-              <label for="dummy0"><input type="radio" name="new_type" value="new" checked="checked">Create a new push</label><br>
+  <legend><h4>Create Push</h4></legend>
+  <p>
+    <label for="dummy0"><input type="radio" name="new_type" value="new" checked="checked">Create a new push</label><br>
+    <%= f.text_field :name %>
+  </p>
+  <hr/>
 
+  <p>
+    <label for="dummy1"><input type="radio" name="new_type" value="copy">Copy an existing push</label><br>
+    <%= select_tag(:copy_push_id, options_from_collection_for_select(Push.with_user, :id, :name)) %>
+  </p>
 
-            <%= f.text_field :name %>
-            </p><hr />
+  <p>
+    <%= text_field_tag :copy_push_name %>
+  </p>
+  <br/>
 
-            <p>
-              <label for="dummy1"><input type="radio" name="new_type" value="copy">Copy an existing push</label><br>
-              <%= select_tag(:copy_push_id, options_from_collection_for_select(Push.with_user, :id, :name)) %>
-
-
-
-            </p>
-            <p>
-              <%= text_field_tag :copy_push_name%>
-            </p>
-            <br />
-            <p>
-              <input type="reset" value="Cancel">
-              <%= f.submit :value=>"Continue" %>
-            </p>
-          </fieldset>
+  <p>
+    <input type="reset" value="Cancel">
+    <%= f.submit :value=>"Continue" %>
+  </p>
+</fieldset>
