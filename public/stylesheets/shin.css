@@ -122,7 +122,6 @@ background: -webkit-linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147
 background: -o-linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147,0) 23%,rgba(247,247,247,0) 45%); /* Opera11.10+ */
 background: -ms-linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147,0) 23%,rgba(247,247,247,0) 45%); /* IE10+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a62b2b2b', endColorstr='#00f7f7f7',GradientType=0 ); /* IE6-9 */
-background: linear-gradient(top, rgba(43,43,43,0.65) 0%,rgba(147,147,147,0) 23%,rgba(247,247,247,0) 45%); /* W3C */
 }
 
 /* head over */
