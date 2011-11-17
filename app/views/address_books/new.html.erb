@@ -1,28 +1,25 @@
+<br/><br/>
+<div class="span-12">
+  <%= form_for @address_book do |f| %>
+      <% if @address_book.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this AddressBook from being saved:</h2>
 
-
-	<br /><br />
-	<div class="span-12">
-        <%= form_for @address_book do |f| %>
-          <% if @address_book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this AddressBook from being saved:</h2>
-
-      <ul>
-      <% @address_book.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+              <% @address_book.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
+      <%= render "#{@address_book.step}", :f => f %>
   <% end %>
-          <%= render "#{@address_book.step}", :f => f %>
-        <% end %>
-      </div>
-        <div class="span-12 last">
-        <fieldset>
-          <legend><h3>Note</h3></legend>
-          <p><caption><em>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of, with an easy-to-use grid, sensible typography, useful plugins, and even a stylesheet for printing.</em></caption></p>
-          <p>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of, with an easy-to-use grid, sensible typography, useful plugins, and even a stylesheet for printing.</p>
-          <p>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of, with an easy-to-use grid, sensible typography, useful plugins, and even a stylesheet for printing.</p>
-          <p>Blueprint is a CSS framework, which aims to cut down on your development time. It gives you a solid foundation to build your project on top of.</p>
-        </fieldset>
-
+</div>
+<div class="span-12 last">
+  <fieldset>
+    <legend><h3>Note</h3></legend>
+    <p>
+     创建一个新的AddressBook，并取一个易于管理的名字；
+    </p>
+  </fieldset>
+</div>
