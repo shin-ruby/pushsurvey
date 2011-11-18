@@ -1,12 +1,26 @@
-<fieldset>
-            <legend><h4>Add New List</h4></legend>
-            <p>
-              <label for="dummy0">Create address name</label><br>
-              <%= f.text_field :name %>
-            </p>
-            <br />
-            <p>
-              <input type="reset" value="Cancel">
-              <input type="submit" value="Continue">
-            </p>
-          </fieldset>
+<div class="span-12" >
+<%= form_for(@address_book) do |f| %>
+  <% if @address_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this address_book from being saved:</h2>
+
+      <ul>
+      <% @address_book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
+<div class="span-12 last">
+  note
+</div>

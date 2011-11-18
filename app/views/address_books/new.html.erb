@@ -1,25 +1,5 @@
 <br/><br/>
-<div class="span-12">
-  <%= form_for @address_book do |f| %>
-      <% if @address_book.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this AddressBook from being saved:</h2>
+<div class="span-24">
+      <%= render "#{@address_book.step}"%>
+</div>
 
-            <ul>
-              <% @address_book.errors.full_messages.each do |msg| %>
-                  <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
-      <% end %>
-      <%= render "#{@address_book.step}", :f => f %>
-  <% end %>
-</div>
-<div class="span-12 last">
-  <fieldset>
-    <legend><h3>Note</h3></legend>
-    <p>
-     创建一个新的AddressBook，并取一个易于管理的名字；
-    </p>
-  </fieldset>
-</div>
