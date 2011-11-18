@@ -1,26 +1,41 @@
-<div class="span-12" >
-<%= form_for(@address_book) do |f| %>
-  <% if @address_book.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this address_book from being saved:</h2>
+<div class="span-12">
+  <%= form_for(@address_book) do |f| %>
+      <% if @address_book.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this address_book from being
+              saved:</h2>
 
-      <ul>
-      <% @address_book.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+            <ul>
+              <% @address_book.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <fieldset>
+        <legend><h4>Add New List</h4></legend>
+        <br/>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+        <div class="field">
+          <p><%= f.label :name, "Create address name" %></p>
+
+          <p><%= f.text_field :name %></p>
+        </div>
+        <hr/>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </fieldset>
+  <% end %>
 </div>
 <div class="span-12 last">
-  note
+  <fieldset>
+    <legend><h4>Note</h4></legend>
+    <ul id="contenta">
+      <li class="conFocus">
+        创建一个新的AddressBook，并取一个易于管理的名字；<br/><br/>
+        请注意每个AddressBook最大保存3万条数据，在下一个升级版本中数据量可以升级到10万条。
+      </li>
+    </ul>
+  </fieldset>
 </div>
