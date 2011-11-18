@@ -35,6 +35,7 @@
         <%= form_tag start_push_path(@push) do %>
             <%= double_submit_token %>
             <% if flash[:test_notice].present? %> <p class="error"><%= flash[:test_notice] %></p> <%end%>
+            <h5 style="color:#3B5998">Push the Email, Are you Ready?</h5>
             <%= submit_tag "Start Push", :name=>"start_push" %>
             &nbsp;&nbsp;OR&nbsp;&nbsp;Send A Test Email:&nbsp;&nbsp;
             <%= text_field_tag :email, params[:email]%>  <%= submit_tag "Test with Email", :name=>"test_email" %>
