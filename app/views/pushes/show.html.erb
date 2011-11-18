@@ -1,39 +1,28 @@
 <br/><br/>
 <div class="span-24">
-
-  <h3>Push Name:<%= @push.name %></h3>
   <fieldset>
+    <legend><h4>Push Name:<%= @push.name %></h4></legend>
     <div class="span-24">
       <h6>Category&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.category.name %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
-        <% end %></h6>
+      </h6>
       <h6>Folder Management&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em>Red Folder</em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
-        <% end %></h6>
+      </h6>
       <h6>Remarks&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
-        <% end %></h6>
+      </h6>
       <abbr style="color:#666"><%= @push.comment %></abbr>
     </div>
     <hr class="space">
     <hr/>
     <div class="span-24">
       <h6>Email Subject&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.subject %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
-        <% end %>
       </h6>
       <h6>From Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.from_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
-        <% end %>
       </h6>
       <h6>Reply-To Email&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#666"><em><%= @push.reply_to_email %></em></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
-        <% end %>
       </h6>
       <h6>Email Signature&nbsp;&nbsp;&nbsp;&nbsp;
-        <% if @push.status.nil? %><%= link_to "Edit", edit_push_path(@push) %>
-        <% end %>
       </h6>
+      <h6 style="float:right"><a href="./pushshowedita.html">----Edit</a></h6>
       <abbr style="color:#666"><%= @push.signature %></abbr>
     </div>
     <%= render "address_book" %>
@@ -47,10 +36,8 @@
             <%= double_submit_token %>
             <% if flash[:test_notice].present? %> <p class="error"><%= flash[:test_notice] %></p> <%end%>
             <%= submit_tag "Start Push", :name=>"start_push" %>
-            Or
-            <%= submit_tag "Test with Email", :name=>"test_email" %>
-            &nbsp;&nbsp;&nbsp;
-            <%= text_field_tag :email, params[:email]%>
+            &nbsp;&nbsp;OR&nbsp;&nbsp;Send A Test Email:&nbsp;&nbsp;
+            <%= text_field_tag :email, params[:email]%>  <%= submit_tag "Test with Email", :name=>"test_email" %>
         <% end %>
     <% end %>
   </fieldset>

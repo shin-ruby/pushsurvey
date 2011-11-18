@@ -16,3 +16,12 @@
     <input type="submit" value="Continue">
   </p>
 </fieldset>
+
+<% content_for :note_sidebar do %>
+    <fieldset>
+      <legend><h4>Note</h4></legend>
+      <ul id="content-pushC">
+        <p><%= link_to image_tag("help/pushhelpd.png", :class=>"pushhelpd"), root_url %> </p>
+      </ul>
+    </fieldset>
+<% end %>

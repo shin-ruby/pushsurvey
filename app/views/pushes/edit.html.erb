@@ -1,7 +1,7 @@
 	<br /><br />
 	<div class="span-24">
         <%= form_for @push do |f|%>
-		<h3>Push Name:<%= @push.name %></h3>
+		<legend><h4>Push Name:<%= @push.name %></h4></legend>
         <fieldset> 
             <div class="span-24">
                 <h6>Category&nbsp;&nbsp;&nbsp;&nbsp;<%= f.select "category_id",options_from_collection_for_select(Category.all, :id, :name) %></h6>

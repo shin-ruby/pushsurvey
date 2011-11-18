@@ -5,9 +5,11 @@
     <%= f.select "category_id", options_from_collection_for_select(Category.all, :id, :name, @push.category_id) %>
   </p>
   <hr/>
+  <p>
   <label for="dummy1">Folder Management</label><br/>
   <%= f.select "folder_id", options_from_collection_for_select(Folder.all, :id, :name, @push.folder_id) %>
-  <br/>
+  </p>
+  <hr/>
 
   <p>
     <label for="dummy2">Comment</label><br>
@@ -19,3 +21,19 @@
     <input type="submit" value="Continue">
   </p>
 </fieldset>
+<% content_for :note_sidebar do %>
+<fieldset>
+          <legend><h4>Note</h4></legend>
+          <ul id="content-pushB">
+                <p></p><p>Category -
+                对于每一次的邮件营销我们列出了不同的类别，方便您的分类管理。在下一个升级版本我们可以让您自定义类别，更加方便的管理每一次Push。
+                </p>
+                <p>Sort Box -
+                我们制造了一些有颜色的箱子，这些箱子是方便您对每一次Push的分类存放。
+                </p>
+                <p>Remarks -
+                备注可以记录您每一次邮件营销的详细内容。<em>如：针对SMB客户每年进行的新产品发布邀请，本次邀请华东区域，医疗器械行业的用户… …</em>
+                </p>
+          </ul>
+        </fieldset>
+<% end %>
