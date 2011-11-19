@@ -21,6 +21,10 @@ Proedm::Application.routes.draw do
     match :import, :on => :member
     get :show_data, :on => :member
   end
+
+  resources :user do
+
+  end
   resources :contacts
 
   resources :events do
