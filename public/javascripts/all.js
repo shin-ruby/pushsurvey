@@ -1392,15 +1392,5 @@ a[0];a=i(this).children("tbody");if(a.length===0){a=[p.createElement("tbody")];t
 })(jQuery);
 
 
-$(function() {
-	$("#menu li").each(function(index) {
-							   $(this).click(function() {
-													  $("#menu li.tabFocus").removeClass("tabFocus");
-													  $(this).addClass("tabFocus");
-													  $("#content li:eq(" + index + ")").show().siblings().hide();
-													  });
-							   });
-})
-
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
