@@ -22,12 +22,14 @@
   </p>
 </fieldset>
 <% content_for :note_sidebar do %>
-<fieldset>
-          <legend><h4>Note</h4></legend>
-          <ul id="content">
-              <p>Create a new push是创建发送一次成功的营销邮件入口；一次完整的邮件营销需要与Address Book（导入邮件地址列表），Design（上传EDM设计）相互衔接；邮件发送后即可以查阅详细的回馈信息；每创建一次Push即在My Push页面建立一条数据，可以随时查阅。</p>
-
-                <%= link_to image_tag("help/push.png", :class=>"push"), root_url %>
-          </ul>
-        </fieldset>
+    <fieldset>
+      <legend><h4>Note</h4></legend>
+      <ul id="content">
+        <p>Creating a new push is an entrance to create a successful marketing email. A complete marketing email needs
+          to be related to Address Book and Design. The Address Book is for importing email address lists and the Design
+          for uploading EDM designs. Once the email is sent, detailed feedbacks can be viewed. A piece of data will
+          appear on the My Push page every time a Push is created and can be viewed at any time.</p>
+        <%= link_to image_tag("help/push.png", :class=>"push"), root_url %>
+      </ul>
+    </fieldset>
 <% end %>
