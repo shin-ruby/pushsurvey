@@ -30,6 +30,8 @@
     top: -1px
 }
 
+#content-designF {width:400px; height:600px; padding:2px; clear:left; position:relative; top:-1px}
+
 #content li {
     display: none
 }
@@ -2022,6 +2024,18 @@ hr.space {
 
 .clear {
     clear: both;
+}
+
+/* Flash */
+#error_explanation {
+   padding:0.8em;margin-bottom:1em;border:2px solid #ddd;
+   background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;
+   color:#8a1f11;
+}
+
+#error_explanation h2 {
+    font-size: 12px;
+    color:#8a1f11;
 }
 
 

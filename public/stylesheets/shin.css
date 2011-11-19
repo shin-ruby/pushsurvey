@@ -30,6 +30,8 @@
     top: -1px
 }
 
+#content-designF {width:400px; height:600px; padding:2px; clear:left; position:relative; top:-1px}
+
 #content li {
     display: none
 }
