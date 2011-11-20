@@ -23,6 +23,8 @@ Proedm::Application.routes.draw do
   end
 
   resources :user do
+    get :show_current, :on => :collection
+    get :edit_password,:on => :collection
 
   end
   resources :contacts
