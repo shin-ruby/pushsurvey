@@ -27,6 +27,12 @@ Proedm::Application.routes.draw do
     get :edit_password,:on => :collection
 
   end
+  resources :collect do
+    get :show_current, :on => :collection
+    get :edit_password,:on => :collection
+
+  end
+
   resources :contacts
 
   resources :events do
