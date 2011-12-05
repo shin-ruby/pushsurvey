@@ -1,4 +1,19 @@
-Dear <%= @user.friendly_name %>
-<h5>这是HTML文档.如果您看不到这个页面,请点击</h5><%= link_to "Here", preview_design_url(@push.design) %>
+<!--Dear <%#= @user.friendly_name %>   -->
+<table width="641" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tbody>
+  <tr>
+    <td style="font-size: 12px; font-family: Microsoft YaHei,Microsoft JhengHei,Verdana, Geneva, sans-serif; line-height: 18px; color: #7f7f7f;" align="center" valign="middle" bgcolor="#FFFFFF" width="600" height="30">如果您无法正常浏览此邮件。请<%= link_to "点击这里", preview_design_url(@push.design) %>
+      查看&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  </tr>
+  </tbody>
+</table>
 <%= @push.design.html.html_safe %>
-<%= image_tag attachments['y.gif'].url %> Sent by <%#= image_tag attachments['logo.png'].url %> <%= link_to "www.pushsurvey.com","www.pushsurvey.com"%>
+<!--<%#= image_tag attachments['y.gif'].url %> Sent by <%#= image_tag attachments['logo.png'].url %> <%#= link_to "pushsurvey", "www.pushsurvey.com" %>  -->
+<table width="641" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tbody>
+  <tr>
+    <td style="font-size: 12px; font-family: Microsoft YaHei,Microsoft JhengHei,Verdana, Geneva, sans-serif; line-height: 18px; color: #7f7f7f;" align="center" valign="middle" bgcolor="#FFFFFF" width="600" height="30">Sent by<%= link_to "pushsurvey", "www.pushsurvey.com" %>
+      查看&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  </tr>
+  </tbody>
+</table>
