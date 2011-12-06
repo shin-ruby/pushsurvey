@@ -62,8 +62,8 @@ Proedm::Application.configure do
     config.action_mailer.smtp_settings = {
         :address => 'smtp.sendgrid.net',
         :port => '25',
-        :user_name => 'app635634@heroku.com',
-        :password => "f92de9dc1d4b4b18b5",
+        :user_name => 'app1951006@heroku.com',
+        :password => "qityv0el",
         :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
         :domain => "heroku.com" # the HELO domain provided by the client to the server
     }
