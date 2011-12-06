@@ -82,7 +82,7 @@ class AddressBooksController < InheritedResources::Base
       if params[:add_contact]
         if params[:contacts].present? && params[:contacts].strip != "="
         #InlineCsvImporter.new(params[:contacts],@address_book).import
-          Delayed::Job.enqueue CsvImporter.new(@address_book, :string => params[:contacts])
+          CsvImporter.new(@address_book, :string => params[:contacts]).delay.import
         else
           flash[:notice] = "Please input information for importing contacts"
          redirect_to :action=>"import"
