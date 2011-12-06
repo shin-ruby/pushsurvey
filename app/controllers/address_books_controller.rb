@@ -68,6 +68,12 @@ class AddressBooksController < InheritedResources::Base
   end
 
   def import
+
+   require 'faster_csv'
+   require 'address_book'
+   require 'contact'
+
+
     @address_book = AddressBook.find(params[:id])
     @contacts_value = "=\n"
     if request.get?
