@@ -1,4 +1,6 @@
-
+require 'faster_csv'
+require 'address_book'
+require 'contact'
 class CsvImporter < Importer
   attr_accessor :address_book
 
