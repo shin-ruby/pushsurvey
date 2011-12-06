@@ -1,7 +1,8 @@
 <table width="641" border="0" cellspacing="0" cellpadding="0" align="center">
   <tbody>
   <tr>
-    <td style="font-size: 12px; font-family: Microsoft YaHei,Microsoft JhengHei,Verdana, Geneva, sans-serif; line-height: 18px; color: #7f7f7f;" align="center" valign="middle" bgcolor="#FFFFFF" width="600" height="30"><%= @user.friendly_name %>如果您无法正常浏览此邮件。请<%= link_to "点击这里", preview_design_url(@push.design) %>
+    <td style="font-size: 12px; font-family: Microsoft YaHei,Microsoft JhengHei,Verdana, Geneva, sans-serif; line-height: 18px; color: #7f7f7f;" align="center" valign="middle" bgcolor="#FFFFFF" width="600" height="30"><%= @user.friendly_name %>
+      (先生/女士)如果您无法正常浏览此邮件。请<%= link_to "点击这里", preview_design_url(@push.design) %>
       查看&nbsp;&nbsp;&nbsp;&nbsp;</td>
   </tr>
   </tbody>
@@ -11,7 +12,8 @@
 <table width="641" border="0" cellspacing="0" cellpadding="0" align="center">
   <tbody>
   <tr>
-    <td style="font-size: 12px; font-family: Microsoft YaHei,Microsoft JhengHei,Verdana, Geneva, sans-serif; line-height: 18px; color: #7f7f7f;" align="center" valign="middle" bgcolor="#FFFFFF" width="600" height="30">Sent by&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "pushsurvey", "www.pushsurvey.com" %>
+    <td style="font-size: 12px; font-family: Microsoft YaHei,Microsoft JhengHei,Verdana, Geneva, sans-serif; line-height: 18px; color: #7f7f7f;" align="center" valign="middle" bgcolor="#FFFFFF" width="600" height="30">Sent
+      by&nbsp;&nbsp;<%= link_to "pushsurvey", "www.pushsurvey.com" %>
     </td>
   </tr>
   </tbody>
