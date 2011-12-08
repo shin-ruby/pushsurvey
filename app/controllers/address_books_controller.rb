@@ -68,6 +68,12 @@ class AddressBooksController < InheritedResources::Base
   end
 
   def import
+
+   require 'faster_csv'
+   require 'address_book'
+   require 'contact'
+
+
     @address_book = AddressBook.find(params[:id])
     @contacts_value = "=\n"
     if request.get?
@@ -76,7 +82,7 @@ class AddressBooksController < InheritedResources::Base
       if params[:add_contact]
         if params[:contacts].present? && params[:contacts].strip != "="
         #InlineCsvImporter.new(params[:contacts],@address_book).import
-          CsvImporter.new(@address_book, :string => params[:contacts]).import
+          CsvImporter.new(@address_book, :string => params[:contacts]).delay.import
         else
           flash[:notice] = "Please input information for importing contacts"
          redirect_to :action=>"import"

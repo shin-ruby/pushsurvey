@@ -1,4 +1,3 @@
-
 class CsvImporter < Importer
   attr_accessor :address_book
 
@@ -12,6 +11,10 @@ class CsvImporter < Importer
      self.address_book = address_book
   end
   def import
+    require 'faster_csv'
+    require 'address_book'
+    require 'contact'
+
     @format_error = ""
     @uniqueness_error = ""
     @reader = FasterCSV.new(@string, :col_sep=>",")
@@ -43,5 +46,8 @@ class CsvImporter < Importer
       end
     }
     super
+  end
+  def perform
+
   end
 end
