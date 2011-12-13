@@ -5,6 +5,7 @@ class PushesController < InheritedResources::Base
 
   #act_wizardly_for :user
   def index
+    puts "showing push index with user: #{Thread.current[:user_id]}"
     @pushes = Push.with_user.active
 
   end
