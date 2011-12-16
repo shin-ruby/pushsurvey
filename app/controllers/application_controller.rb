@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   private
     def set_user
-      puts "setting user : #{current_user}/#{current_user.id rescue nil}"
+
       if current_user
        Thread.current[:user_id] = current_user.id
       else

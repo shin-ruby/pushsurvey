@@ -1,4 +1,5 @@
 class DesignsController < InheritedResources::Base
+  skip_before_filter :authenticate_user!, :only => :preview
   load_and_authorize_resource :except=>:preview
   def index
     @designs = Design.with_user
@@ -24,14 +25,14 @@ class DesignsController < InheritedResources::Base
   def preview
     @design = Design.find(params[:id])
     #authorize! :read, @design, everyone can read
-    if current_user.can_view(@design)
+    #if current_user && current_user.can_view(@design)
       render :text => @design.html.html_safe
-    else
-      redirect_to designs_path, :notice=> "You don't have permissions for previewing this design"
+    #else
+    #  redirect_to designs_path, :notice=> "You don't have permissions for previewing this design"
       #flash[:notice] = "You don't have permissions for previewing this design"
       #index
       #render :index
-    end
+    #end
   end
 
   def update
