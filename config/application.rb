@@ -60,5 +60,5 @@ ENV['SENDGRID_PASSWORD'] =  "kle97ehz"
     # config.root_url = "http://localhost" # Use only if your external hostname is unavailable on the server.
   end
 
-
+Time::DATE_FORMATS[:default]=Time::DATE_FORMATS[:db]
 EMAIL_REGEX =/^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
