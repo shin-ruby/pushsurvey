@@ -1,7 +1,7 @@
 require 'csv'
 require 'csv_importer'
 class AddressBooksController < InheritedResources::Base
-  load_and_authorize_resource :except => [:export, :import]
+  load_and_authorize_resource :except => [:export, :import, :show_data]
 
   def index
     @address_books = AddressBook.with_user.active
