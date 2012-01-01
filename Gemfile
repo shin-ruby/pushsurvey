@@ -1,8 +1,8 @@
-source 'http://ruby.taobao.org'
-
-#source 'http://rubygems.org'
-
-
+if ENV["APP_ID"]
+  source 'http://rubygems.org'
+else
+  source 'http://ruby.taobao.org'
+end
 
 gem 'rails', '3.0.9'
 
@@ -23,7 +23,8 @@ gem 'activeadmin'
 gem "cancan"
 
 #gem "paperclip"
-gem 'carrierwave_direct'
+gem 'carrierwave'
+#gem 'carrierwave_direct'
 gem "fog"
 
 
