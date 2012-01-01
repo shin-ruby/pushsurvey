@@ -20,9 +20,10 @@ gem 'jquery-rails'
 gem 'activeadmin'
 gem "cancan"
 
-gem "paperclip"
-gem "carrierwave"
+#gem "paperclip"
+gem 'carrierwave_direct'
 gem "fog"
+
 
 #gem 'validation_group', :git=>'git://github.com/akira/validationgroup.git'
 #gem 'grouped_validations'
