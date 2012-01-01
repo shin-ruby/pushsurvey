@@ -22,7 +22,7 @@ gem "cancan"
 
 gem "paperclip"
 gem "carrierwave"
-gem "aws-s3"
+gem "fog"
 
 #gem 'validation_group', :git=>'git://github.com/akira/validationgroup.git'
 #gem 'grouped_validations'

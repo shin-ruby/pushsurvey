@@ -62,3 +62,11 @@ ENV['SENDGRID_PASSWORD'] =  "kle97ehz"
 
 Time::DATE_FORMATS[:default]=Time::DATE_FORMATS[:db]
 EMAIL_REGEX =/^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
+
+CarrierWave.configure do |config|
+      config.s3_access_key_id = ENV['S3_KEY']
+      config.s3_secret_access_key = ENV['S3_SECRET']
+      config.s3_bucket = "file.pushsurvey.com"
+      config.s3_access_policy = :private
+      #config.s3_headers = {"Content-Disposition" => "attachment; filename=foo.jpg;"}
+end

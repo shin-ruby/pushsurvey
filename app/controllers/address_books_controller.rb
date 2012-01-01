@@ -90,13 +90,16 @@ class AddressBooksController < InheritedResources::Base
         end
       elsif params[:upload]
         if params[:file]
-          ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
-          if ext.downcase != "csv"
-            flash[:notice] = "Please upload csv file for importing contacts"
-            redirect_to :action=>"import"
-            return
-          end
-          Object.const_get((ext.capitalize + "Importer")).new(@address_book, :file=>params[:file].tempfile.instance_variable_get("@tmpname")).delay.import
+          @address_book.file = params[:file]
+          @address_book.save!
+          p @address_book.file.url
+          #ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
+          #if ext.downcase != "csv"
+          #  flash[:notice] = "Please upload csv file for importing contacts"
+          #  redirect_to :action=>"import"
+          #  return
+          #end
+          #Object.const_get((ext.capitalize + "Importer")).new(@address_book, :file=>params[:file].tempfile.instance_variable_get("@tmpname")).delay.import
         else
            flash[:notice] = "Please input file for uploading contacts"
            redirect_to :action=>"import"
