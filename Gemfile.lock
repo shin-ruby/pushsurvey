@@ -4,7 +4,7 @@ PATH
     rmagick (2.13.1)
 
 GEM
-  remote: http://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     ZenTest (4.6.2)
     abstract (1.0.0)
@@ -68,6 +68,9 @@ GEM
       rails (~> 3.0)
     delayed_job (3.0.0)
       activesupport (~> 3.0)
+    delayed_job_active_record (0.3.0)
+      activerecord (> 2.1.0)
+      delayed_job (~> 3.0.0)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -234,6 +237,7 @@ DEPENDENCIES
   carrierwave_direct
   data_table
   delayed_job
+  delayed_job_active_record
   devise
   fastercsv
   fog

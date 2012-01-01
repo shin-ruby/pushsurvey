@@ -1,4 +1,5 @@
-source 'http://rubygems.org'
+source 'http://ruby.taobao.org'
+#source 'http://rubygems.org'
 
 
 
@@ -28,6 +29,7 @@ gem "fog"
 #gem 'validation_group', :git=>'git://github.com/akira/validationgroup.git'
 #gem 'grouped_validations'
 gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 gem "airbrake"
 
