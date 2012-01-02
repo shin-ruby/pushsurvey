@@ -1,5 +1,13 @@
 class ConfirmationController < ApplicationController
   def confirmation
+    if params[:from] == "address_book" && params[:bucket] #== "file.pushsurvey.com"
+      @address_book = AddressBook.find(params[:id])
+      @address_book.attributes = params
+      @address_book.save!
+      CsvImporter.new(@address_book, :s3_key=>params[:key]).delay.import
+    end
+
+
   end
 
   def back

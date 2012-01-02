@@ -10,7 +10,7 @@ class AddressBook < ActiveRecord::Base
 
   validates_presence_of :name, :if => lambda { |o| o.step == "name" && !disable_validation }
 
-  mount_uploader :file, ImporterUploader
+  mount_uploader :import_file, ImporterUploader
 
   def steps
 

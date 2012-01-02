@@ -69,15 +69,19 @@ class AddressBooksController < InheritedResources::Base
 
   def import
 
+
    require 'faster_csv'
    require 'address_book'
    require 'contact'
 
 
     @address_book = AddressBook.find(params[:id])
+
+   #Excon.ssl_verify_peer = false
     @contacts_value = "=\n"
     if request.get?
-
+       @uploader = @address_book.import_file
+       @uploader.success_action_redirect = url_for(:controller=>"confirmation", :action=>"confirmation",:from=>"address_book",:id=>@address_book.id)
     elsif request.put? || request.post?
       if params[:add_contact]
         if params[:contacts].present? && params[:contacts].strip != "="
@@ -90,9 +94,9 @@ class AddressBooksController < InheritedResources::Base
         end
       elsif params[:upload]
         if params[:file]
-          @address_book.file = params[:file]
+          @address_book.import_file = params[:file]
           @address_book.save!
-          p @address_book.file.url
+           p @address_book
           #ext = params[:file].original_filename[params[:file].original_filename.rindex(".")+1..-1]
           #if ext.downcase != "csv"
           #  flash[:notice] = "Please upload csv file for importing contacts"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120101051823) do
+ActiveRecord::Schema.define(:version => 20120101143308) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer   "resource_id",   :null => false
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(:version => 20120101051823) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "address_books", :force => true do |t|
-    t.string    "name"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "contacts_count"
-    t.integer   "user_id"
-    t.string    "step",           :default => "name"
-    t.string    "file"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contacts_count"
+    t.integer  "user_id"
+    t.string   "step",           :default => "name"
+    t.string   "import_file"
   end
 
   create_table "admin_users", :force => true do |t|

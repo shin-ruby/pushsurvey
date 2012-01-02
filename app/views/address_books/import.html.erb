@@ -1,6 +1,7 @@
 <br/><br/>
 <div class="span-12">
-  <%= form_for @address_book, :url => import_address_book_path(@address_book), :html=>{:multipart=>true} do |f| %>
+  <fieldset>
+  <%= form_for  @address_book, :url => import_address_book_path(@address_book), :html=>{:multipart=>true} do |f| %>
       <% if @address_book.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@address_book.errors.count, "error") %> prohibited this AddressBook from being saved:</h2>
@@ -12,7 +13,7 @@
             </ul>
           </div>
       <% end %>
-      <fieldset>
+
         <legend>
           <h4>Add Contacts to <span style="color:#06C"><%= link_to @address_book.name, @address_book %></span></h4>
           </legend>
@@ -31,16 +32,25 @@
 
             <p><%= f.submit "Add Contacts", :name => "add_contact" %></p>
             <hr/>
-
+        <%end %>
+    <script>
+      function upload_file_s3(input) {
+        $(":input[name='authenticity_token']",input.form).remove();
+        return true;
+      }
+    </script>
+            <% direct_upload_form_for @uploader do |f| %>
             <p>
               <label for="dummy1">Add File</label><br>
-              <%= file_field_tag "file" %><%= f.submit "Upload", :name=>"upload" %>
+              <%= f.file_field "import_file" %><%= f.submit "Upload", :name=>"upload",:onclick=>"return upload_file_s3(this);" %>
             </p>
             <hr/>
+        <%end%>
+
             <p><%= link_to "Back To Address Book", address_books_path %></p>
 
       </fieldset>
-  <% end %>
+
 </div>
 <div class="span-12 last">
   <fieldset>

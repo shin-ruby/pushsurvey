@@ -3,8 +3,8 @@ class CsvImporter < Importer
 
   def initialize(address_book, options)
 
-    if options[:file]
-       @string = File.read(options[:file])
+    if options[:s3_key]
+       @s3_key = options[:s3_key]
     elsif
        @string = options[:string]
     end
@@ -17,7 +17,15 @@ class CsvImporter < Importer
 
     @format_error = ""
     @uniqueness_error = ""
-    @reader = FasterCSV.new(@string, :col_sep=>",")
+    if @s3_key.present?
+      url = ImporterUploader.new.direct_fog_url +  @s3_key
+      Excon.ssl_verify_peer = false
+      response = Excon.get(url)
+      @reader = FasterCSV.new(response.body,:col_sep=>",")
+    else
+      @reader = FasterCSV.new(@string, :col_sep=>",")
+    end
+
     header = @reader.shift
     columns = {}
     if header && header.size == 1 && header[0].strip == "=" #default header
