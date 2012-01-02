@@ -24,6 +24,9 @@ class AddressBooksController < InheritedResources::Base
 
     @address_book = current_address_book
     @address_book ||= AddressBook.new
+    if params[:address_book] && params[:address_book][:name].present?
+      @address_book.name = params[:address_book][:name]
+    end
     @address_book.update_attributes(params[:address_book])
 
 
