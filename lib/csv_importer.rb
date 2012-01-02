@@ -19,7 +19,7 @@ class CsvImporter < Importer
     @uniqueness_error = ""
     if @s3_key.present?
       url = ImporterUploader.new.direct_fog_url +  @s3_key
-      Excon.ssl_verify_peer = false
+      #Excon.ssl_verify_peer = false
       response = Excon.get(url)
       @reader = FasterCSV.new(response.body,:col_sep=>",")
     else
