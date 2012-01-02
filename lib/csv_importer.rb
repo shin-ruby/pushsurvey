@@ -49,8 +49,13 @@ class CsvImporter < Importer
       elsif (contact.validation_step = "uniqueness") && !contact.valid?
          @uniqueness_error << row.to_csv
       else
-        contact.validation_step = nil
-        contact.save!
+        begin
+          contact.validation_step = nil
+          contact.save!
+        rescue
+          #some error happen, most of time encoding problem
+          @format_error << row.to_csv
+        end
       end
     }
     super
