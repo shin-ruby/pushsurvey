@@ -38,26 +38,35 @@ class CsvImporter < Importer
         columns[index] = Contact.find_alias_name(col)
       end
     end
-    @reader.each { |row|
-      contact = Contact.new
-      row.each_with_index do |col, index|
-        contact.send("#{columns[index]}=", col) if columns[index]
-      end
-      contact.address_book = address_book
-      if (contact.validation_step = "format") && !contact.valid?
-         @format_error << row.to_csv
-      elsif (contact.validation_step = "uniqueness") && !contact.valid?
-         @uniqueness_error << row.to_csv
-      else
-        begin
-          contact.validation_step = nil
-          contact.save!
-        rescue
-          #some error happen, most of time encoding problem
-          @format_error << row.to_csv
+    loop do
+      line = 0
+      begin
+        line += 1
+        break unless row = @reader.shift
+
+        contact = Contact.new
+        row.each_with_index do |col, index|
+          contact.send("#{columns[index]}=", col) if columns[index]
         end
+        contact.address_book = address_book
+        if (contact.validation_step = "format") && !contact.valid?
+           @format_error << row.to_csv
+        elsif (contact.validation_step = "uniqueness") && !contact.valid?
+           @uniqueness_error << row.to_csv
+        else
+          begin
+            contact.validation_step = nil
+            contact.save!
+          rescue
+            #some error happen, most of time encoding problem
+            @format_error << row.to_csv
+          end
+        end
+      rescue FasterCSV::MalformedCSVError => e
+        @format_error << "line #{line}"
       end
-    }
+
+    end
     super
   end
   def perform
