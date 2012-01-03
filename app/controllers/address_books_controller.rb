@@ -136,7 +136,7 @@ class AddressBooksController < InheritedResources::Base
 
     puts "done"
     render(:json =>
-               for_data_table(self, %w[created_at updated_at] + %w(email firstname lastname name)) do |contact|
+               for_data_table(self, ["created_at", "updated_at"] + %w(email firstname lastname name), [["created_at",{:date=>true}], ["updated_at",{:date=>true}]] + %w(email firstname lastname name)) do |contact|
                  ["<%= link_to image_tag(\"delete.png\"), object, :confirm => 'Are you sure?', :method => :delete %>",
                   "<%= link_to image_tag(\"modify.png\"), edit_contact_path(object) %>", contact.email, contact.firstname, contact.lastname, contact.name]
                end)
