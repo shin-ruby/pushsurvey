@@ -22,7 +22,8 @@
     $('#datagrid1').dataTable( {
         "bProcessing": true,
         "bServerSide": true,
-        "sAjaxSource": "<%=url_for :action=>'show_data' %>"
+        "sAjaxSource": "<%=url_for :action=>'show_data' %>",
+        "sPaginationType": "full_numbers"
     } ).fnSetFilteringDelay();
 } );
           </script>
