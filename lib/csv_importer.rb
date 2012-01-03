@@ -26,7 +26,13 @@ class CsvImporter < Importer
       @reader = FasterCSV.new(@string, :col_sep=>",")
     end
 
-    header = @reader.shift
+    header = nil
+    begin
+      header = @reader.shift
+    rescue FasterCSV::MalformedCSVError => e
+      @format_error << "header has formatting problem, please check your header"
+      return super
+    end
     columns = {}
     if header && header.size == 1 && header[0].strip == "=" #default header
       columns[0] = "email"
