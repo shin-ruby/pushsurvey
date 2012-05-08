@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateAddressBooks < ActiveRecord::Migration
   def self.up
     create_table :address_books do |t|

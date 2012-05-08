@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddCurrentStepToPush < ActiveRecord::Migration
   def self.up
     add_column :pushes, :step, :string, :default => "name"

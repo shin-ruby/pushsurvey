@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'csv'
 CSV::Writer.generate(STDOUT, '|') do |csv|
 csv << [ 1, "line 1", 27 ]

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class <%= controller_class_name %>Controller < InheritedResources::Base
 <% if options[:singleton] -%>
   defaults :singleton => true

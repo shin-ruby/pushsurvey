@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module UserResource #or called UserScope? everyone has user_id includes this module
   def can_be_viewed(user)
     user && (user.id == self.user_id || user.admin?)

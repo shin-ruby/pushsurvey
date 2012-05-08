@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserController < InheritedResources::Base
   def show_current
     @user = current_user

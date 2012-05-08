@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'fileutils'
 files=%w(       app/controllers/push1s_controller.rb
        app/controllers/pushes_controller.rb

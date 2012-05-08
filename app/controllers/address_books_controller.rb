@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'csv'
 require 'csv_importer'
 class AddressBooksController < InheritedResources::Base

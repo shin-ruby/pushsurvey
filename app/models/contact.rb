@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #coding:utf-8
 class Contact < ActiveRecord::Base
   attr_accessor :validation_step

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserResourceController < InheritedResources::Base
   protected
   def collection

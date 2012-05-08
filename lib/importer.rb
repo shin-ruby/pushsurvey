@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Importer
   #for DJ support
   attr_accessor :format_error, :uniqueness_error

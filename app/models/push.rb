@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Push < ActiveRecord::Base
   acts_as_audited
 

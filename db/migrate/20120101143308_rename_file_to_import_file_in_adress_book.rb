@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameFileToImportFileInAdressBook < ActiveRecord::Migration
   def self.up
     rename_column :address_books, :file, :import_file

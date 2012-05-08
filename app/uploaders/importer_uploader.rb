@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding : utf-8 -*-
 require 'carrierwave/storage/s3'
 class ImporterUploader < CarrierWave::Uploader::Base
 

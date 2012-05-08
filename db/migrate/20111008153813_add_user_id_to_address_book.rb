@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddUserIdToAddressBook < ActiveRecord::Migration
   def self.up
     add_column :address_books, :user_id, :integer

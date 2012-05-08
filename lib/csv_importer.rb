@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CsvImporter < Importer
   attr_accessor :address_book
 

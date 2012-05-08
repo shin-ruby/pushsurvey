@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddFirstNameLastNameToContact < ActiveRecord::Migration
   def self.up
     add_column :contacts, :firstname, :string

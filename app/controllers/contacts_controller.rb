@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml

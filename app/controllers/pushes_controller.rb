@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'csv'
 class PushesController < InheritedResources::Base
   load_and_authorize_resource :except => [:new, :create, :export, :show_data]

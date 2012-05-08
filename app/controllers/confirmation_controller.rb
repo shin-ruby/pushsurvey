@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ConfirmationController < ApplicationController
   def confirmation
     if params[:from] == "address_book" && params[:bucket] #== "file.pushsurvey.com"

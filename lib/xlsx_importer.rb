@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class XlsxImporter < Importer
   attr_accessor :address_book
   def initialize(file,address_book)

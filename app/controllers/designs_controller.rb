@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class DesignsController < InheritedResources::Base
   skip_before_filter :authenticate_user!, :only => :preview
   load_and_authorize_resource :except=>:preview

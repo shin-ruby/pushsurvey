@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class PushMailer < ActionMailer::Base
   default :from => "admin@pushsurvey.com"
 

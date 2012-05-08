@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Proedm::Application.routes.draw do
 
   get "confirmation/confirmation"

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddressBook < ActiveRecord::Base
   acts_as_audited
   scope :active, where(:step=>nil)
