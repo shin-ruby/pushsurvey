@@ -102,6 +102,8 @@ group :development do
   gem "nifty-generators"
 end
 
+gem "pg","0.13.2"
+
 group :production do
   if File.exists?("/dev/null")
     gem "thin"

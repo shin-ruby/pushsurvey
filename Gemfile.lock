@@ -149,6 +149,7 @@ GEM
       multi_json (~> 1.0.3)
     orm_adapter (0.0.5)
     pdfkit (0.5.2)
+    pg (0.13.2-x86-mingw32)
     polyglot (0.3.3)
     pony (1.4)
       mail (> 2.0)
@@ -244,6 +245,7 @@ DEPENDENCIES
   nifty-generators
   nokogiri
   pdfkit
+  pg (= 0.13.2)
   pony
   rails (= 3.0.9)
   rails-dev-boost
