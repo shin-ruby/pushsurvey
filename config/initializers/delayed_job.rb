@@ -8,3 +8,4 @@ Delayed::Worker.delay_jobs = !Rails.env.test?
 require 'address_book'
 require 'csv_importer'
 require 'push_mailer'
+
