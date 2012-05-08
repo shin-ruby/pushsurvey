@@ -43,8 +43,8 @@ module Proedm
   end
 end
 
-ENV['SENDGRID_USERNAME'] = "app1864066@heroku.com"
-ENV['SENDGRID_PASSWORD'] =  "kle97ehz"
+#ENV['SENDGRID_USERNAME'] = "app1864066@heroku.com"
+#ENV['SENDGRID_PASSWORD'] =  "kle97ehz"
 #remeber to setup sendgrid account and set postback url
 
   PDFKit.configure do |config|
