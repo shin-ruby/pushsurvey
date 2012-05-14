@@ -22,15 +22,15 @@ class CsvImporter < Importer
       url = ImporterUploader.new.direct_fog_url +  @s3_key
       Excon.ssl_verify_peer = false
       response = Excon.get(url)
-      @reader = FasterCSV.new(response.body,:col_sep=>",")
+      @reader = CSV.new(response.body,:col_sep=>",")
     else
-      @reader = FasterCSV.new(@string, :col_sep=>",")
+      @reader = CSV.new(@string, :col_sep=>",")
     end
 
     header = nil
     begin
       header = @reader.shift
-    rescue FasterCSV::MalformedCSVError => e
+    rescue CSV::MalformedCSVError => e
       @format_error << "header has formatting problem, please check your header"
       return super
     end
@@ -69,7 +69,7 @@ class CsvImporter < Importer
             @format_error << row.to_csv
           end
         end
-      rescue FasterCSV::MalformedCSVError => e
+      rescue CSV::MalformedCSVError => e
         @format_error << "line #{line}"
       end
 
