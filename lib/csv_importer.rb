@@ -12,7 +12,7 @@ class CsvImporter < Importer
      self.address_book = address_book
   end
   def import
-    require 'faster_csv'
+
     require 'address_book'
     require 'contact'
 

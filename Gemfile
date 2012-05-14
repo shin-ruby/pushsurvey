@@ -17,7 +17,7 @@ gem 'roo'
 gem 'zip'
 gem 'nokogiri'
 gem 'pony'
-gem 'fastercsv'
+
 
 gem 'devise'
 gem 'jquery-rails'

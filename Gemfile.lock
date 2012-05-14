@@ -234,7 +234,6 @@ DEPENDENCIES
   delayed_job
   delayed_job_active_record
   devise
-  fastercsv
   fog
   google_charts
   gruff

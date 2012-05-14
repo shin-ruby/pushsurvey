@@ -73,8 +73,6 @@ class AddressBooksController < InheritedResources::Base
 
   def import
 
-
-   require 'faster_csv'
    require 'address_book'
    require 'contact'
 
