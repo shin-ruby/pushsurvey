@@ -91,20 +91,15 @@ class PushesController < InheritedResources::Base
       return
     end
 
-    result = [["email", "firstname", "lastname"]]
-    @contacts.each do |contact|
-      result << [contact.email, contact.firstname, contact.lastname]
+    csv_string = CSV.generate do |csv|
+      csv << ["email", "firstname", "lastname"]
+      @contacts.each do |contact|
+        csv << [contact.email, contact.firstname, contact.lastname]
+      end
+      # ...
     end
 
-
-    buf = ''
-    result.each do |row|
-      parsed_cells = CSV.generate_row(row, 3, buf)
-      puts "Created #{ parsed_cells } cells."
-    end
-    p buf
-
-    send_data buf, :type => "text/csv", :filename => "#{params[:type]} list for #{@push.name}.csv", :disposition => "inline"
+    send_data csv_string, :type => "text/csv", :filename => "#{params[:type]} list for #{@push.name}.csv", :disposition => "inline"
 
 
   end

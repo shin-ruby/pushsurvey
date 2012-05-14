@@ -53,21 +53,15 @@ class AddressBooksController < InheritedResources::Base
     @address_book = AddressBook.find(params[:id])
     authorize! :read, @address_book
 
-    result = [["email", "firstname", "lastname", "name"]]
-    @address_book.contacts.each do |contact|
-      result << [contact.email, contact.firstname, contact.lastname, contact.name]
+    csv_string = CSV.generate do |csv|
+      csv << ["email", "firstname", "lastname", "name"]
+      @address_book.contacts.each do |contact|
+        csv << [contact.email, contact.firstname, contact.lastname, contact.name]
+      end
+      # ...
     end
 
-
-    buf = ''
-    result.each do |row|
-      parsed_cells = CSV.generate_row(row, 4, buf)
-      puts "Created #{ parsed_cells } cells."
-    end
-    p buf
-
-
-    send_data buf, :type => "text/csv", :filename => "#{@address_book.name}.csv", :disposition => "inline"
+    send_data csv_string, :type => "text/csv", :filename => "#{@address_book.name}.csv", :disposition => "inline"
 
   end
 
