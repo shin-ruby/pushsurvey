@@ -32,6 +32,7 @@ gem 'pony'
 gem 'devise'
 gem 'jquery-rails'
 gem 'activeadmin'
+gem "bourbon", "1.4.0"
 gem "cancan"
 
 #gem "paperclip"
