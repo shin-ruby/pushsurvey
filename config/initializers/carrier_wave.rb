@@ -10,7 +10,7 @@ CarrierWave.configure do |config|
   config.fog_attributes = { 'Cache-Control'=>'max-age=315576000' }
   config.cache_dir = "#{Rails.root}/tmp/uploads"
 
-  config.fog_public     = false                                   # do
+  config.fog_public     = true                                   # is public?
   #config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
   config.max_file_size     = 5.terabytes
 end

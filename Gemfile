@@ -31,7 +31,7 @@ gem 'pony'
 
 gem 'devise'
 gem 'jquery-rails'
-gem 'activeadmin'
+gem 'activeadmin','0.4.3'
 gem "bourbon", "1.4.0"
 gem "cancan"
 
