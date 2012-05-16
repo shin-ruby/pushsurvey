@@ -4,13 +4,23 @@ source 'http://rubygems.org'
 
 
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development,:test do
   gem 'sqlite3'
 end
+
+gem "meta_search",    '>= 1.1.0.pre'
+gem "rails-i18n"
+group :assets do
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+end
+gem 'sass-rails',   '~> 3.2.3'
+
+
 
 gem 'json'
 gem 'roo'
@@ -103,6 +113,13 @@ group :development do
 end
 
 gem "pg","0.13.2"
+
+if File.exists?("E:\\rails-project\\rails_kindeditor")
+  gem 'rails_kindeditor', :path=>"E:\\rails-project\\rails_kindeditor"
+else
+  gem 'rails_kindeditor', :git=>"git://github.com/femto/rails_kindeditor.git"
+end
+
 
 group :production do
   if File.exists?("/dev/null")
