@@ -37,8 +37,8 @@ Proedm::Application.configure do
     config.action_mailer.smtp_settings = {
         :address => 'smtp.sendgrid.net',
         :port => '25',
-        :user_name => 'app1951006@heroku.com',
-        :password => "qityv0el",
+        :user_name => 'app4552146@heroku.com',
+        :password => "6p52gxop",
         :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
         :domain => "heroku.com" # the HELO domain provided by the client to the server
     }
@@ -50,5 +50,11 @@ Proedm::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  # Do not compress assets
+  config.assets.compress = false
+
+  # Expands the lines which load the assets
+  config.assets.debug = true
 end
 

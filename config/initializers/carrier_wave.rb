@@ -9,4 +9,8 @@ CarrierWave.configure do |config|
   config.fog_host       = 'http://file.pushsurvey.com.s3.amazonaws.com'
   config.fog_attributes = { 'Cache-Control'=>'max-age=315576000' }
   config.cache_dir = "#{Rails.root}/tmp/uploads"
+
+  config.fog_public     = false                                   # do
+  #config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
+  config.max_file_size     = 5.terabytes
 end

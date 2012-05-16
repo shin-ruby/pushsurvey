@@ -69,7 +69,7 @@ D:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.2.0/lib/action_dispatch/middlew
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.2.0/lib/active_record/query_cache.rb:64:in `call'
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/activerecord-3.2.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.2.0/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
-D:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `_run__247444274__call__157311430__callbacks'
+D:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `_run__629774544__call__1014881909__callbacks'
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:405:in `__run_callback'
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/activesupport-3.2.0/lib/active_support/callbacks.rb:81:in `run_callbacks'
@@ -91,11 +91,10 @@ D:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.2.0/lib/rails/engine.rb:479:in `c
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.2.0/lib/rails/application.rb:220:in `call'
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
 D:/Ruby192/lib/ruby/gems/1.9.1/gems/railties-3.2.0/lib/rails/rack/log_tailer.rb:14:in `call'
-D:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/handler/mongrel.rb:77:in `process'
-D:/Ruby192/lib/ruby/gems/1.9.1/gems/mongrel-1.2.0.pre2-x86-mingw32/lib/mongrel.rb:165:in `block in process_client'
-D:/Ruby192/lib/ruby/gems/1.9.1/gems/mongrel-1.2.0.pre2-x86-mingw32/lib/mongrel.rb:164:in `each'
-D:/Ruby192/lib/ruby/gems/1.9.1/gems/mongrel-1.2.0.pre2-x86-mingw32/lib/mongrel.rb:164:in `process_client'
-D:/Ruby192/lib/ruby/gems/1.9.1/gems/mongrel-1.2.0.pre2-x86-mingw32/lib/mongrel.rb:291:in `block (2 levels) in run'
+D:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+D:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+D:/Ruby192/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+D:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
 */
 body:before {
   white-space: pre;
