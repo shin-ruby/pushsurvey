@@ -20,8 +20,8 @@ Category.create(:name => "Non-Profit")
 Category.create(:name => "Political")
 Category.create(:name => "Other")
 
-Folder.create(:name => "Red Folder", :html => "<image src=/images/red.png>")
-Folder.create(:name => "Green Folder", :html => "<image src=/images/green.png>")
-Folder.create(:name => "Yellow Folder", :html => "<image src=/images/yellow.png>")
-Folder.create(:name => "Blue Folder", :html => "<image src=/images/blue.png>")
+Folder.create(:name => "Red Folder", :html => "<image src=/assets/red.png>")
+Folder.create(:name => "Green Folder", :html => "<image src=/assets/green.png>")
+Folder.create(:name => "Yellow Folder", :html => "<image src=/assets/yellow.png>")
+Folder.create(:name => "Blue Folder", :html => "<image src=/assets/blue.png>")
 

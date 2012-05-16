@@ -74,7 +74,7 @@ Proedm::Application.configure do
   config.assets.compile = false
 
 
-  config.assets.precompile += %w( application-all.css application-print.css application-ie.css active_admin.css active_admin.js kindeditor/lang/en.js kindeditor/lang/zh_CN.js
+  config.assets.precompile += %w( blueprint/print.css application-print.css application-ie.css active_admin.css active_admin.js kindeditor/lang/en.js kindeditor/lang/zh_CN.js
     kindeditor/themes/default/default.css kindeditor/plugins/image/image.js kindeditor/plugins/flash/flash.js kindeditor/plugins/filemanager/filemanager.js kindeditor/plugins/table/table.js
     kindeditor/plugins/media/media.js kindeditor/plugins/insertfile/insertfile.js canvas.js pw.js pw.js.erb interfaces/default/style.css)
 
@@ -105,9 +105,6 @@ Proedm::Application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
-
-  # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
