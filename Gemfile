@@ -32,6 +32,7 @@ gem 'pony'
 gem 'devise'
 gem 'jquery-rails'
 gem 'activeadmin','0.4.3'
+gem "formtastic", "~> 2.1.1"
 gem "bourbon", "1.4.0"
 gem "cancan"
 
@@ -58,7 +59,7 @@ end
 gem "gruff"
 
 gem "pdfkit"
-gem "google_charts"
+#gem "google_charts"
 
 
 

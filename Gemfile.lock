@@ -107,15 +107,13 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.1)
-    formtastic (2.2.0)
-      actionpack (>= 3.0)
+    formtastic (2.1.1)
+      actionpack (~> 3.0)
     gem_plugin (0.2.3)
     google-spreadsheet-ruby (0.1.8)
       nokogiri (>= 1.4.3.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
-    google_charts (1.2.0)
-      actionpack (>= 3.x)
     gruff (0.3.6)
     guard (1.0.3)
       ffi (>= 0.5.0)
@@ -271,7 +269,7 @@ DEPENDENCIES
   delayed_job_active_record
   devise
   fog
-  google_charts
+  formtastic (~> 2.1.1)
   gruff
   guard-test
   jquery-rails
