@@ -142,7 +142,7 @@ class PushesController < InheritedResources::Base
   end
 
   def show
-    p params
+    #p params
     @push = Push.find(params[:id])
     authorize! :read, @push
 
