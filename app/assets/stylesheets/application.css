@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require shin
+
  *= require demo_page
  *= require demo_table
  *= require blueprint/screen
