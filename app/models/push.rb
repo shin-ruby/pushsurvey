@@ -62,14 +62,22 @@ class Push < ActiveRecord::Base
     require 'push_mailer'
 
     address_book.contacts.each do |contact|
-      PushMailer.start(contact, self).deliver
+      begin
+        PushMailer.start(contact, self).deliver
+      rescue Exception => e
+        #ignore
+        #maybe adding @failure_count? failure_contact?
+      end
+    end
+
+    begin
+      PushMailer.start_result(self.user).deliver
+      self.status = "Send"
+      self.save
+    rescue Exception => e
     end
 
 
-    PushMailer.start_result(self.user).deliver
-
-    self.status = "Send"
-    self.save
   end
   #for DJ support
   def perform
