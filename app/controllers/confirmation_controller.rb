@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class ConfirmationController < ApplicationController
   def confirmation
-    if params[:from] == "address_book" && params[:bucket] #== "file.pushsurvey.com"
+    if params[:from] == "address_book" && params[:bucket] #== "file0.pushsurvey.com"
       @address_book = AddressBook.find(params[:id])
       @address_book.attributes = params
       @address_book.save!
