@@ -29,7 +29,7 @@ gem 'nokogiri'
 gem 'pony'
 
 
-gem 'devise', '2.0.1'
+gem 'devise'
 gem 'jquery-rails'
 gem 'activeadmin','0.4.3'
 gem "formtastic", "~> 2.1.1"
