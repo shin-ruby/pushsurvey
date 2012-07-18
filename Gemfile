@@ -15,55 +15,55 @@ end
 gem "meta_search",    '>= 1.1.0.pre'
 gem "rails-i18n"
 group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-rails', '3.2.2'
+  gem 'uglifier', '1.2.4'
 end
-gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails',   '~> 3.2.5'
 
 
 
-gem 'json'
-gem 'roo'
-gem 'zip'
-gem 'nokogiri'
-gem 'pony'
+gem 'json', '1.7.3'
+gem 'roo', '1.10.1'
+gem 'zip', '2.0.2'
+gem 'nokogiri', '1.5.4'
+gem 'pony', '1.4'
 
 
-gem 'devise'
-gem 'jquery-rails'
+gem 'devise', '2.1.0'
+gem 'jquery-rails', '2.0.2'
 gem 'activeadmin','0.4.3'
 gem "formtastic", "~> 2.1.1"
 gem "bourbon", "1.4.0"
-gem "cancan"
+gem "cancan", '1.6.7'
 
 #gem "paperclip"
 #gem 'carrierwave'
-gem 'carrierwave_direct'
-gem "fog"
+gem 'carrierwave_direct', '0.0.5'
+gem "fog", '1.3.1'
 
 
 #gem 'validation_group', :git=>'git://github.com/akira/validationgroup.git'
-#gem 'grouped_validations'
-gem 'delayed_job'
-gem 'delayed_job_active_record'
+#gem 'grouped_vaglidations'
+gem 'delayed_job', '3.0.3'
+gem 'delayed_job_active_record', '0.3.2'
 
-gem "airbrake"
+gem "airbrake", '3.1.1'
 
 #gem 'hoe', '~> 1.5.1' # Heroku's rubygems is too old for hoe 2.9.1 as of 28 Mar 201
 if File.exist?("D:\\Ruby187\\lib\\ruby\\gems\\1.8\\gems\\rmagick-2.13.1")
-  gem "rmagick",  :require => 'RMagick'#, :path => "D:\\Ruby187\\lib\\ruby\\gems\\1.8\\gems\\rmagick-2.13.1"
+  gem "rmagick", :require => 'RMagick'#, :path => "D:\\Ruby187\\lib\\ruby\\gems\\1.8\\gems\\rmagick-2.13.1"
 else
-  gem "rmagick",  :require => 'RMagick'
+  gem "rmagick", :require => 'RMagick'
 end
 
-gem "gruff"
+gem "gruff", '0.3.6'
 
-gem "pdfkit"
+gem "pdfkit", '0.5.2'
 #gem "google_charts"
 
 
 
-gem "data_table",:require => false
+gem "data_table", '0.4.2',:require => false
 gem "acts_as_audited", "2.0.0"
 
 #gem "will_paginate"
@@ -119,7 +119,7 @@ gem "pg","0.13.2"
 if File.exists?("E:\\rails-project\\rails_kindeditor")
   gem 'rails_kindeditor', :path=>"E:\\rails-project\\rails_kindeditor"
 else
-  gem 'rails_kindeditor', :git=>"git://github.com/femto/rails_kindeditor.git"
+  gem 'rails_kindeditor', '0.3.0', :git=>"git://github.com/femto/rails_kindeditor.git"
 end
 
 
