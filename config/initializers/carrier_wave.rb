@@ -5,8 +5,8 @@ CarrierWave.configure do |config|
     :aws_access_key_id      => ENV['S3_KEY'],
     :aws_secret_access_key  => ENV['S3_SECRET']
   }
-  config.fog_directory  = 'file0.pushsurvey.com'
-  config.fog_host       = 'http://file0.pushsurvey.com.s3.amazonaws.com'
+  config.fog_directory  = 'file1.pushsurvey.com'
+  config.fog_host       = 'http://file1.pushsurvey.com.s3.amazonaws.com'
   config.fog_attributes = { 'Cache-Control'=>'max-age=315576000' }
   config.cache_dir = "#{Rails.root}/tmp/uploads"
 
